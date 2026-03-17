@@ -3,6 +3,8 @@ import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
+  // GitHub Pages 部署在子路径，需要配置 base
+  base: '/rift-oath/',
   plugins: [vue()],
   resolve: {
     alias: {
