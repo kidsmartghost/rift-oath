@@ -315,19 +315,33 @@ function getCharacterPosition(index, total) {
 }
 
 function loadScene(sceneId) {
+  console.log('加载场景:', sceneId, '剧本已加载:', scriptLoaded.value)
+  
   if (!scriptLoaded.value) {
-    console.warn('剧本未加载完成')
+    console.warn('剧本未加载完成，等待...')
+    setTimeout(() => loadScene(sceneId), 500)
     return
   }
   
   const scene = getScene(sceneId)
+  console.log('场景数据:', scene ? '找到' : '未找到', sceneId)
+  
   if (!scene) {
     console.error('场景不存在:', sceneId)
+    console.log('可用场景:', getLoadedScript()?.scenes?.map(s => s.id))
+    // 回退到第一个场景
+    const firstScene = getLoadedScript()?.scenes?.[0]
+    if (firstScene) {
+      console.log('使用第一个场景:', firstScene.id)
+      loadScene(firstScene.id)
+    }
     return
   }
   
   currentScene.value = scene
   hasChoices.value = !!scene.choices
+  
+  console.log('场景类型:', scene.type, '选择支数量:', scene.choices?.length)
   
   // 加载背景
   const bg = getBackgroundForScene(sceneId)
@@ -363,6 +377,7 @@ function loadScene(sceneId) {
   
   // 获取动态对话（使用 ScriptLoader 的函数）
   const dialogueText = getDynamicDialogue(scene, playerState.value)
+  console.log('对话内容:', dialogueText?.substring(0, 50))
   startDialogue(dialogueText)
 }
 
@@ -578,10 +593,13 @@ function getParticleStyle(i) {
 
 onMounted(async () => {
   // 加载 JSON 剧本
+  const basePath = import.meta.env.BASE_URL || '/'
   await loadScriptFromJSONs([
-    '/src/data/script_ch1_full.json'
+    `${basePath}data/script_ch1_full.json`
   ])
   scriptLoaded.value = true
+  
+  console.log('剧本加载完成:', scriptLoaded.value, getLoadedScript()?.scenes?.length, '个场景')
   
   if (gameStore.isPlaying) {
     loadScene(gameStore.playerState.currentSceneId)

@@ -1,0 +1,1380 @@
+{
+  "meta": {
+    "title": "裂隙之誓",
+    "version": "2.0",
+    "chapter": 1,
+    "chapterTitle": "第一章：觉醒",
+    "author": "OpenClaw",
+    "description": "黑暗奇幻多世界文字冒险游戏 - 第一章完整版（50 场景）"
+  },
+  
+  "worlds": [
+    {
+      "id": "world1",
+      "name": "永夜王国",
+      "description": "被永恒黑暗笼罩的中世纪王国，三个月前太阳不再升起",
+      "theme": "gothic",
+      "heroName": "艾莉娅",
+      "heroClass": "圣骑士",
+      "backgroundColor": "#1a0a1f",
+      "accentColor": "#8b0000",
+      "gradient": "linear-gradient(135deg, #1a0a1f 0%, #2d1b3d 50%, #1a0a1f 100%)"
+    }
+  ],
+  
+  "scenes": [
+    {
+      "id": "scene_001",
+      "worldId": "world1",
+      "title": "破碎的黎明",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "黑暗。\n无尽的黑暗。\n\n我睁开双眼，却什么也看不见。\n只有冰冷的石地板贴着脸颊，还有...血腥味。",
+      "background": "church",
+      "characters": [],
+      "bgm": "world1",
+      "nextSceneId": "scene_002",
+      "effects": {
+        "hiddenStats": { "chaos": 5 }
+      }
+    },
+    {
+      "id": "scene_002",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "神秘老人",
+      "dialogue": "「你醒了。」\n\n一个苍老的声音在黑暗中响起。",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_003"
+    },
+    {
+      "id": "scene_003",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "这是一座破败的教堂。\n彩色玻璃早已破碎，月光从空洞的窗框中洒入。\n\n在我面前，站着一位佝偻的老人，手中握着一盏摇曳的油灯。",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_004",
+      "dialogueVariants": [
+        {
+          "conditions": { "stats": { "wisdom": { "min": 60 } } },
+          "text": "这是一座破败的教堂。\n但...不对劲。\n\n我仔细观察周围的环境——破损的彩窗图案、祭坛的摆放位置、甚至空气中残留的魔法波动。\n\n这不是普通的教堂。这是一个...封印之地？\n\n在我面前，站着一位佝偻的老人，手中握着一盏摇曳的油灯。"
+        }
+      ],
+      "extraLines": {
+        "wisdom": "你的直觉告诉你，这座教堂隐藏着秘密。",
+        "courage": "你握紧拳头，准备应对任何危险。"
+      }
+    },
+    {
+      "id": "scene_004",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "艾莉娅",
+      "dialogue": "「这里是...哪里？我是谁？」\n\n我抚摸着疼痛的太阳穴，脑海中一片空白。",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_005"
+    },
+    {
+      "id": "scene_005",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "神秘老人",
+      "dialogue": "老人叹了口气。\n\n「这里是圣罗兰教堂，王都最后的避难所。而你，艾莉娅，是王国最后的圣骑士。」",
+      "background": "church",
+      "characters": ["oldman"],
+      "choices": [
+        {
+          "id": "choice_001_a",
+          "text": "「圣骑士...我不明白。」",
+          "nextSceneId": "scene_006_a",
+          "effects": {
+            "stats": { "wisdom": 5 },
+            "bonds": { "world1": 3 }
+          }
+        },
+        {
+          "id": "choice_001_b",
+          "text": "「王国发生了什么？」",
+          "nextSceneId": "scene_006_b",
+          "effects": {
+            "stats": { "wisdom": 3, "courage": 3 },
+            "bonds": { "world1": 5 }
+          }
+        },
+        {
+          "id": "choice_001_c",
+          "text": "「你认识我？」",
+          "nextSceneId": "scene_006_c",
+          "effects": {
+            "stats": { "compassion": 5 },
+            "bonds": { "world1": 4 }
+          }
+        },
+        {
+          "id": "choice_001_d",
+          "text": "「证明给我看。」",
+          "nextSceneId": "scene_006_d",
+          "conditions": {
+            "stats": { "wisdom": { "min": 40 } }
+          },
+          "fallbackSceneId": null,
+          "effects": {
+            "stats": { "wisdom": 8, "determination": 5 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_006_a",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "神秘老人",
+      "dialogue": "「你的剑会告诉你答案。」\n\n老人指向一旁。那里插着一把古老的长剑，剑身上刻满了金色的符文。",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_007"
+    },
+    {
+      "id": "scene_006_b",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "神秘老人",
+      "dialogue": "「三个月前，国王陛下与黑暗签订了契约。从那天起，太阳再也没有升起。」\n\n「王国...已经死了。」",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_007",
+      "effects": {
+        "hiddenStats": { "corruption": 3 }
+      }
+    },
+    {
+      "id": "scene_006_c",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "神秘老人",
+      "dialogue": "「我侍奉王室三代，孩子。」\n\n「看着你从一个小女孩成长为圣骑士...也看着你在最后一战中倒下。」",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_007",
+      "effects": {
+        "bonds": { "world1": 5 }
+      }
+    },
+    {
+      "id": "scene_006_d",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "神秘老人",
+      "dialogue": "老人眼中闪过一丝惊讶。\n\n「聪明的孩子。没错，我需要证明。」\n\n他伸出手，掌心浮现出一枚徽章——王室的纹章，还有一滴干涸的血迹。\n\n「这是你父亲，老国王临终前交给我的。」",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_007",
+      "effects": {
+        "stats": { "wisdom": 5 },
+        "bonds": { "world1": 8 }
+      }
+    },
+    {
+      "id": "scene_007",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "突然，教堂外传来一声巨响。\n\n老人脸色大变：「它们找到这里了！快，拿起你的剑！」",
+      "background": "church",
+      "characters": ["oldman"],
+      "bgm": "battle",
+      "nextSceneId": "scene_008"
+    },
+    {
+      "id": "scene_008",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "我冲向那把剑。就在手指触碰到剑柄的瞬间——\n\n剧痛。\n\n无数画面涌入脑海：燃烧的城堡、嘶吼的怪物、还有一道...撕裂天空的紫色裂隙？",
+      "background": "church",
+      "characters": [],
+      "nextSceneId": "scene_009",
+      "effects": {
+        "hiddenStats": { "chaos": 5 }
+      }
+    },
+    {
+      "id": "scene_009",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "神秘老人",
+      "dialogue": "「艾莉娅！没时间了！」\n\n教堂的大门开始剧烈震动。",
+      "background": "church",
+      "characters": ["oldman"],
+      "choices": [
+        {
+          "id": "choice_002_a",
+          "text": "【战斗】「我会守住这里！」",
+          "nextSceneId": "scene_010_combat",
+          "effects": {
+            "stats": { "courage": 10, "determination": 5 },
+            "hiddenStats": { "corruption": 3 }
+          }
+        },
+        {
+          "id": "choice_002_b",
+          "text": "【逃跑】「我们从后门走！」",
+          "nextSceneId": "scene_010_escape",
+          "effects": {
+            "stats": { "wisdom": 8 },
+            "hiddenStats": { "chaos": 2 }
+          }
+        },
+        {
+          "id": "choice_002_c",
+          "text": "【防御】「先躲起来！」",
+          "nextSceneId": "scene_010_hide",
+          "effects": {
+            "stats": { "wisdom": 5, "courage": 3 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_010_combat",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "大门破碎。\n\n三只黑影涌入教堂——那是被黑暗腐蚀的狼人。\n\n我举起黎明之剑，迎了上去。",
+      "background": "church",
+      "characters": [],
+      "bgm": "battle",
+      "nextSceneId": "scene_011_combat"
+    },
+    {
+      "id": "scene_011_combat",
+      "worldId": "world1",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "第一只狼人扑来。你选择：",
+      "background": "church",
+      "characters": [],
+      "choices": [
+        {
+          "id": "choice_003_a",
+          "text": "【正面迎击】挥剑直劈",
+          "nextSceneId": "scene_012_win",
+          "effects": {
+            "stats": { "courage": 5 }
+          }
+        },
+        {
+          "id": "choice_003_b",
+          "text": "【闪避反击】侧身躲闪",
+          "nextSceneId": "scene_012_win",
+          "conditions": {
+            "stats": { "courage": { "min": 30 } }
+          },
+          "fallbackSceneId": "scene_012_fail",
+          "effects": {
+            "stats": { "wisdom": 5, "courage": 3 }
+          }
+        },
+        {
+          "id": "choice_003_c",
+          "text": "【圣光魔法】释放神圣力量",
+          "nextSceneId": "scene_012_win",
+          "conditions": {
+            "stats": { "wisdom": { "min": 40 } }
+          },
+          "fallbackSceneId": "scene_012_fail",
+          "effects": {
+            "stats": { "wisdom": 8 },
+            "hiddenStats": { "corruption": -3 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_012_win",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "剑光闪过。\n\n狼人哀嚎着倒下，化作黑色的烟雾消散。\n\n但还有两只。",
+      "background": "church",
+      "characters": [],
+      "nextSceneId": "scene_013_combat"
+    },
+    {
+      "id": "scene_012_fail",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "动作慢了！\n\n狼爪擦过手臂，鲜血涌出。\n\n但你强忍疼痛，调整姿势准备再战。",
+      "background": "church",
+      "characters": [],
+      "nextSceneId": "scene_013_combat",
+      "effects": {
+        "stats": { "determination": 5 }
+      }
+    },
+    {
+      "id": "scene_013_combat",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "剩下的两只狼人交换了眼神。\n\n然后，它们同时扑来。",
+      "background": "church",
+      "characters": [],
+      "choices": [
+        {
+          "id": "choice_004_a",
+          "text": "【全力一击】赌上所有的力量",
+          "nextSceneId": "scene_014_win",
+          "effects": {
+            "stats": { "courage": 10, "determination": 5 }
+          }
+        },
+        {
+          "id": "choice_004_b",
+          "text": "【游击战术】逐个击破",
+          "nextSceneId": "scene_014_win",
+          "conditions": {
+            "stats": { "wisdom": { "min": 35 } }
+          },
+          "fallbackSceneId": "scene_014_fail",
+          "effects": {
+            "stats": { "wisdom": 8 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_014_win",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "最后一击。\n\n两只狼人同时倒下。\n\n教堂恢复了寂静，只有你的喘息声。",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_015_aftermath"
+    },
+    {
+      "id": "scene_014_fail",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "太多了...\n\n就在你即将支撑不住时，老人的声音响起：\n\n「圣光啊，请赐予她力量！」\n\n一道金光从天而降，驱散了黑暗。",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_015_aftermath",
+      "effects": {
+        "bonds": { "world1": 10 }
+      }
+    },
+    {
+      "id": "scene_015_aftermath",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "神秘老人",
+      "dialogue": "「你做得很好，艾莉娅。」\n\n老人走过来，递给你一块手帕。\n\n「但这里已经不安全了。我们必须离开。」",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_016_explore"
+    },
+    {
+      "id": "scene_016_explore",
+      "worldId": "world1",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "战斗结束后，你有机会探索教堂。你想要：",
+      "background": "church",
+      "characters": [],
+      "choices": [
+        {
+          "id": "choice_005_a",
+          "text": "【检查祭坛】寻找线索",
+          "nextSceneId": "scene_017_altar",
+          "effects": {
+            "stats": { "wisdom": 5 }
+          }
+        },
+        {
+          "id": "choice_005_b",
+          "text": "【搜索尸体】查看狼人",
+          "nextSceneId": "scene_017_corpse",
+          "effects": {
+            "stats": { "courage": 3 },
+            "hiddenStats": { "corruption": 2 }
+          }
+        },
+        {
+          "id": "choice_005_c",
+          "text": "【询问老人】了解更多",
+          "nextSceneId": "scene_017_talk",
+          "effects": {
+            "bonds": { "world1": 5 }
+          }
+        },
+        {
+          "id": "choice_005_d",
+          "text": "【全部探索】",
+          "nextSceneId": "scene_017_all",
+          "conditions": {
+            "stats": { "determination": { "min": 30 } }
+          },
+          "fallbackSceneId": "scene_016_explore",
+          "effects": {
+            "stats": { "wisdom": 8, "courage": 5 },
+            "bonds": { "world1": 8 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_017_altar",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你走向祭坛。\n\n在圣经的下面，你发现了一封泛黄的信。\n\n「致艾莉娅：若你看到这封信，说明我已经不在了。记住，国王的契约在——」\n\n信到这里中断了。",
+      "background": "church",
+      "characters": [],
+      "nextSceneId": "scene_018_decision",
+      "effects": {
+        "hiddenStats": { "chaos": 3 }
+      }
+    },
+    {
+      "id": "scene_017_corpse",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你检查狼人的尸体。\n\n在它们脖子上，你发现了一个相同的印记——一个紫色的裂隙图案。\n\n这不是普通的怪物。这是...被召唤出来的。",
+      "background": "church",
+      "characters": [],
+      "nextSceneId": "scene_018_decision",
+      "effects": {
+        "stats": { "wisdom": 5 },
+        "hiddenStats": { "corruption": 3 }
+      }
+    },
+    {
+      "id": "scene_017_talk",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "神秘老人",
+      "dialogue": "「我叫塞德里克，是先王的宫廷法师。」\n\n「三个月前，国王陛下召见了一个神秘人。从那以后，他就变了。」\n\n「直到...那天晚上，太阳落下，再也没升起。」",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_018_decision",
+      "effects": {
+        "bonds": { "world1": 8 }
+      }
+    },
+    {
+      "id": "scene_017_all",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你仔细搜索了整个教堂。\n\n祭坛下的信、狼人身上的印记、还有老人透露的身份...\n\n碎片开始拼凑，但真相仍然模糊。",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_018_decision",
+      "effects": {
+        "stats": { "wisdom": 10 },
+        "hiddenStats": { "chaos": 5 }
+      }
+    },
+    {
+      "id": "scene_018_decision",
+      "worldId": "world1",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "塞德里克看着你：「我们必须决定下一步去哪里。」",
+      "background": "church",
+      "characters": ["oldman"],
+      "choices": [
+        {
+          "id": "choice_006_a",
+          "text": "【王都城堡】「去国王的城堡。」",
+          "nextSceneId": "scene_019_castle",
+          "effects": {
+            "stats": { "courage": 5, "determination": 5 }
+          }
+        },
+        {
+          "id": "choice_006_b",
+          "text": "【地下避难所】「先找个安全的地方。」",
+          "nextSceneId": "scene_019_bunker",
+          "effects": {
+            "stats": { "wisdom": 8 }
+          }
+        },
+        {
+          "id": "choice_006_c",
+          "text": "【寻找幸存者】「也许还有其他人活着。」",
+          "nextSceneId": "scene_019_survivors",
+          "effects": {
+            "stats": { "compassion": 10 },
+            "bonds": { "world1": 5 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_019_castle",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "「城堡...那里现在很危险。」\n\n塞德里克担忧地说。\n\n「但如果你坚持，我会陪你。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_020_castle_arrive"
+    },
+    {
+      "id": "scene_019_bunker",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "「明智的选择。」\n\n塞德里克推开祭坛后的暗门。\n\n「跟我来，我知道一个安全的地方。」",
+      "background": "underground",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_020_bunker_enter"
+    },
+    {
+      "id": "scene_019_survivors",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "「也许...」\n\n塞德里克眼中闪过一丝希望。\n\n「我知道有个地方可能还有幸存者。但路上会很危险。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_020_survivors_search"
+    },
+    {
+      "id": "scene_020_castle_arrive",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们来到城堡前。\n\n曾经辉煌的王都，如今已成废墟。\n\n城堡大门敞开，仿佛在邀请你们进入。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "choices": [
+        {
+          "id": "choice_007_a",
+          "text": "【直接进入】",
+          "nextSceneId": "scene_021_castle_enter",
+          "effects": {
+            "stats": { "courage": 5 }
+          }
+        },
+        {
+          "id": "choice_007_b",
+          "text": "【谨慎观察】先查看周围",
+          "nextSceneId": "scene_021_castle_observe",
+          "effects": {
+            "stats": { "wisdom": 5 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_020_bunker_enter",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "地下通道潮湿阴冷。\n\n走了约十分钟，你们来到一个宽敞的地下室。\n\n这里储备着食物和水，还有...其他东西。",
+      "background": "underground",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_021_bunker_discover"
+    },
+    {
+      "id": "scene_020_survivors_search",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们穿行在废墟中。\n\n突然，你听到了声音——是人类的哭声！\n\n从一个破败的房屋中传来。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_021_survivors_find"
+    },
+    {
+      "id": "scene_021_castle_enter",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你踏入城堡大厅。\n\n王座上空空如也，但王座后面的墙壁上...有一个巨大的紫色裂隙。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_022_castle_rift"
+    },
+    {
+      "id": "scene_021_castle_observe",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你仔细观察城堡。\n\n门口有新鲜的爪痕，大厅里有黑影移动。\n\n「里面有东西。」塞德里克低声说。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_022_castle_ambush"
+    },
+    {
+      "id": "scene_021_bunker_discover",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "在地下室的角落，你发现了一个箱子。\n\n里面装着一套银色的铠甲，还有一本魔法书。\n\n「这是...先王的遗物。」塞德里克声音颤抖。",
+      "background": "underground",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_022_bunker_equip"
+    },
+    {
+      "id": "scene_021_survivors_find",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们冲进房屋。\n\n一个年轻的女孩蜷缩在角落，瑟瑟发抖。\n\n看到你们，她眼中闪过恐惧。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_022_survivors_talk"
+    },
+    {
+      "id": "scene_022_castle_rift",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "塞德里克",
+      "dialogue": "「那就是...黑暗的来源。」\n\n塞德里克脸色苍白。\n\n「国王和它签订了契约。现在，它正在吞噬这个世界。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "choices": [
+        {
+          "id": "choice_008_a",
+          "text": "【摧毁它】「我们必须封印这个裂隙！」",
+          "nextSceneId": "scene_023_castle_seal",
+          "effects": {
+            "stats": { "courage": 10, "determination": 10 }
+          }
+        },
+        {
+          "id": "choice_008_b",
+          "text": "【调查它】「先了解它是什么。」",
+          "nextSceneId": "scene_023_castle_investigate",
+          "effects": {
+            "stats": { "wisdom": 10 }
+          }
+        },
+        {
+          "id": "choice_008_c",
+          "text": "【利用它】「也许我们可以控制这股力量。」",
+          "nextSceneId": "scene_023_castle_corrupt",
+          "conditions": {
+            "hiddenStats": { "corruption": { "min": 20 } }
+          },
+          "fallbackSceneId": "scene_023_castle_seal",
+          "effects": {
+            "hiddenStats": { "corruption": 10, "chaos": 5 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_022_castle_ambush",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "就在你们准备悄悄进入时——\n\n吼！！！\n\n一只巨大的黑暗生物从阴影中扑出！",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "bgm": "battle",
+      "nextSceneId": "scene_023_castle_boss"
+    },
+    {
+      "id": "scene_022_bunker_equip",
+      "worldId": "world1",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "塞德里克把铠甲和书递给你：「这是你的命运，艾莉娅。」",
+      "background": "underground",
+      "characters": ["oldman"],
+      "choices": [
+        {
+          "id": "choice_009_a",
+          "text": "【接受】穿上铠甲，学习魔法",
+          "nextSceneId": "scene_023_bunker_power",
+          "effects": {
+            "stats": { "courage": 5, "wisdom": 5, "determination": 5 }
+          }
+        },
+        {
+          "id": "choice_009_b",
+          "text": "【只穿铠甲】",
+          "nextSceneId": "scene_023_bunker_armor",
+          "effects": {
+            "stats": { "courage": 10, "determination": 5 }
+          }
+        },
+        {
+          "id": "choice_009_c",
+          "text": "【只学魔法】",
+          "nextSceneId": "scene_023_bunker_magic",
+          "effects": {
+            "stats": { "wisdom": 10 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_022_survivors_talk",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "小女孩",
+      "dialogue": "「求求你们...不要伤害我...」\n\n女孩哭着说。\n\n「我爸爸妈妈...他们变成了怪物...」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_023_survivors_story"
+    },
+    {
+      "id": "scene_023_castle_seal",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "「封印？谈何容易...」\n\n塞德里克苦笑。\n\n「但也许...用你的圣剑，加上我的魔法，有一线希望。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_024_castle_ritual"
+    },
+    {
+      "id": "scene_023_castle_investigate",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你靠近裂隙。\n\n从中，你听到了声音——无数人的低语，还有...另一个世界的画面。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_024_castle_vision",
+      "effects": {
+        "hiddenStats": { "chaos": 10 }
+      }
+    },
+    {
+      "id": "scene_023_castle_corrupt",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你伸出手，触摸裂隙。\n\n黑暗的力量涌入你的身体。\n\n塞德里克惊恐地后退：「艾莉娅！你在做什么！」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_024_castle_dark",
+      "effects": {
+        "hiddenStats": { "corruption": 15 },
+        "stats": { "courage": 10 }
+      }
+    },
+    {
+      "id": "scene_023_castle_boss",
+      "worldId": "world1",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "黑暗骑士挡在你们面前。它的眼睛是紫色的裂隙。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "bgm": "battle",
+      "choices": [
+        {
+          "id": "choice_010_a",
+          "text": "【正面战斗】",
+          "nextSceneId": "scene_024_boss_fight",
+          "effects": {
+            "stats": { "courage": 10 }
+          }
+        },
+        {
+          "id": "choice_010_b",
+          "text": "【寻找弱点】观察它的行动",
+          "nextSceneId": "scene_024_boss_weakness",
+          "conditions": {
+            "stats": { "wisdom": { "min": 40 } }
+          },
+          "fallbackSceneId": "scene_024_boss_fight",
+          "effects": {
+            "stats": { "wisdom": 8 }
+          }
+        },
+        {
+          "id": "choice_010_c",
+          "text": "【圣光净化】尝试净化它",
+          "nextSceneId": "scene_024_boss_purify",
+          "conditions": {
+            "hiddenStats": { "corruption": { "max": 20 } }
+          },
+          "fallbackSceneId": "scene_024_boss_fight",
+          "effects": {
+            "stats": { "compassion": 10 },
+            "hiddenStats": { "corruption": -5 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_023_bunker_power",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "铠甲完美贴合你的身体。\n\n魔法书中的知识涌入你的脑海。\n\n你感觉...前所未有的强大。",
+      "background": "underground",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_024_bunker_leave"
+    },
+    {
+      "id": "scene_023_bunker_armor",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "银色的铠甲覆盖全身。\n\n你感觉力量涌遍四肢百骸。\n\n「这就是...圣骑士的力量。」",
+      "background": "underground",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_024_bunker_leave"
+    },
+    {
+      "id": "scene_023_bunker_magic",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你翻开魔法书。\n\n古老的文字在你眼前跳动，知识流入你的意识。\n\n你学会了第一个法术：圣光术。",
+      "background": "underground",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_024_bunker_leave",
+      "effects": {
+        "stats": { "wisdom": 5 }
+      }
+    },
+    {
+      "id": "scene_023_survivors_story",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "小女孩",
+      "dialogue": "「那天晚上...一个穿黑袍的人来了。」\n\n「他和国王说了什么。然后...太阳就落下了。」\n\n「很多人都变成了怪物。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_024_survivors_decision"
+    },
+    {
+      "id": "scene_024_castle_ritual",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们开始准备封印仪式。\n\n塞德里克念诵咒语，你举起圣剑。\n\n但就在仪式即将完成时——",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_025_castle_interrupt"
+    },
+    {
+      "id": "scene_024_castle_vision",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你看到了——\n\n另一个世界。机械的废墟，蓝色的能量，还有一个...机器人？\n\n它也看着你。",
+      "background": "kingdom_ruins",
+      "characters": [],
+      "nextSceneId": "scene_025_castle_connect",
+      "effects": {
+        "hiddenStats": { "chaos": 10 }
+      }
+    },
+    {
+      "id": "scene_024_castle_dark",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "神秘声音",
+      "dialogue": "「很好...」\n\n一个声音在你脑海中响起。\n\n「拥抱黑暗吧。它会给你想要的一切。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_025_castle_tempt"
+    },
+    {
+      "id": "scene_024_boss_fight",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "激烈的战斗！\n\n剑与盔甲碰撞，火花四溅。\n\n最终，你找到了机会，一剑刺穿了它的心脏。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_025_boss_aftermath"
+    },
+    {
+      "id": "scene_024_boss_weakness",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你发现它的弱点——胸口的紫色水晶！\n\n集中全力一击，水晶破碎。\n\n黑暗骑士发出最后一声哀嚎，化为尘埃。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_025_boss_aftermath",
+      "effects": {
+        "stats": { "wisdom": 5, "courage": 5 }
+      }
+    },
+    {
+      "id": "scene_024_boss_purify",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你双手合十，释放圣光。\n\n光芒笼罩黑暗骑士。\n\n在最后一刻，你看到它恢复了人形——是王国的骑士长。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_025_boss_sad",
+      "effects": {
+        "stats": { "compassion": 10 },
+        "hiddenStats": { "corruption": -5 }
+      }
+    },
+    {
+      "id": "scene_024_bunker_leave",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "塞德里克",
+      "dialogue": "「现在，你准备好了。」\n\n「但记住，艾莉娅，力量本身没有善恶。」\n\n「如何使用它，才是关键。」",
+      "background": "underground",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_025_bunker_exit"
+    },
+    {
+      "id": "scene_024_survivors_decision",
+      "worldId": "world1",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "小女孩无助地看着你。塞德里克示意你做个决定。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "choices": [
+        {
+          "id": "choice_011_a",
+          "text": "【带她一起】「你安全了，跟我们来。」",
+          "nextSceneId": "scene_025_survivors_adopt",
+          "effects": {
+            "stats": { "compassion": 10 },
+            "bonds": { "world1": 10 }
+          }
+        },
+        {
+          "id": "choice_011_b",
+          "text": "【安置她】「躲在这里，等我们回来。」",
+          "nextSceneId": "scene_025_survivors_leave",
+          "effects": {
+            "stats": { "wisdom": 5 }
+          }
+        },
+        {
+          "id": "choice_011_c",
+          "text": "【询问信息】「黑袍人去了哪里？」",
+          "nextSceneId": "scene_025_survivors_ask",
+          "effects": {
+            "stats": { "wisdom": 8 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_025_castle_interrupt",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "轰！！！\n\n城堡剧烈震动。\n\n一个声音从裂隙中传来：「阻止他们...」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_026_castle_collapse"
+    },
+    {
+      "id": "scene_025_castle_connect",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "连接只持续了一瞬。\n\n但你确定——那不是幻觉。\n\n还有其他世界。而你，与它们有着某种联系。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_026_castle_mystery"
+    },
+    {
+      "id": "scene_025_castle_tempt",
+      "worldId": "world1",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "黑暗的力量诱惑着你。塞德里克在远处呼喊：「艾莉娅！抵抗它！」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "choices": [
+        {
+          "id": "choice_012_a",
+          "text": "【接受黑暗】",
+          "nextSceneId": "scene_026_castle_fall",
+          "conditions": {
+            "hiddenStats": { "corruption": { "min": 30 } }
+          },
+          "fallbackSceneId": "scene_026_castle_resist",
+          "effects": {
+            "hiddenStats": { "corruption": 20 }
+          }
+        },
+        {
+          "id": "choice_012_b",
+          "text": "【抵抗黑暗】",
+          "nextSceneId": "scene_026_castle_resist",
+          "effects": {
+            "stats": { "determination": 10 },
+            "hiddenStats": { "corruption": -10 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_025_boss_aftermath",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "战斗结束了。\n\n但你知道，这只是开始。\n\n真正的敌人，还在裂隙的另一端。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_026_boss_reflect"
+    },
+    {
+      "id": "scene_025_boss_sad",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "塞德里克",
+      "dialogue": "「骑士长...他曾经是最忠诚的勇士。」\n\n老人叹息。\n\n「现在，他解脱了。但王国还需要我们。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_026_boss_reflect"
+    },
+    {
+      "id": "scene_025_bunker_exit",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们离开避难所。\n\n外面的世界依然黑暗，但你的心中燃起了希望之火。\n\n无论前方是什么，你都会面对。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_026_bunker_journey"
+    },
+    {
+      "id": "scene_025_survivors_adopt",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "小女孩",
+      "dialogue": "「真的吗？我可以和你们一起？」\n\n女孩眼中重新燃起希望。\n\n「我叫莉莉。我...我会听话的。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman", "lily"],
+      "nextSceneId": "scene_026_survivors_travel"
+    },
+    {
+      "id": "scene_025_survivors_leave",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "「对不起，孩子。」\n\n你锁上门，在她哭喊声中离开。\n\n塞德里克拍拍你的肩膀：「这是正确的选择。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_026_survivors_guilt",
+      "effects": {
+        "hiddenStats": { "corruption": 3 }
+      }
+    },
+    {
+      "id": "scene_025_survivors_ask",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "小女孩",
+      "dialogue": "「他...他去了城堡。」\n\n「和国王一起，进入了那个紫色的门。」\n\n「之后就再也没出来。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_026_survivors_castle"
+    },
+    {
+      "id": "scene_026_castle_collapse",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "城堡开始崩塌。\n\n「快走！」塞德里克拉着你。\n\n你们在最后一刻逃出了城堡。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_027_castle_escape"
+    },
+    {
+      "id": "scene_026_castle_mystery",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "塞德里克",
+      "dialogue": "「你看到了，对吗？」\n\n老人严肃地看着你。\n\n「还有其他世界。而你...是连接它们的钥匙。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_027_castle_truth"
+    },
+    {
+      "id": "scene_026_castle_fall",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你拥抱了黑暗。\n\n力量。无穷的力量。\n\n塞德里克惊恐地看着你：「艾莉娅...不...」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_027_castle_dark_ending",
+      "effects": {
+        "hiddenStats": { "corruption": 30 }
+      }
+    },
+    {
+      "id": "scene_026_castle_resist",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你用尽全力抵抗。\n\n圣剑发出耀眼的光芒，驱散了黑暗。\n\n裂隙暂时闭合了。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_027_castle_victory"
+    },
+    {
+      "id": "scene_026_boss_reflect",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "塞德里克",
+      "dialogue": "「你做得很好，艾莉娅。」\n\n「但这只是开始。真正的战斗，还在后面。」\n\n「我们必须找到穿越裂隙的方法。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_027_boss_next"
+    },
+    {
+      "id": "scene_026_bunker_journey",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们踏上新的旅程。\n\n前方是未知的危险，但也是希望。\n\n王国需要英雄。而你，注定成为那个英雄。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_027_bunker_chapter_end"
+    },
+    {
+      "id": "scene_026_survivors_travel",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "莉莉加入了你们的队伍。\n\n虽然她还小，但她的存在给了你们希望。\n\n也许，这就是战斗的意义。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman", "lily"],
+      "nextSceneId": "scene_027_survivors_chapter_end"
+    },
+    {
+      "id": "scene_026_survivors_guilt",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们继续前进。\n\n但莉莉的哭声在你脑海中回荡。\n\n这个选择，会一直伴随着你。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_027_survivors_chapter_end"
+    },
+    {
+      "id": "scene_026_survivors_castle",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "塞德里克",
+      "dialogue": "「城堡...果然如此。」\n\n老人脸色凝重。\n\n「我们必须去城堡。阻止那个黑袍人。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_027_survivors_castle"
+    },
+    {
+      "id": "scene_027_castle_escape",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们站在废墟前。\n\n城堡已经彻底崩塌，但裂隙依然在那里。\n\n「我们失败了。」塞德里克说。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_028_chapter_climax"
+    },
+    {
+      "id": "scene_027_castle_truth",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "塞德里克",
+      "dialogue": "「古老的预言说过：当世界陷入黑暗，穿越者将降临。」\n\n「你，艾莉娅，就是那个穿越者。」\n\n「你的命运，不止属于这个世界。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_028_chapter_climax"
+    },
+    {
+      "id": "scene_027_castle_dark_ending",
+      "worldId": "world1",
+      "type": "ending",
+      "speaker": "",
+      "title": "第一章结局：堕落",
+      "dialogue": "你选择了黑暗。\n\n王国的命运已定，而你，成为了新的黑暗之源。\n\n塞德里克消失了，也许是不愿面对你，也许是...死了。\n\n你独自站在废墟中，感受着无穷的力量。\n\n这是你想要的吗？\n\n【第一章 堕落结局】",
+      "background": "kingdom_ruins",
+      "characters": [],
+      "nextSceneId": null,
+      "unlockConditions": {
+        "hiddenStats": { "corruption": { "min": 50 } }
+      }
+    },
+    {
+      "id": "scene_027_castle_victory",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "暂时的胜利。\n\n但你们都知道，黑暗不会永远被封印。\n\n必须找到彻底解决的方法。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_028_chapter_climax"
+    },
+    {
+      "id": "scene_027_boss_next",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "塞德里克",
+      "dialogue": "「穿越裂隙需要巨大的力量。」\n\n「也许...你需要去其他世界，收集更多的力量。」\n\n「这很危险，但这是唯一的希望。」",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_028_chapter_climax"
+    },
+    {
+      "id": "scene_027_bunker_chapter_end",
+      "worldId": "world1",
+      "type": "ending",
+      "speaker": "",
+      "title": "第一章结局：希望之路",
+      "dialogue": "你们踏上了未知的旅程。\n\n王国在身后，希望在前方。\n\n无论前方是什么，你都会勇敢面对。\n\n因为你是艾莉娅，永夜王国最后的圣骑士。\n\n【第一章 希望结局】",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": null
+    },
+    {
+      "id": "scene_027_survivors_chapter_end",
+      "worldId": "world1",
+      "type": "ending",
+      "speaker": "",
+      "title": "第一章结局：守护者",
+      "dialogue": "无论选择了什么，你都保护了一个生命。\n\n在这个黑暗的世界，这就是希望。\n\n旅程继续，但你不再孤单。\n\n【第一章 守护者结局】",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": null
+    },
+    {
+      "id": "scene_027_survivors_castle",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们再次来到城堡。\n\n这次，你们做好了准备。\n\n无论里面有什么，都要面对。",
+      "background": "kingdom_ruins",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_028_chapter_climax"
+    },
+    {
+      "id": "scene_028_chapter_climax",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "突然，地面开始震动。\n\n紫色的裂隙扩大，从中涌出无数记忆碎片。\n\n你看到了——其他世界的画面。",
+      "background": "void",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_029_transition"
+    },
+    {
+      "id": "scene_029_transition",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "神秘声音",
+      "dialogue": "「时候到了。」\n\n「穿越吧，去寻找答案。」\n\n「在机械的废墟中，在神的陨落之地，在平凡的日常里...」\n\n「你会找到真相。」",
+      "background": "void",
+      "characters": [],
+      "nextSceneId": "scene_030_final_choice"
+    },
+    {
+      "id": "scene_030_final_choice",
+      "worldId": "world1",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "裂隙在你面前展开，通往未知的世界。你选择：",
+      "background": "void",
+      "characters": ["oldman"],
+      "choices": [
+        {
+          "id": "choice_013_a",
+          "text": "【前往机械废土】追寻那个机器人的幻象",
+          "nextSceneId": "scene_031_world2_transition",
+          "effects": {
+            "bonds": { "world2": 10 }
+          }
+        },
+        {
+          "id": "choice_013_b",
+          "text": "【停留片刻】「等等，我还没准备好！」",
+          "nextSceneId": "scene_031_prepare",
+          "effects": {
+            "stats": { "determination": 5 }
+          }
+        },
+        {
+          "id": "choice_013_c",
+          "text": "【询问塞德里克】「你会和我一起吗？」",
+          "nextSceneId": "scene_031_cedric_answer",
+          "effects": {
+            "bonds": { "world1": 10 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_031_world2_transition",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你踏入裂隙。\n\n身体被撕裂，意识在时空中穿梭。\n\n永夜王国在身后远去，新的世界在前方等待。\n\n【第一章 完】",
+      "background": "void",
+      "characters": [],
+      "nextSceneId": "scene_032_world2_start"
+    },
+    {
+      "id": "scene_031_prepare",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "「没时间了！」\n\n塞德里克推了你一把。\n\n「去吧！我会在这里等你回来！」\n\n你被推入了裂隙。\n\n【第一章 完】",
+      "background": "void",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_032_world2_start"
+    },
+    {
+      "id": "scene_031_cedric_answer",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "塞德里克",
+      "dialogue": "老人微笑着摇头。\n\n「我的使命是守护这个世界。」\n\n「但你的使命...在更远的地方。」\n\n「去吧，艾莉娅。我会一直为你祈祷。」",
+      "background": "void",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_032_world2_start"
+    }
+  ],
+  
+  "endings": [
+    {
+      "id": "ending_ch1_dark",
+      "name": "堕落",
+      "type": "bad",
+      "title": "第一章结局：堕落",
+      "description": "拥抱黑暗，成为新的黑暗之源"
+    },
+    {
+      "id": "ending_ch1_hope",
+      "name": "希望",
+      "type": "normal",
+      "title": "第一章结局：希望之路",
+      "description": "踏上未知的旅程，寻找拯救世界的方法"
+    },
+    {
+      "id": "ending_ch1_guardian",
+      "name": "守护者",
+      "type": "normal",
+      "title": "第一章结局：守护者",
+      "description": "保护了幸存者，成为黑暗中的希望"
+    }
+  ]
+}
