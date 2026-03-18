@@ -7,61 +7,43 @@ export const assets = {
   // ========== 角色立绘 ==========
   characters: {
     // 主要角色
-    alya: {
-      id: 'alya',
+    aria: {
+      id: 'aria',
       name: '艾莉娅',
       world: 'world1',
-      // 立绘图片路径
-      portrait: '/images/characters/alya_stand.png',
-      // 表情变体（可选）
-      expressions: {
-        normal: '/images/characters/alya_normal.png',
-        happy: '/images/characters/alya_happy.png',
-        sad: '/images/characters/alya_sad.png',
-        angry: '/images/characters/alya_angry.png',
-        determined: '/images/characters/alya_determined.png'
-      }
+      portrait: '/images/characters/aria.png'
     },
     k7: {
       id: 'k7',
       name: 'K-7',
       world: 'world2',
-      portrait: '/images/characters/k7_stand.png',
-      expressions: {
-        normal: '/images/characters/k7_normal.png',
-        alert: '/images/characters/k7_alert.png',
-        confused: '/images/characters/k7_confused.png'
-      }
+      portrait: '/images/characters/k7.png'
     },
-    lohn: {
-      id: 'lohn',
+    lorne: {
+      id: 'lorne',
       name: '洛恩',
       world: 'world3',
-      portrait: '/images/characters/lohn_stand.png',
-      expressions: {
-        normal: '/images/characters/lohn_normal.png',
-        sad: '/images/characters/lohn_sad.png',
-        divine: '/images/characters/lohn_divine.png'
-      }
+      portrait: '/images/characters/lorne.png'
     },
-    xiaoman: {
-      id: 'xiaoman',
+    lin: {
+      id: 'lin',
       name: '林小满',
       world: 'world4',
-      portrait: '/images/characters/xiaoman_stand.png',
-      expressions: {
-        normal: '/images/characters/xiaoman_normal.png',
-        surprised: '/images/characters/xiaoman_surprised.png',
-        determined: '/images/characters/xiaoman_determined.png'
-      }
+      portrait: '/images/characters/lin-xiaoman.png'
     },
     
     // NPC
-    oldman: {
-      id: 'oldman',
+    elder: {
+      id: 'elder',
       name: '神秘老人',
       world: 'world1',
-      portrait: '/images/characters/oldman.png'
+      portrait: '/images/characters/elder.png'
+    },
+    cedric: {
+      id: 'cedric',
+      name: '塞德里克',
+      world: 'world1',
+      portrait: '/images/characters/cedric.png'
     },
     eve9: {
       id: 'eve9',
@@ -92,97 +74,103 @@ export const assets = {
   // ========== 场景背景 ==========
   backgrounds: {
     // 第一章：永夜王国
-    church: {
-      id: 'church',
+    'ch01-church': {
+      id: 'ch01-church',
       world: 'world1',
-      image: '/images/backgrounds/church.png',
+      image: '/images/backgrounds/ch01-church.png',
       name: '圣罗兰教堂'
     },
-    kingdom_ruins: {
-      id: 'kingdom_ruins',
+    'ch01-ruins': {
+      id: 'ch01-ruins',
       world: 'world1',
-      image: '/images/backgrounds/kingdom_ruins.png',
+      image: '/images/backgrounds/ch01-ruins.png',
       name: '王都废墟'
     },
-    underground: {
-      id: 'underground',
+    'ch01-crypt': {
+      id: 'ch01-crypt',
       world: 'world1',
-      image: '/images/backgrounds/underground.png',
+      image: '/images/backgrounds/ch01-crypt.png',
       name: '地下密室'
     },
     
     // 第二章：机械废土
-    wasteland_street: {
-      id: 'wasteland_street',
+    'ch02-cyber-street': {
+      id: 'ch02-cyber-street',
       world: 'world2',
-      image: '/images/backgrounds/wasteland_street.png',
+      image: '/images/backgrounds/ch02-cyber-street.png',
       name: '废墟街道'
     },
-    bunker: {
-      id: 'bunker',
+    'ch02-bunker': {
+      id: 'ch02-bunker',
       world: 'world2',
-      image: '/images/backgrounds/bunker.png',
+      image: '/images/backgrounds/ch02-bunker.png',
       name: '地下避难所'
     },
-    battlefield: {
-      id: 'battlefield',
+    'ch02-battlefield': {
+      id: 'ch02-battlefield',
       world: 'world2',
-      image: '/images/backgrounds/battlefield.png',
+      image: '/images/backgrounds/ch02-battlefield.png',
       name: '猎杀者战场'
     },
     
     // 第三章：神弃之地
-    temple_ruins: {
-      id: 'temple_ruins',
+    'ch03-temple': {
+      id: 'ch03-temple',
       world: 'world3',
-      image: '/images/backgrounds/temple_ruins.png',
+      image: '/images/backgrounds/ch03-temple.png',
       name: '破碎神殿'
     },
-    sky_rift: {
-      id: 'sky_rift',
+    'ch03-rift': {
+      id: 'ch03-rift',
       world: 'world3',
-      image: '/images/backgrounds/sky_rift.png',
+      image: '/images/backgrounds/ch03-rift.png',
       name: '天空裂隙'
     },
-    godfall: {
-      id: 'godfall',
+    'ch03-godfall': {
+      id: 'ch03-godfall',
       world: 'world3',
-      image: '/images/backgrounds/godfall.png',
+      image: '/images/backgrounds/ch03-godfall.png',
       name: '神陨战场'
     },
     
     // 第四章：学园都市
-    classroom: {
-      id: 'classroom',
+    'ch04-classroom': {
+      id: 'ch04-classroom',
       world: 'world4',
-      image: '/images/backgrounds/classroom.png',
+      image: '/images/backgrounds/ch04-classroom.png',
       name: '普通教室'
     },
-    library: {
-      id: 'library',
+    'ch04-library': {
+      id: 'ch04-library',
       world: 'world4',
-      image: '/images/backgrounds/library.png',
+      image: '/images/backgrounds/ch04-library.png',
       name: '废弃图书馆'
     },
-    school_sunset: {
-      id: 'school_sunset',
+    'ch04-campus': {
+      id: 'ch04-campus',
       world: 'world4',
-      image: '/images/backgrounds/school_sunset.png',
+      image: '/images/backgrounds/ch04-campus.png',
       name: '校园黄昏'
     },
     
     // 第五章：初始之境
-    void: {
-      id: 'void',
+    'ch05-void': {
+      id: 'ch05-void',
       world: 'world5',
-      image: '/images/backgrounds/void.png',
+      image: '/images/backgrounds/ch05-void.png',
       name: '纯白空间'
     },
-    memory_sea: {
-      id: 'memory_sea',
+    'ch05-memory': {
+      id: 'ch05-memory',
       world: 'world5',
-      image: '/images/backgrounds/memory_sea.png',
+      image: '/images/backgrounds/ch05-memory.png',
       name: '记忆之海'
+    },
+    'title': {
+      id: 'title',
+      world: 'all',
+      image: '/images/backgrounds/title.png',
+      name: '标题封面'
     }
   },
 
@@ -322,101 +310,101 @@ export const assets = {
   // ========== 场景到背景的映射 ==========
   sceneToBackground: {
     // 第一章
-    'scene_001': 'church',
-    'scene_002': 'church',
-    'scene_003': 'church',
-    'scene_004': 'church',
-    'scene_005': 'church',
-    'scene_006_a': 'church',
-    'scene_006_b': 'church',
-    'scene_006_c': 'church',
-    'scene_007': 'church',
-    'scene_008': 'church',
-    'scene_009': 'church',
-    'scene_010_combat': 'church',
-    'scene_010_escape': 'underground',
+    'scene_001': 'ch01-church',
+    'scene_002': 'ch01-church',
+    'scene_003': 'ch01-church',
+    'scene_004': 'ch01-church',
+    'scene_005': 'ch01-church',
+    'scene_006_a': 'ch01-church',
+    'scene_006_b': 'ch01-church',
+    'scene_006_c': 'ch01-church',
+    'scene_007': 'ch01-church',
+    'scene_008': 'ch01-church',
+    'scene_009': 'ch01-church',
+    'scene_010_combat': 'ch01-church',
+    'scene_010_escape': 'ch01-crypt',
     
     // 第二章
-    'scene_012_world2': 'wasteland_street',
-    'scene_013_world2': 'wasteland_street',
-    'scene_014_world2': 'wasteland_street',
-    'scene_015_world2_a': 'wasteland_street',
-    'scene_015_world2_b': 'wasteland_street',
-    'scene_015_world2_c': 'wasteland_street',
-    'scene_016_world2': 'wasteland_street',
-    'scene_017_world2': 'wasteland_street',
-    'scene_018_world2': 'wasteland_street',
-    'scene_019_world2_follow': 'wasteland_street',
-    'scene_019_world2_fight': 'battlefield',
-    'scene_020_world2_combat': 'battlefield',
-    'scene_021_world2': 'bunker',
-    'scene_021_world2_talk': 'wasteland_street',
-    'scene_022_world2': 'bunker',
-    'scene_023_world2': 'bunker',
-    'scene_024_world2': 'bunker',
-    'scene_024_world2_b': 'bunker',
-    'scene_025_world2': 'bunker',
-    'scene_026_world2': 'bunker',
-    'scene_027_world2': 'bunker',
-    'scene_028_world2': 'bunker',
-    'scene_029_world2': 'bunker',
+    'scene_012_world2': 'ch02-cyber-street',
+    'scene_013_world2': 'ch02-cyber-street',
+    'scene_014_world2': 'ch02-cyber-street',
+    'scene_015_world2_a': 'ch02-cyber-street',
+    'scene_015_world2_b': 'ch02-cyber-street',
+    'scene_015_world2_c': 'ch02-cyber-street',
+    'scene_016_world2': 'ch02-cyber-street',
+    'scene_017_world2': 'ch02-cyber-street',
+    'scene_018_world2': 'ch02-cyber-street',
+    'scene_019_world2_follow': 'ch02-cyber-street',
+    'scene_019_world2_fight': 'ch02-battlefield',
+    'scene_020_world2_combat': 'ch02-battlefield',
+    'scene_021_world2': 'ch02-bunker',
+    'scene_021_world2_talk': 'ch02-cyber-street',
+    'scene_022_world2': 'ch02-bunker',
+    'scene_023_world2': 'ch02-bunker',
+    'scene_024_world2': 'ch02-bunker',
+    'scene_024_world2_b': 'ch02-bunker',
+    'scene_025_world2': 'ch02-bunker',
+    'scene_026_world2': 'ch02-bunker',
+    'scene_027_world2': 'ch02-bunker',
+    'scene_028_world2': 'ch02-bunker',
+    'scene_029_world2': 'ch02-bunker',
     
     // 第三章
-    'scene_031_world3': 'temple_ruins',
-    'scene_032_world3': 'temple_ruins',
-    'scene_033_world3': 'temple_ruins',
-    'scene_034_world3': 'temple_ruins',
-    'scene_035_world3': 'temple_ruins',
-    'scene_036_world3_a': 'temple_ruins',
-    'scene_036_world3_b': 'temple_ruins',
-    'scene_037_world3': 'temple_ruins',
-    'scene_038_world3': 'sky_rift',
-    'scene_039_world3': 'sky_rift',
+    'scene_031_world3': 'ch03-temple',
+    'scene_032_world3': 'ch03-temple',
+    'scene_033_world3': 'ch03-temple',
+    'scene_034_world3': 'ch03-temple',
+    'scene_035_world3': 'ch03-temple',
+    'scene_036_world3_a': 'ch03-temple',
+    'scene_036_world3_b': 'ch03-temple',
+    'scene_037_world3': 'ch03-temple',
+    'scene_038_world3': 'ch03-rift',
+    'scene_039_world3': 'ch03-rift',
     
     // 第四章
-    'scene_041_world4': 'classroom',
-    'scene_042_world4': 'classroom',
-    'scene_043_world4': 'school_sunset',
-    'scene_044_world4': 'library',
-    'scene_045_world4': 'library',
-    'scene_046_world4': 'library',
-    'scene_047_world3_a': 'library',
-    'scene_047_world3_b': 'library',
-    'scene_048_world4': 'library',
-    'scene_049_world4': 'library',
+    'scene_041_world4': 'ch04-classroom',
+    'scene_042_world4': 'ch04-classroom',
+    'scene_043_world4': 'ch04-campus',
+    'scene_044_world4': 'ch04-library',
+    'scene_045_world4': 'ch04-library',
+    'scene_046_world4': 'ch04-library',
+    'scene_047_world3_a': 'ch04-library',
+    'scene_047_world3_b': 'ch04-library',
+    'scene_048_world4': 'ch04-library',
+    'scene_049_world4': 'ch04-library',
     
     // 第五章
-    'scene_051_world5': 'void',
-    'scene_052_world5': 'memory_sea',
-    'scene_053_world5': 'void',
-    'scene_054_world5': 'void',
-    'scene_055_world5': 'void',
-    'scene_056_world5': 'void',
-    'scene_057_final_a': 'void',
-    'scene_057_final_b': 'void',
-    'scene_057_final_c': 'void',
-    'scene_057_final_destroy': 'void',
-    'scene_057_final_protect': 'void',
-    'scene_058_final_confront': 'memory_sea',
-    'scene_058_final_accept': 'memory_sea',
-    'scene_058_final_persuade': 'void',
-    'scene_058_final_challenge': 'void'
+    'scene_051_world5': 'ch05-void',
+    'scene_052_world5': 'ch05-memory',
+    'scene_053_world5': 'ch05-void',
+    'scene_054_world5': 'ch05-void',
+    'scene_055_world5': 'ch05-void',
+    'scene_056_world5': 'ch05-void',
+    'scene_057_final_a': 'ch05-void',
+    'scene_057_final_b': 'ch05-void',
+    'scene_057_final_c': 'ch05-void',
+    'scene_057_final_destroy': 'ch05-void',
+    'scene_057_final_protect': 'ch05-void',
+    'scene_058_final_confront': 'ch05-memory',
+    'scene_058_final_accept': 'ch05-memory',
+    'scene_058_final_persuade': 'ch05-void',
+    'scene_058_final_challenge': 'ch05-void'
   },
 
   // ========== 场景到角色的映射 ==========
   sceneToCharacters: {
     // 第一章
     'scene_001': [],
-    'scene_002': ['oldman'],
-    'scene_003': ['oldman'],
-    'scene_004': ['oldman'],
-    'scene_005': ['oldman'],
-    'scene_006_a': ['oldman'],
-    'scene_006_b': ['oldman'],
-    'scene_006_c': ['oldman'],
-    'scene_007': ['oldman'],
+    'scene_002': ['elder'],
+    'scene_003': ['elder'],
+    'scene_004': ['elder'],
+    'scene_005': ['elder'],
+    'scene_006_a': ['elder'],
+    'scene_006_b': ['elder'],
+    'scene_006_c': ['elder'],
+    'scene_007': ['elder'],
     'scene_008': [],
-    'scene_009': ['oldman'],
+    'scene_009': ['elder'],
     
     // 第二章
     'scene_012_world2': [],
