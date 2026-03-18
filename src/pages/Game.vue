@@ -606,10 +606,11 @@ function getParticleStyle(i) {
 }
 
 onMounted(async () => {
-  // 加载 JSON 剧本
+  // 加载 JSON 剧本（第一章 + 第二章）
   const basePath = import.meta.env.BASE_URL || '/'
   await loadScriptFromJSONs([
-    `${basePath}data/script_ch1_full.json`
+    `${basePath}data/script_ch1_full.json`,
+    `${basePath}data/script_ch2.json`
   ])
   scriptLoaded.value = true
   
