@@ -194,8 +194,10 @@
     <!-- 菜单弹窗 -->
     <div v-if="showMenu" class="modal-overlay" @click="showMenu = false">
       <div class="modal-content" @click.stop>
-        <div class="menu-item" @click="saveGame">💾 保存游戏</div>
-        <div class="menu-item" @click="loadGame">📂 读取游戏</div>
+        <div class="menu-item" @click="openSave">💾 保存游戏</div>
+        <div class="menu-item" @click="openLoad">📂 读取游戏</div>
+        <div class="menu-item" @click="showAchievements = true">🏆 成就系统</div>
+        <div class="menu-item" @click="showStatsDetail = true">📊 查看属性</div>
         <div class="menu-item" @click="toggleSpeed">⚡ 速度：{{ typingSpeed }}ms</div>
         <div class="menu-item" @click="goToTitle">🏠 返回标题</div>
         <div class="menu-close" @click="showMenu = false">关闭</div>
@@ -215,17 +217,74 @@
     <!-- 存档弹窗 -->
     <div v-if="showSaveLoad" class="modal-overlay" @click="showSaveLoad = false">
       <div class="modal-content" @click.stop>
-        <h3 class="modal-title">{{ isSaving ? '保存游戏' : '读取游戏' }}</h3>
+        <h3 class="modal-title">{{ isSaving ? '💾 保存游戏' : '📂 读取游戏' }}</h3>
         <div class="save-list">
-          <div v-for="slot in 3" :key="slot" class="save-item" @click="handleSaveLoad(slot)">
+          <!-- 自动保存槽位 -->
+          <div class="save-item auto-save" @click="handleSaveLoad(0)">
+            <div v-if="getSaveInfo(0)" class="save-info">
+              <span class="save-name">🔄 自动保存</span>
+              <span class="save-detail">{{ formatSaveTime(getSaveInfo(0)?.timestamp) }}</span>
+              <span class="save-scene">📍 {{ getSceneName(getSaveInfo(0)?.state?.currentSceneId) }}</span>
+            </div>
+            <span v-else class="empty-save">无自动保存</span>
+          </div>
+          <!-- 手动保存槽位 -->
+          <div v-for="slot in [1,2,3]" :key="slot" class="save-item" @click="handleSaveLoad(slot)">
             <div v-if="getSaveInfo(slot)" class="save-info">
-              <span class="save-name">存档 {{ slot }}</span>
+              <span class="save-name">📁 存档 {{ slot }}</span>
               <span class="save-detail">{{ formatSaveTime(getSaveInfo(slot)?.timestamp) }}</span>
+              <span class="save-scene">📍 {{ getSceneName(getSaveInfo(slot)?.state?.currentSceneId) }}</span>
             </div>
             <span v-else class="empty-save">空存档</span>
           </div>
         </div>
+        <div class="save-hint">💡 提示：点击存档槽位进行{{ isSaving ? '保存' : '读取' }}</div>
         <div class="modal-close" @click="showSaveLoad = false">关闭</div>
+      </div>
+    </div>
+
+    <!-- 成就系统弹窗 -->
+    <div v-if="showAchievements" class="modal-overlay" @click="showAchievements = false">
+      <div class="modal-content achievement-modal" @click.stop>
+        <h3 class="modal-title">🏆 成就系统</h3>
+        
+        <!-- 成就分类标签 -->
+        <div class="achievement-tabs">
+          <button 
+            v-for="cat in achievementCategories" 
+            :key="cat"
+            :class="['tab-btn', { active: currentAchievementTab === cat }]"
+            @click="currentAchievementTab = cat"
+          >
+            {{ cat }}
+          </button>
+        </div>
+        
+        <!-- 成就列表 -->
+        <div class="achievement-list">
+          <div 
+            v-for="ach in filteredAchievements" 
+            :key="ach.id"
+            class="achievement-item"
+            :class="{ unlocked: isAchievementUnlocked(ach.id) }"
+          >
+            <div class="achievement-icon">{{ isAchievementUnlocked(ach.id) ? ach.icon : '❓' }}</div>
+            <div class="achievement-info">
+              <div class="achievement-name">{{ isAchievementUnlocked(ach.id) ? ach.name : '？？？' }}</div>
+              <div class="achievement-desc">{{ isAchievementUnlocked(ach.id) ? ach.description : '？？？' }}</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 进度统计 -->
+        <div class="achievement-stats">
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" :style="{ width: achievementPercent + '%' }"></div>
+          </div>
+          <div class="progress-text">总进度：{{ gameStore.unlockedAchievementsList.length }} / {{ achievements.length }} ({{ achievementPercent }}%)</div>
+        </div>
+        
+        <div class="modal-close" @click="showAchievements = false">关闭</div>
       </div>
     </div>
   </div>
@@ -272,8 +331,11 @@ const isTyping = ref(false)
 const hasChoices = ref(false)
 const showMenu = ref(false)
 const showSaveLoad = ref(false)
+const showAchievements = ref(false)
 const isSaving = ref(false)
 const typingSpeed = ref(25)  // 从 50ms 加快到 25ms
+const currentAchievementTab = ref('全部')
+const achievementCategories = ref(['全部', '剧情', '属性', '隐藏', '羁绊', '结局', '收集', '存档', '特殊'])
 
 const currentWorldBg = computed(() => {
   if (!currentScene.value) return '#1a0a1f'
@@ -535,13 +597,13 @@ function getStatName(stat) {
   return names[stat] || stat
 }
 
-function saveGame() {
+function openSave() {
   showMenu.value = false
   isSaving.value = true
   showSaveLoad.value = true
 }
 
-function loadGame() {
+function openLoad() {
   showMenu.value = false
   isSaving.value = false
   showSaveLoad.value = true
@@ -550,14 +612,23 @@ function loadGame() {
 function handleSaveLoad(slot) {
   if (isSaving.value) {
     const success = gameStore.saveGame(slot)
-    alert(success ? '保存成功' : '保存失败')
+    if (success) {
+      alert(`💾 保存成功！\n存档槽位：${slot === 0 ? '自动保存' : slot}`)
+    } else {
+      alert('❌ 保存失败')
+    }
   } else {
+    const info = gameStore.getSaveInfo(slot)
+    if (!info) {
+      alert('📭 该存档为空')
+      return
+    }
     const success = gameStore.loadGame(slot)
     if (success) {
       loadScene(gameStore.playerState.currentSceneId)
-      alert('读取成功')
+      alert(`📂 读取成功！\n进度：${getSceneName(gameStore.playerState.currentSceneId)}`)
     } else {
-      alert('该存档为空')
+      alert('❌ 读取失败')
     }
   }
   showSaveLoad.value = false
@@ -570,7 +641,25 @@ function getSaveInfo(slot) {
 function formatSaveTime(timestamp) {
   if (!timestamp) return ''
   const date = new Date(timestamp)
-  return `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`
+  const now = new Date()
+  const diff = now - date
+  const minutes = Math.floor(diff / 60000)
+  const hours = Math.floor(diff / 3600000)
+  const days = Math.floor(diff / 86400000)
+  
+  if (minutes < 1) return '刚刚'
+  if (minutes < 60) return `${minutes}分钟前`
+  if (hours < 24) return `${hours}小时前`
+  if (days < 7) return `${days}天前`
+  
+  return `${date.getMonth() + 1}/${date.getDate()} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`
+}
+
+function getSceneName(sceneId) {
+  if (!sceneId) return '未知'
+  const scene = getScene(sceneId)
+  if (!scene) return sceneId
+  return scene.title || sceneId
 }
 
 function toggleSpeed() {
@@ -590,6 +679,24 @@ function dismissAchievement() {
   showAchievementNotify.value = false
   gameStore.clearNewAchievements()
 }
+
+// 成就系统函数
+const filteredAchievements = computed(() => {
+  if (currentAchievementTab.value === '全部') {
+    return achievements
+  }
+  return achievements.filter(ach => ach.category === currentAchievementTab.value)
+})
+
+function isAchievementUnlocked(achievementId) {
+  return gameStore.playerState.unlockedAchievements?.includes(achievementId) || false
+}
+
+const achievementPercent = computed(() => {
+  const total = achievements.length
+  const current = gameStore.unlockedAchievementsList.value?.length || 0
+  return Math.round((current / total) * 100)
+})
 
 function getParticleStyle(i) {
   const delay = Math.random() * 5
@@ -1499,5 +1606,221 @@ onMounted(async () => {
   .continue-arrow {
     font-size: 14px;
   }
+}
+
+/* ========== 成就系统样式 ========== */
+
+.achievement-modal {
+  max-width: 500px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.achievement-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab-btn {
+  padding: 6px 12px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.tab-btn.active {
+  background: rgba(255,215,0,0.3);
+  border-color: rgba(255,215,0,0.6);
+  color: #ffd700;
+}
+
+.achievement-list {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 5px;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+
+.achievement-item.unlocked {
+  opacity: 1;
+  background: rgba(255,215,0,0.1);
+  border-color: rgba(255,215,0,0.4);
+}
+
+.achievement-item .achievement-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.achievement-item.unlocked .achievement-icon {
+  filter: none;
+}
+
+.achievement-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.achievement-item .achievement-name {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.achievement-item .achievement-desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.achievement-stats {
+  margin-top: 10px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 10px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+}
+
+/* 存档列表样式 */
+.save-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.save-item {
+  padding: 15px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.save-item:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.3);
+  transform: translateX(5px);
+}
+
+.save-item.auto-save {
+  border-color: rgba(0,255,127,0.4);
+  background: rgba(0,255,127,0.05);
+}
+
+.save-item.auto-save:hover {
+  border-color: rgba(0,255,127,0.7);
+  background: rgba(0,255,127,0.1);
+}
+
+.save-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.save-name {
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.save-detail {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+}
+
+.save-scene {
+  font-size: 12px;
+  color: rgba(255,215,0,0.7);
+}
+
+.empty-save {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 10px;
+}
+
+.save-hint {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 10px;
+}
+
+/* 滚动条美化 */
+.achievement-list::-webkit-scrollbar,
+.save-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.achievement-list::-webkit-scrollbar-track,
+.save-list::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+}
+
+.achievement-list::-webkit-scrollbar-thumb,
+.save-list::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 3px;
+}
+
+.achievement-list::-webkit-scrollbar-thumb:hover,
+.save-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.3);
 }
 </style>

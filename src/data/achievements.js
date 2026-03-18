@@ -1,383 +1,402 @@
-/**
- * 成就系统数据
- */
+// 成就系统数据
+
 export const achievements = [
-  // ========== 剧情成就 ==========
+  // 剧情进度成就
   {
-    id: 'ach_001',
-    name: '觉醒',
-    description: '完成第一章：觉醒',
-    icon: '⚔️',
-    category: 'story',
-    condition: (state) => state.completedScenes.includes('scene_011_transition')
+    id: 'first_steps',
+    name: '第一步',
+    description: '开始游戏',
+    icon: '👣',
+    category: '剧情',
+    condition: (state) => state.completedScenes.length >= 1
   },
   {
-    id: 'ach_002',
-    name: '机械之心',
-    description: '完成第二章：废墟',
+    id: 'chapter1_clear',
+    name: '觉醒者',
+    description: '完成第一章',
+    icon: '⚔️',
+    category: '剧情',
+    condition: (state) => state.completedScenes.includes('scene_031')
+  },
+  {
+    id: 'chapter2_clear',
+    name: '觉醒机器',
+    description: '完成第二章',
     icon: '🤖',
-    category: 'story',
-    condition: (state) => state.completedScenes.includes('scene_030_ch2_transition')
+    category: '剧情',
+    condition: (state) => state.completedScenes.includes('scene_091')
   },
   {
-    id: 'ach_003',
-    name: '神陨见证者',
-    description: '完成第三章：神陨',
-    icon: '👼',
-    category: 'story',
-    condition: (state) => state.completedScenes.includes('scene_040_ch3_transition')
-  },
-  {
-    id: 'ach_004',
-    name: '日常终结',
-    description: '完成第四章：日常',
-    icon: '📚',
-    category: 'story',
-    condition: (state) => state.completedScenes.includes('scene_050_ch4_transition')
-  },
-  {
-    id: 'ach_005',
-    name: '真相探寻者',
-    description: '进入第五章：初始之境',
-    icon: '✨',
-    category: 'story',
-    condition: (state) => state.completedScenes.includes('scene_051_world5')
-  },
-  
-  // ========== 结局成就 ==========
-  {
-    id: 'ach_101',
-    name: '毁灭者',
-    description: '达成结局：毁灭者',
-    icon: '💀',
-    category: 'ending',
-    condition: (state) => state.unlockedEndings?.includes('ending_destroyer')
-  },
-  {
-    id: 'ach_102',
-    name: '牺牲者',
-    description: '达成结局：牺牲者',
-    icon: '🕊️',
-    category: 'ending',
-    condition: (state) => state.unlockedEndings?.includes('ending_sacrifice')
-  },
-  {
-    id: 'ach_103',
-    name: '守护者',
-    description: '达成结局：守护者',
-    icon: '🛡️',
-    category: 'ending',
-    condition: (state) => state.unlockedEndings?.includes('ending_guardian')
-  },
-  {
-    id: 'ach_104',
-    name: '暴君',
-    description: '达成结局：暴君',
-    icon: '👑',
-    category: 'ending',
-    condition: (state) => state.unlockedEndings?.includes('ending_tyant')
-  },
-  {
-    id: 'ach_105',
-    name: '解放者',
-    description: '达成结局：解放者',
-    icon: '🗽',
-    category: 'ending',
-    condition: (state) => state.unlockedEndings?.includes('ending_liberator')
-  },
-  {
-    id: 'ach_106',
-    name: '迷失者',
-    description: '达成结局：迷失者',
-    icon: '🌀',
-    category: 'ending',
-    condition: (state) => state.unlockedEndings?.includes('ending_lost')
-  },
-  {
-    id: 'ach_107',
-    name: '创世纪',
-    description: '达成真结局：创世纪',
-    icon: '🌟',
-    category: 'ending',
-    condition: (state) => state.unlockedEndings?.includes('ending_true_rebirth')
-  },
-  {
-    id: 'ach_108',
-    name: '轮回',
-    description: '达成真结局：轮回',
-    icon: '🔄',
-    category: 'ending',
-    condition: (state) => state.unlockedEndings?.includes('ending_true_cycle')
-  },
-  {
-    id: 'ach_109',
-    name: '第四面墙',
-    description: '达成彩蛋结局',
-    icon: '🎮',
-    category: 'ending',
-    condition: (state) => state.unlockedEndings?.includes('ending_meta')
-  },
-  
-  // ========== 收集成就 ==========
-  {
-    id: 'ach_201',
-    name: '初出茅庐',
-    description: '解锁 3 个结局',
-    icon: '🌱',
-    category: 'collection',
-    condition: (state) => (state.unlockedEndings?.length || 0) >= 3
-  },
-  {
-    id: 'ach_202',
-    name: '结局收藏家',
-    description: '解锁 6 个结局',
-    icon: '📖',
-    category: 'collection',
-    condition: (state) => (state.unlockedEndings?.length || 0) >= 6
-  },
-  {
-    id: 'ach_203',
-    name: '全知者',
-    description: '解锁所有结局',
-    icon: '🏆',
-    category: 'collection',
-    condition: (state) => (state.unlockedEndings?.length || 0) >= 9
-  },
-  
-  // ========== 选择成就 ==========
-  {
-    id: 'ach_301',
-    name: '勇者之路',
-    description: '第一次选择战斗',
-    icon: '⚔️',
-    category: 'choice',
-    condition: (state) => state.choiceHistory?.includes('choice_002_a')
-  },
-  {
-    id: 'ach_302',
-    name: '智者之道',
-    description: '第一次选择逃跑/智取',
-    icon: '🧠',
-    category: 'choice',
-    condition: (state) => state.choiceHistory?.includes('choice_002_b')
-  },
-  {
-    id: 'ach_303',
-    name: '机械叛徒',
-    description: '在第二章选择跟随 Eve-9',
-    icon: '🤝',
-    category: 'choice',
-    condition: (state) => state.choiceHistory?.includes('choice_004_a')
-  },
-  {
-    id: 'ach_304',
-    name: '独行侠',
-    description: '在第二章选择战斗',
-    icon: '💥',
-    category: 'choice',
-    condition: (state) => state.choiceHistory?.includes('choice_004_b')
-  },
-  {
-    id: 'ach_305',
-    name: '哲学家',
-    description: '在第二章选择质疑',
-    icon: '🤔',
-    category: 'choice',
-    condition: (state) => state.choiceHistory?.includes('choice_004_c')
-  },
-  
-  // ========== 特殊成就 ==========
-  {
-    id: 'ach_401',
-    name: '存档大师',
-    description: '保存游戏 5 次',
-    icon: '💾',
-    category: 'special',
-    condition: (state) => (state.saveCount || 0) >= 5
-  },
-  {
-    id: 'ach_402',
-    name: '回归者',
-    description: '读取存档继续游戏',
-    icon: '📂',
-    category: 'special',
-    condition: (state) => (state.loadCount || 0) >= 1
-  },
-  {
-    id: 'ach_403',
-    name: '快速阅读',
-    description: '将打字速度调至最快',
+    id: 'chapter3_clear',
+    name: '半神',
+    description: '完成第三章',
     icon: '⚡',
-    category: 'special',
+    category: '剧情',
+    condition: (state) => state.completedScenes.includes('scene_105')
+  },
+  {
+    id: 'chapter4_clear',
+    name: '穿越者',
+    description: '完成第四章',
+    icon: '📚',
+    category: '剧情',
+    condition: (state) => state.completedScenes.includes('scene_155')
+  },
+  {
+    id: 'game_clear',
+    name: '完整体',
+    description: '完成游戏（任意结局）',
+    icon: '✨',
+    category: '剧情',
+    condition: (state) => state.unlockedEndings.length >= 1
+  },
+  
+  // 属性成就
+  {
+    id: 'brave_heart',
+    name: '勇者之心',
+    description: '勇气达到 100',
+    icon: '🗡️',
+    category: '属性',
+    condition: (state) => state.stats.courage >= 100
+  },
+  {
+    id: 'wise_sage',
+    name: '智者',
+    description: '智慧达到 100',
+    icon: '📚',
+    category: '属性',
+    condition: (state) => state.stats.wisdom >= 100
+  },
+  {
+    id: 'kind_soul',
+    name: '仁慈之心',
+    description: '同情达到 100',
+    icon: '💝',
+    category: '属性',
+    condition: (state) => state.stats.compassion >= 100
+  },
+  {
+    id: 'iron_will',
+    name: '钢铁意志',
+    description: '决心达到 100',
+    icon: '🔥',
+    category: '属性',
+    condition: (state) => state.stats.determination >= 100
+  },
+  {
+    id: 'all_stats_max',
+    name: '完美',
+    description: '所有基础属性达到 100',
+    icon: '💎',
+    category: '属性',
+    condition: (state) => 
+      state.stats.courage >= 100 &&
+      state.stats.wisdom >= 100 &&
+      state.stats.compassion >= 100 &&
+      state.stats.determination >= 100
+  },
+  
+  // 隐藏属性成就
+  {
+    id: 'dark_path',
+    name: '堕落',
+    description: '腐化度达到 50',
+    icon: '🌑',
+    category: '隐藏',
+    condition: (state) => state.hiddenStats.corruption >= 50
+  },
+  {
+    id: 'chaos_bringer',
+    name: '混乱使者',
+    description: '混乱度达到 50',
+    icon: '⚡',
+    category: '隐藏',
+    condition: (state) => state.hiddenStats.chaos >= 50
+  },
+  {
+    id: 'pure_soul',
+    name: '纯净之魂',
+    description: '腐化度保持 0 通关',
+    icon: '✨',
+    category: '隐藏',
+    condition: (state) => 
+      state.hiddenStats.corruption === 0 &&
+      state.unlockedEndings.length >= 1
+  },
+  
+  // 羁绊成就
+  {
+    id: 'world1_bond',
+    name: '永夜羁绊',
+    description: '永夜王国羁绊达到 50',
+    icon: '🏰',
+    category: '羁绊',
+    condition: (state) => state.bonds.world1 >= 50
+  },
+  {
+    id: 'world2_bond',
+    name: '废土羁绊',
+    description: '机械废土羁绊达到 50',
+    icon: '🤖',
+    category: '羁绊',
+    condition: (state) => state.bonds.world2 >= 50
+  },
+  {
+    id: 'world3_bond',
+    name: '神之羁绊',
+    description: '神弃之地羁绊达到 50',
+    icon: '⚡',
+    category: '羁绊',
+    condition: (state) => state.bonds.world3 >= 50
+  },
+  {
+    id: 'world4_bond',
+    name: '学园羁绊',
+    description: '学园都市羁绊达到 50',
+    icon: '📚',
+    category: '羁绊',
+    condition: (state) => state.bonds.world4 >= 50
+  },
+  {
+    id: 'all_bonds',
+    name: '全羁绊',
+    description: '所有世界羁绊达到 50',
+    icon: '💞',
+    category: '羁绊',
+    condition: (state) => 
+      state.bonds.world1 >= 50 &&
+      state.bonds.world2 >= 50 &&
+      state.bonds.world3 >= 50 &&
+      state.bonds.world4 >= 50
+  },
+  
+  // 结局成就
+  {
+    id: 'ending_destroyer',
+    name: '毁灭者',
+    description: '解锁毁灭结局',
+    icon: '💀',
+    category: '结局',
+    condition: (state) => state.unlockedEndings.includes('ending_destroyer') || state.unlockedEndings.includes('ending_final_destroy')
+  },
+  {
+    id: 'ending_guardian',
+    name: '守护者',
+    description: '解锁守护结局',
+    icon: '🛡️',
+    category: '结局',
+    condition: (state) => state.unlockedEndings.includes('ending_guardian') || state.unlockedEndings.includes('ending_final_guardian')
+  },
+  {
+    id: 'ending_sacrifice',
+    name: '牺牲者',
+    description: '解锁牺牲结局',
+    icon: '🕊️',
+    category: '结局',
+    condition: (state) => state.unlockedEndings.includes('ending_sacrifice') || state.unlockedEndings.includes('ending_final_sacrifice')
+  },
+  {
+    id: 'ending_rebirth',
+    name: '创世纪',
+    description: '解锁真结局：创世纪',
+    icon: '🌟',
+    category: '结局',
+    condition: (state) => state.unlockedEndings.includes('ending_true_rebirth')
+  },
+  {
+    id: 'ending_cycle',
+    name: '轮回',
+    description: '解锁真结局：轮回',
+    icon: '🔄',
+    category: '结局',
+    condition: (state) => state.unlockedEndings.includes('ending_true_cycle') || state.unlockedEndings.includes('ending_final_reincarnate')
+  },
+  
+  // 收集成就
+  {
+    id: 'collector_1',
+    name: '收藏家 I',
+    description: '解锁 3 个结局',
+    icon: '📦',
+    category: '收集',
+    condition: (state) => state.unlockedEndings.length >= 3
+  },
+  {
+    id: 'collector_2',
+    name: '收藏家 II',
+    description: '解锁 6 个结局',
+    icon: '📦📦',
+    category: '收集',
+    condition: (state) => state.unlockedEndings.length >= 6
+  },
+  {
+    id: 'collector_3',
+    name: '收藏家 III',
+    description: '解锁 10 个结局',
+    icon: '📦📦📦',
+    category: '收集',
+    condition: (state) => state.unlockedEndings.length >= 10
+  },
+  {
+    id: 'all_endings',
+    name: '全结局',
+    description: '解锁所有结局',
+    icon: '👑',
+    category: '收集',
+    condition: (state) => state.unlockedEndings.length >= 18
+  },
+  
+  // 存档成就
+  {
+    id: 'saver_1',
+    name: '谨慎者',
+    description: '存档 10 次',
+    icon: '💾',
+    category: '存档',
+    condition: (state) => state.saveCount >= 10
+  },
+  {
+    id: 'saver_2',
+    name: '记录者',
+    description: '存档 50 次',
+    icon: '💾💾',
+    category: '存档',
+    condition: (state) => state.saveCount >= 50
+  },
+  
+  // 特殊成就
+  {
+    id: 'speedrun',
+    name: '速通',
+    description: '使用 2 倍速完成游戏',
+    icon: '⚡',
+    category: '特殊',
     condition: (state) => state.fastestSpeedUsed === true
+  },
+  {
+    id: 'first_blood',
+    name: '首杀',
+    description: '第一次战斗胜利',
+    icon: '⚔️',
+    category: '特殊',
+    condition: (state) => state.completedScenes.includes('scene_009')
+  },
+  {
+    id: 'peaceful',
+    name: '和平主义者',
+    description: '通过说服解决战斗',
+    icon: '🕊️',
+    category: '特殊',
+    condition: (state) => 
+      state.completedScenes.includes('scene_042_world2_persuade') ||
+      state.completedScenes.includes('scene_084_world3_persuade')
   }
 ]
 
-/**
- * 记忆碎片数据 - 可回顾的剧情片段
- */
+// 记忆碎片数据
 export const memoryFragments = [
-  // 第一章记忆
   {
-    id: 'mem_001',
-    worldId: 'world1',
-    title: '教堂觉醒',
-    description: '艾莉娅在破败的教堂中醒来',
-    sceneId: 'scene_001',
+    id: 'memory_001',
+    name: '教堂觉醒',
+    description: '艾莉娅在教堂中醒来',
+    icon: '🏰',
     unlockCondition: (state) => state.completedScenes.includes('scene_001')
   },
   {
-    id: 'mem_002',
-    worldId: 'world1',
-    title: '神秘老人',
-    description: '遇见告知真相的老人',
-    sceneId: 'scene_005',
+    id: 'memory_002',
+    name: '圣骑士',
+    description: '得知自己是圣骑士',
+    icon: '⚔️',
     unlockCondition: (state) => state.completedScenes.includes('scene_005')
   },
   {
-    id: 'mem_003',
-    worldId: 'world1',
-    title: '黎明之剑',
-    description: '触碰圣剑，记忆涌入',
-    sceneId: 'scene_008',
-    unlockCondition: (state) => state.completedScenes.includes('scene_008')
-  },
-  
-  // 第二章记忆
-  {
-    id: 'mem_010',
-    worldId: 'world2',
-    title: '机械觉醒',
+    id: 'memory_003',
+    name: '机器觉醒',
     description: 'K-7 在废墟中睁开眼睛',
-    sceneId: 'scene_012_world2',
-    unlockCondition: (state) => state.completedScenes.includes('scene_012_world2')
+    icon: '🤖',
+    unlockCondition: (state) => state.completedScenes.includes('scene_032')
   },
   {
-    id: 'mem_011',
-    worldId: 'world2',
-    title: 'Eve-9',
-    description: '遇见神秘的 female 机器人',
-    sceneId: 'scene_014_world2',
-    unlockCondition: (state) => state.completedScenes.includes('scene_014_world2')
+    id: 'memory_004',
+    name: 'Eve-9',
+    description: '遇见反抗军侦察兵',
+    icon: '💝',
+    unlockCondition: (state) => state.completedScenes.includes('scene_034')
   },
   {
-    id: 'mem_012',
-    worldId: 'world2',
-    title: '人类灭绝',
-    description: '得知人类已灭绝的真相',
-    sceneId: 'scene_015_world2_b',
-    unlockCondition: (state) => state.choiceHistory.includes('choice_003_b')
+    id: 'memory_005',
+    name: '半神',
+    description: '洛恩在神殿中坠落',
+    icon: '⚡',
+    unlockCondition: (state) => state.completedScenes.includes('scene_056')
   },
   {
-    id: 'mem_013',
-    worldId: 'world2',
-    title: '穿越者',
-    description: '被揭示为穿越者',
-    sceneId: 'scene_029_world2',
-    unlockCondition: (state) => state.completedScenes.includes('scene_029_world2')
-  },
-  
-  // 第三章记忆
-  {
-    id: 'mem_020',
-    worldId: 'world3',
-    title: '诸神黄昏',
-    description: '洛恩坠落在神殿废墟',
-    sceneId: 'scene_031_world3',
-    unlockCondition: (state) => state.completedScenes.includes('scene_031_world3')
+    id: 'memory_006',
+    name: '米迦勒',
+    description: '最后的天使',
+    icon: '👼',
+    unlockCondition: (state) => state.completedScenes.includes('scene_058')
   },
   {
-    id: 'mem_021',
-    worldId: 'world3',
-    title: '最后的天使',
-    description: '遇见垂死的米迦勒',
-    sceneId: 'scene_034_world3',
-    unlockCondition: (state) => state.completedScenes.includes('scene_034_world3')
+    id: 'memory_007',
+    name: '日常',
+    description: '林小满在课堂醒来',
+    icon: '📚',
+    unlockCondition: (state) => state.completedScenes.includes('scene_106')
   },
   {
-    id: 'mem_022',
-    worldId: 'world3',
-    title: '创造者',
-    description: '得知创造者的存在',
-    sceneId: 'scene_037_world3',
-    unlockCondition: (state) => state.completedScenes.includes('scene_037_world3')
-  },
-  
-  // 第四章记忆
-  {
-    id: 'mem_030',
-    worldId: 'world4',
-    title: '平凡的日常',
-    description: '林小满从课桌上醒来',
-    sceneId: 'scene_041_world4',
-    unlockCondition: (state) => state.completedScenes.includes('scene_041_world4')
+    id: 'memory_008',
+    name: '观察者',
+    description: '神秘的存在',
+    icon: '👁️',
+    unlockCondition: (state) => state.completedScenes.includes('scene_110_world4_meet')
   },
   {
-    id: 'mem_031',
-    worldId: 'world4',
-    title: '发光图书馆',
-    description: '发现神秘的魔法阵',
-    sceneId: 'scene_044_world4',
-    unlockCondition: (state) => state.completedScenes.includes('scene_044_world4')
+    id: 'memory_009',
+    name: '创造者',
+    description: '真相揭露',
+    icon: '✨',
+    unlockCondition: (state) => state.completedScenes.includes('scene_158_world5')
   },
   {
-    id: 'mem_032',
-    worldId: 'world4',
-    title: '观察者',
-    description: '得知自己是创造者转世',
-    sceneId: 'scene_046_world4',
-    unlockCondition: (state) => state.completedScenes.includes('scene_046_world4')
-  },
-  
-  // 第五章记忆
-  {
-    id: 'mem_040',
-    worldId: 'world5',
-    title: '初始之境',
-    description: '踏入纯白的虚无空间',
-    sceneId: 'scene_051_world5',
-    unlockCondition: (state) => state.completedScenes.includes('scene_051_world5')
-  },
-  {
-    id: 'mem_041',
-    worldId: 'world5',
-    title: '另一个我',
-    description: '遇见创造者',
-    sceneId: 'scene_054_world5',
-    unlockCondition: (state) => state.completedScenes.includes('scene_054_world5')
-  },
-  {
-    id: 'mem_042',
-    worldId: 'world5',
-    title: '痛苦的真相',
-    description: '理解创造者的痛苦',
-    sceneId: 'scene_055_world5',
-    unlockCondition: (state) => state.completedScenes.includes('scene_055_world5')
+    id: 'memory_010',
+    name: '完整',
+    description: '所有碎片汇聚',
+    icon: '💎',
+    unlockCondition: (state) => state.unlockedEndings.length >= 1
   }
 ]
 
-/**
- * 检测成就解锁
- */
+// 检查成就解锁
 export function checkAchievements(state) {
   const unlocked = []
-  for (const achievement of achievements) {
+  achievements.forEach(achievement => {
     if (achievement.condition(state)) {
       unlocked.push(achievement.id)
     }
-  }
+  })
   return unlocked
 }
 
-/**
- * 检测记忆碎片解锁
- */
+// 检查记忆碎片解锁
 export function checkMemoryFragments(state) {
   const unlocked = []
-  for (const fragment of memoryFragments) {
-    if (fragment.unlockCondition(state)) {
-      unlocked.push(fragment.id)
+  memoryFragments.forEach(memory => {
+    if (memory.unlockCondition(state)) {
+      unlocked.push(memory.id)
     }
-  }
+  })
   return unlocked
+}
+
+// 按分类获取成就
+export function getAchievementsByCategory(category) {
+  return achievements.filter(a => a.category === category)
+}
+
+// 获取成就分类列表
+export function getAchievementCategories() {
+  const categories = new Set(achievements.map(a => a.category))
+  return Array.from(categories)
 }
