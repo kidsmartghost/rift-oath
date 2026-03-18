@@ -168,21 +168,21 @@
             <span class="continue-arrow">⌄</span>
           </div>
         </div>
-      </div>
-      
-      <!-- 选择支 -->
-      <div v-if="hasChoices && !isTyping" class="choices-layer">
-        <div 
-          v-for="choice in currentScene?.choices" 
-          :key="choice.id"
-          class="choice-btn"
-          :class="{ disabled: !isChoiceAvailableLocal(choice) }"
-          :style="{ borderColor: isChoiceAvailableLocal(choice) ? currentWorldAccent : '#555' }"
-          @click="onChoiceClick(choice)"
-        >
-          <div class="choice-text">{{ choice.text }}</div>
-          <div v-if="!isChoiceAvailableLocal(choice)" class="choice-locked">
-            🔒 需要 {{ getFailedReasonLocal(choice) }}
+        
+        <!-- 选择支（在对话层内部） -->
+        <div v-if="hasChoices && !isTyping" class="choices-layer">
+          <div 
+            v-for="choice in currentScene?.choices" 
+            :key="choice.id"
+            class="choice-btn"
+            :class="{ disabled: !isChoiceAvailableLocal(choice) }"
+            :style="{ borderColor: isChoiceAvailableLocal(choice) ? currentWorldAccent : '#555' }"
+            @click="onChoiceClick(choice)"
+          >
+            <div class="choice-text">{{ choice.text }}</div>
+            <div v-if="!isChoiceAvailableLocal(choice)" class="choice-locked">
+              🔒 需要 {{ getFailedReasonLocal(choice) }}
+            </div>
           </div>
         </div>
       </div>
@@ -753,13 +753,13 @@ onMounted(async () => {
   background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.9) 100%);
 }
 
-/* 背景图片层 - 上半部分显示 */
+/* 背景图片层 - 上半部分显示 (70%) */
 .background-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 65%;
+  height: 70%;
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
@@ -772,7 +772,7 @@ onMounted(async () => {
   top: 0;
   left: 0;
   width: 100%;
-  height: 65%;
+  height: 70%;
   pointer-events: none;
   z-index: 2;
   display: flex;
@@ -783,10 +783,10 @@ onMounted(async () => {
 /* 角色立绘 */
 .character-portrait {
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
   width: 25%;
   max-width: 400px;
-  height: 80%;
+  height: 85%;
   background-size: contain;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -868,22 +868,22 @@ onMounted(async () => {
 
 .dialogue-layer {
   width: 100%;
-  padding: 20px 25px 15px 25px;
-  background: rgba(10, 10, 15, 0.95);
-  border-top: 2px solid rgba(139, 0, 0, 0.6);
-  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.8);
+  padding: 15px 20px 10px 20px;
+  background: rgba(10, 10, 15, 0.98);
+  border-top: 3px solid rgba(139, 0, 0, 0.8);
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.9);
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 20;
-  max-height: 40vh;
-  min-height: 180px;
+  height: 30vh;
+  min-height: 150px;
 }
 
-/* 有选择支时，对话区域扩展留出空间 */
+/* 有选择支时，对话区域固定高度 */
 .main-content:has(.choices-layer) .dialogue-layer {
-  max-height: 35vh;
-  border-top: 2px solid rgba(139, 0, 0, 0.4);
+  height: 30vh;
+  min-height: 160px;
 }
 
 .scene-title {
@@ -913,8 +913,9 @@ onMounted(async () => {
   touch-action: pan-y;
   margin-bottom: 8px;
   padding-right: 5px;
-  max-height: 35vh;
-  min-height: 80px;
+  flex: 1;
+  min-height: 60px;
+  max-height: 18vh;
   cursor: text;
 }
 
@@ -934,15 +935,15 @@ onMounted(async () => {
 }
 
 .dialogue-text {
-  font-size: 17px;
-  line-height: 1.9;
+  font-size: 16px;
+  line-height: 1.7;
   color: #f0f0f0;
   white-space: pre-wrap;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
-  padding: 10px 15px;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 8px;
-  border-left: 3px solid rgba(139, 0, 0, 0.5);
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  border-left: 2px solid rgba(139, 0, 0, 0.5);
   user-select: none;
   -webkit-user-select: none;
 }
@@ -1019,50 +1020,66 @@ onMounted(async () => {
   }
 }
 
-/* 选择支层 - 固定在底部 */
+/* 选择支层 - 2x2 网格布局 */
 .choices-layer {
   flex-shrink: 0;
   width: 100%;
-  padding: 15px 20px 20px 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.9) 100%);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-height: 45vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  border-top: 2px solid rgba(139,0,0,0.3);
-  box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+  padding: 12px 15px 15px 15px;
+  background: rgba(8, 8, 12, 0.98);
+  border-top: 2px solid rgba(139, 0, 0, 0.5);
+  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.8);
+}
+
+/* 2x2 网格布局 */
+.choices-layer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* 如果只有 1 个选项，占满整行 */
+.choices-layer:has(.choice-btn:nth-child(1):only-child) {
+  grid-template-columns: 1fr;
+}
+
+/* 如果有 3 个选项，最后一个占满第二行 */
+.choices-layer:has(.choice-btn:nth-child(3)) .choice-btn:nth-child(3) {
+  grid-column: 1 / -1;
 }
 
 .choice-btn {
-  background: rgba(0,0,0,0.7);
-  border: 2px solid;
-  border-radius: 10px;
-  padding: 16px 18px;
+  background: rgba(0, 0, 0, 0.75);
+  border: 2px solid rgba(139, 0, 0, 0.6);
+  border-radius: 8px;
+  padding: 12px 14px;
   color: #ffffff;
-  font-size: 15px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
   text-align: center;
-  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 70px;
   /* 防止文字溢出 */
   word-wrap: break-word;
   word-break: break-word;
   white-space: normal;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .choice-btn.disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
-  background: rgba(0,0,0,0.5);
-  border-color: #555 !important;
+  background: rgba(0, 0, 0, 0.5);
+  border-color: #444 !important;
 }
 
 .choice-btn:not(.disabled):hover {
-  background: rgba(139,0,0,0.5);
-  transform: translateY(-2px);
+  background: rgba(139, 0, 0, 0.4);
+  border-color: rgba(139, 0, 0, 0.9);
+  transform: translateY(-1px);
 }
 
 .choice-btn:active {
