@@ -10,11 +10,8 @@
     
     <!-- 主内容区 -->
     <div class="main-content">
-      <!-- 点击继续的热区（无选择支时覆盖屏幕上半部分，留出对话区可滚动） -->
-      <div v-if="!hasChoices && !isTyping" class="click-overlay" @click="onDialogueClick"></div>
-      
       <!-- 对话层 -->
-      <div class="dialogue-layer" @click="onDialogueClick">
+      <div class="dialogue-layer">
         <!-- 场景标题 -->
         <div v-if="currentScene?.title" class="scene-title">
           {{ currentScene.title }}
@@ -26,16 +23,19 @@
         </div>
         
         <!-- 对话内容（可滚动） -->
-        <div class="dialogue-scroll-wrapper" @click.stop>
+        <div class="dialogue-scroll-wrapper">
           <div class="dialogue-text">
             {{ displayedText }}
             <span v-if="isTyping" class="cursor">▋</span>
           </div>
         </div>
         
-        <!-- 提示 -->
-        <div v-if="!isTyping && !hasChoices" class="continue-hint">
-          点击屏幕继续
+        <!-- 继续按钮 -->
+        <div v-if="!isTyping && !hasChoices" class="continue-btn-wrapper" @click="onDialogueClick">
+          <div class="continue-btn">
+            <span>继续</span>
+            <span class="continue-arrow">⌄</span>
+          </div>
         </div>
       </div>
       
@@ -324,17 +324,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-}
-
-/* 点击热区 - 无选择支时覆盖屏幕上半部分（留出对话区可滚动） */
-.click-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50vh;
-  z-index: 10;
-  cursor: pointer;
+  padding-bottom: 20px;
 }
 
 /* 世界主题粒子效果 */
@@ -400,18 +390,18 @@ onMounted(() => {
 
 .dialogue-layer {
   width: 100%;
-  padding: 20px 20px 10px 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.6) 60%, transparent 100%);
+  padding: 15px 20px 10px 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 25%, rgba(0,0,0,0.5) 55%, transparent 100%);
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 20;
-  max-height: 45vh;
+  max-height: 50vh;
 }
 
 /* 有选择支时，对话区域收缩留出空间 */
 .main-content:has(.choices-layer) .dialogue-layer {
-  max-height: 35vh;
+  max-height: 38vh;
   padding-bottom: 5px;
 }
 
@@ -438,9 +428,9 @@ onMounted(() => {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   padding-right: 5px;
-  max-height: 30vh;
+  max-height: 35vh;
   min-height: 80px;
   cursor: text;
 }
@@ -481,18 +471,66 @@ onMounted(() => {
   51%, 100% { opacity: 0; }
 }
 
-.continue-hint {
-  text-align: center;
-  margin-top: 10px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  animation: fade-in-out 2s infinite;
+/* 继续按钮 */
+.continue-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.15);
   flex-shrink: 0;
 }
 
-@keyframes fade-in-out {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
+.continue-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: linear-gradient(135deg, rgba(139,0,0,0.6), rgba(107,63,160,0.6));
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 25px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139,0,0,0.4);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.continue-btn:hover {
+  background: linear-gradient(135deg, rgba(139,0,0,0.8), rgba(107,63,160,0.8));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139,0,0,0.6);
+}
+
+.continue-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.continue-arrow {
+  font-size: 18px;
+  animation: bounce-arrow 1.5s ease-in-out infinite;
+  line-height: 1;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(139,0,0,0.4);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(139,0,0,0.6);
+  }
+}
+
+@keyframes bounce-arrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
 }
 
 /* 选择支层 - 固定在底部 */
@@ -733,11 +771,16 @@ onMounted(() => {
   }
   
   .dialogue-scroll-wrapper {
-    max-height: 35vh;
+    max-height: 40vh;
   }
   
   .main-content:has(.choices-layer) .dialogue-layer {
     max-height: 45vh;
+  }
+  
+  .continue-btn {
+    padding: 12px 32px;
+    font-size: 15px;
   }
 }
 
@@ -761,7 +804,7 @@ onMounted(() => {
 /* 小屏手机优化 */
 @media (max-height: 600px) {
   .dialogue-layer {
-    padding: 15px 15px 5px 15px;
+    padding: 12px 15px 5px 15px;
   }
   
   .dialogue-text {
@@ -783,8 +826,17 @@ onMounted(() => {
     gap: 10px;
   }
   
+  .dialogue-scroll-wrapper {
+    max-height: 25vh;
+  }
+  
   .main-content:has(.choices-layer) .dialogue-layer {
-    max-height: 30vh;
+    max-height: 28vh;
+  }
+  
+  .continue-btn {
+    padding: 8px 20px;
+    font-size: 13px;
   }
 }
 
@@ -802,6 +854,15 @@ onMounted(() => {
   .choice-btn {
     padding: 10px 15px;
     font-size: 13px;
+  }
+  
+  .continue-btn {
+    padding: 6px 16px;
+    font-size: 12px;
+  }
+  
+  .continue-arrow {
+    font-size: 14px;
   }
 }
 </style>
