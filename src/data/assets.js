@@ -3,8 +3,9 @@
  * 所有 AI 生成的图片和音乐素材路径
  */
 
-// 基础路径 - 使用相对路径确保在 GitHub Pages 子目录下正常工作
-const BASE_PATH = import.meta.env.BASE_URL || '/rift-oath/'
+// 基础路径 - 硬编码为 /rift-oath/ 确保在 GitHub Pages 子目录下正常工作
+// 不依赖 import.meta.env.BASE_URL，因为它可能返回空字符串
+const BASE_PATH = '/rift-oath/'
 
 // 辅助函数：构建图片路径
 function imagePath(path) {
