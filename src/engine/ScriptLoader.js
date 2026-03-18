@@ -255,7 +255,7 @@ export function getChoiceFailedReason(choice, playerState) {
     }
   }
   
-  return failed.join(', ')
+  return failed.join(', ') || '条件不足'
 }
 
 // 属性名称映射
@@ -266,7 +266,11 @@ function getStatName(stat) {
     compassion: '同情',
     determination: '决心',
     corruption: '腐化',
-    chaos: '混乱'
+    chaos: '混乱',
+    bond_world1: '永夜羁绊',
+    bond_world2: '废土羁绊',
+    bond_world3: '神域羁绊',
+    bond_world4: '学园羁绊'
   }
   return names[stat] || stat
 }
@@ -279,4 +283,15 @@ export function getLoadedScript() {
 // 清空剧本
 export function unloadScript() {
   loadedScript = null
+}
+
+// 导出工具函数到全局（供 Vue 组件使用）
+if (typeof window !== 'undefined') {
+  window.ScriptLoaderUtils = {
+    getChoiceFailedReason,
+    checkConditions,
+    applyChoiceEffects,
+    isChoiceAvailable,
+    getDynamicDialogue
+  }
 }

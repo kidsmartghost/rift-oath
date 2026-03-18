@@ -176,13 +176,13 @@
           v-for="choice in currentScene?.choices" 
           :key="choice.id"
           class="choice-btn"
-          :class="{ disabled: !isChoiceAvailable(choice) }"
-          :style="{ borderColor: isChoiceAvailable(choice) ? currentWorldAccent : '#555' }"
+          :class="{ disabled: !isChoiceAvailableLocal(choice) }"
+          :style="{ borderColor: isChoiceAvailableLocal(choice) ? currentWorldAccent : '#555' }"
           @click="onChoiceClick(choice)"
         >
           <div class="choice-text">{{ choice.text }}</div>
-          <div v-if="!isChoiceAvailable(choice)" class="choice-locked">
-            🔒 需要 {{ getFailedReason(choice) }}
+          <div v-if="!isChoiceAvailableLocal(choice)" class="choice-locked">
+            🔒 需要 {{ getFailedReasonLocal(choice) }}
           </div>
         </div>
       </div>
@@ -234,7 +234,8 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { useGameStore } from '@/stores/game'
-import { gameScript } from '@/engine/script'
+// 使用 JSON 加载器替代硬编码 script
+import { loadScriptFromJSONs, getScene, getWorld, getDynamicDialogue, isChoiceAvailable, applyChoiceEffects, getLoadedScript } from '@/engine/ScriptLoader'
 import { audioManager } from '@/engine/AudioManager'
 import { achievements, memoryFragments } from '@/data/achievements'
 import { assets, getBackgroundForScene, getCharactersForScene, getBGMForWorld } from '@/data/assets'
@@ -277,21 +278,24 @@ const typingSpeed = ref(25)  // 从 50ms 加快到 25ms
 
 const currentWorldBg = computed(() => {
   if (!currentScene.value) return '#1a0a1f'
-  const world = gameScript.worlds.find(w => w.id === currentScene.value.worldId)
+  const world = getWorld(currentScene.value.worldId)
   return world?.gradient || world?.backgroundColor || '#1a0a1f'
 })
 
 const currentWorldAccent = computed(() => {
   if (!currentScene.value) return '#8b0000'
-  const world = gameScript.worlds.find(w => w.id === currentScene.value.worldId)
+  const world = getWorld(currentScene.value.worldId)
   return world?.accentColor || '#8b0000'
 })
 
 const currentWorldTheme = computed(() => {
   if (!currentScene.value) return 'gothic'
-  const world = gameScript.worlds.find(w => w.id === currentScene.value.worldId)
+  const world = getWorld(currentScene.value.worldId)
   return world?.theme || 'gothic'
 })
+
+// 剧本加载状态
+const scriptLoaded = ref(false)
 
 // 当前背景图
 const currentBackground = ref(null)
@@ -311,7 +315,12 @@ function getCharacterPosition(index, total) {
 }
 
 function loadScene(sceneId) {
-  const scene = gameScript.scenes.find(s => s.id === sceneId)
+  if (!scriptLoaded.value) {
+    console.warn('剧本未加载完成')
+    return
+  }
+  
+  const scene = getScene(sceneId)
   if (!scene) {
     console.error('场景不存在:', sceneId)
     return
@@ -320,17 +329,30 @@ function loadScene(sceneId) {
   currentScene.value = scene
   hasChoices.value = !!scene.choices
   
+  // 加载背景
+  const bg = getBackgroundForScene(sceneId)
+  currentBackground.value = bg?.image || null
+  
+  // 加载角色
+  currentCharacters.value = getCharactersForScene(sceneId)
+  
+  // 播放 BGM
+  if (scene.worldId) {
+    const bgm = getBGMForWorld(scene.worldId)
+    if (bgm && audioManager) {
+      audioManager.fadeInBGM(bgm, 1500)
+    }
+  }
+  
   // 检查是否是结局
   if (scene.type === 'ending') {
-    // 检查结局解锁条件
     if (scene.unlockConditions && !checkEndingConditions(scene.unlockConditions)) {
-      // 条件不满足，跳转到普通结局
       loadScene('ending_lost')
       return
     }
     
     setTimeout(() => {
-      audioManager.playEnding()
+      if (audioManager) audioManager.playEnding()
       gameStore.unlockEnding(scene.id)
       gameStore.checkUnlocks()
       if (scene.title?.includes('第') || scene.title?.includes('结局')) {
@@ -339,8 +361,8 @@ function loadScene(sceneId) {
     }, 500)
   }
   
-  // 获取动态对话（根据属性）
-  const dialogueText = getDynamicDialogue(scene)
+  // 获取动态对话（使用 ScriptLoader 的函数）
+  const dialogueText = getDynamicDialogue(scene, playerState.value)
   startDialogue(dialogueText)
 }
 
@@ -352,62 +374,7 @@ function checkEndingConditions(conditions) {
   return met
 }
 
-// 获取动态对话（根据属性改变内容）
-function getDynamicDialogue(scene) {
-  let dialogue = scene.dialogue
-  
-  // 如果场景有动态对话变体
-  if (scene.dialogueVariants) {
-    const stats = playerState.value.stats
-    const hiddenStats = playerState.value.hiddenStats
-    const bonds = playerState.value.bonds
-    
-    // 按优先级检查变体条件
-    for (const variant of scene.dialogueVariants) {
-      if (variant.conditions) {
-        const { met } = gameStore.checkConditions(variant.conditions)
-        if (met) {
-          dialogue = variant.text
-          break
-        }
-      }
-    }
-  }
-  
-  // 根据属性添加额外对话行
-  if (scene.extraLines) {
-    const extraLines = []
-    const stats = playerState.value.stats
-    const hiddenStats = playerState.value.hiddenStats
-    
-    // 高勇气额外对话
-    if (stats.courage >= 70 && scene.extraLines.courage) {
-      extraLines.push(scene.extraLines.courage)
-    }
-    
-    // 高智慧额外对话
-    if (stats.wisdom >= 70 && scene.extraLines.wisdom) {
-      extraLines.push(scene.extraLines.wisdom)
-    }
-    
-    // 高腐化额外对话
-    if (hiddenStats.corruption >= 50 && scene.extraLines.corruption) {
-      extraLines.push(scene.extraLines.corruption)
-    }
-    
-    // 高羁绊额外对话
-    const worldId = scene.worldId
-    if (worldId && bonds[worldId] >= 50 && scene.extraLines.bond) {
-      extraLines.push(scene.extraLines.bond.replace('{world}', getWorldName(worldId)))
-    }
-    
-    if (extraLines.length > 0) {
-      dialogue += '\n\n' + extraLines.join('\n')
-    }
-  }
-  
-  return dialogue
-}
+
 
 // 获取世界名称
 function getWorldName(worldId) {
@@ -445,17 +412,23 @@ function onDialogueClick() {
 }
 
 function onChoiceClick(choice) {
-  // 检查选择是否可用
-  if (!isChoiceAvailable(choice)) {
-    audioManager.playClick()
+  // 检查选择是否可用（使用 ScriptLoader 的函数）
+  if (!isChoiceAvailable(choice, playerState.value)) {
+    if (audioManager) audioManager.playClick()
     return
   }
   
-  audioManager.playSelect()
+  if (audioManager) audioManager.playSelect()
   
-  // 应用效果并获取变化
-  const changes = gameStore.makeChoice(choice)
+  // 应用效果（使用 ScriptLoader 的函数）
+  const changes = applyChoiceEffects(choice, playerState.value)
+  
+  // 更新场景 ID
+  playerState.value.choiceHistory.push(choice.id)
+  playerState.value.currentSceneId = choice.nextSceneId
+  
   gameStore.completeScene(currentScene.value.id)
+  gameStore.checkUnlocks()
   
   // 显示属性变化通知
   if (changes && changes.length > 0) {
@@ -464,7 +437,9 @@ function onChoiceClick(choice) {
   
   // 检查是否是穿越场景
   if (choice.nextSceneId?.includes('transition') || choice.nextSceneId?.includes('world')) {
-    setTimeout(() => audioManager.playTransition(), 300)
+    setTimeout(() => {
+      if (audioManager) audioManager.playTransition()
+    }, 300)
   }
   
   if (choice.nextSceneId) {
@@ -484,24 +459,17 @@ function showStatChangesNotification(changes) {
   }, 3000)
 }
 
-// 检查选择是否可用
-function isChoiceAvailable(choice) {
-  if (!choice.conditions) return true
-  
-  const { met } = gameStore.checkConditions(choice.conditions)
-  return met
+// 检查选择是否可用（使用 ScriptLoader 的函数）
+function isChoiceAvailableLocal(choice) {
+  return isChoiceAvailable(choice, playerState.value)
 }
 
-// 获取失败原因
-function getFailedReason(choice) {
-  if (!choice.conditions) return ''
-  
-  const { failed } = gameStore.checkConditions(choice.conditions)
-  if (failed.length === 0) return ''
-  
-  const first = failed[0]
-  const statName = getStatName(first.stat)
-  return `${statName} ${first.required}`
+// 获取失败原因（使用 ScriptLoader 的函数）
+function getFailedReasonLocal(choice) {
+  const reason = window.ScriptLoaderUtils?.getChoiceFailedReason 
+    ? window.ScriptLoaderUtils.getChoiceFailedReason(choice, playerState.value)
+    : ''
+  return reason || '条件不足'
 }
 
 // 获取属性图标
@@ -608,7 +576,13 @@ function getParticleStyle(i) {
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
+  // 加载 JSON 剧本
+  await loadScriptFromJSONs([
+    '/src/data/script_ch1_full.json'
+  ])
+  scriptLoaded.value = true
+  
   if (gameStore.isPlaying) {
     loadScene(gameStore.playerState.currentSceneId)
   } else {
