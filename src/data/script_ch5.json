@@ -1535,6 +1535,18 @@
         "creator"
       ],
       "nextSceneId": null
+    },
+    {
+      "id": "scene_169_world5_free",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「自由...」\n\n创造者说。\n\n「那是...我无法给予你的东西。」\n\n「因为...自由不是被给予的。」\n\n「而是...被争取的。」\n\n你点点头，明白了。\n\n【第五章 自由】",
+      "background": "ch05-memory",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_170_world5_freedom"
     }
   ]
 }

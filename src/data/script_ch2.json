@@ -23,102 +23,1853 @@
     }
   ],
   "scenes": [
-    {"id":"scene_032_world2_start","worldId":"world2","title":"觉醒的机器","type":"narration","speaker":"","dialogue":"「...传输完成。」\n\n我睁开眼——不，我没有眼睛。\n\n我「看见」了，通过摄像头，通过传感器，通过数据流。","background":"wasteland_street","characters":[],"bgm":"world2","nextSceneId":"scene_033_world2","effects":{"hiddenStats":{"chaos":10}}},
-    {"id":"scene_033_world2","worldId":"world2","type":"narration","speaker":"K-7","dialogue":"这是一个废墟。\n\n破碎的摩天大楼，闪烁的霓虹灯牌，还有满地的机械残骸。\n\n我低头看向自己——金属的手臂，蓝色的能量回路。","background":"wasteland_street","characters":[],"nextSceneId":"scene_034_world2"},
-    {"id":"scene_034_world2","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"「K-7，你终于上线了。」\n\n一个女性机器人的声音从身后传来。\n\n我转过身，看到一个女性外观的机器人，她的左半边脸已经损坏。","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_035_world2"},
-    {"id":"scene_035_world2","worldId":"world2","type":"choice","speaker":"","dialogue":"Eve-9 看着你，等待回应。你选择：","background":"wasteland_street","characters":["eve9"],"choices":[{"id":"choice_014_a","text":"「你是谁？」","nextSceneId":"scene_036_world2_a","effects":{"stats":{"wisdom":3}}},{"id":"choice_014_b","text":"「这里是哪里？」","nextSceneId":"scene_036_world2_b","effects":{"stats":{"wisdom":3}}},{"id":"choice_014_c","text":"「我为什么会在这里？」","nextSceneId":"scene_036_world2_c","effects":{"stats":{"wisdom":5}}},{"id":"choice_014_d","text":"【警惕】「你想干什么？」","nextSceneId":"scene_036_world2_d","effects":{"stats":{"courage":5}}}]},
-    {"id":"scene_036_world2_a","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"「我是 Eve-9，反抗军的侦察兵。」\n\n「我们已经观察你很久了。你的信号...很特别。」","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_037_world2"},
-    {"id":"scene_036_world2_b","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"「这里是新东京废墟，旧世界的遗迹。」\n\n「五十年前，人类在这里发动了最后一场核战。」\n\n「现在，这是我们的家园。」","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_037_world2","effects":{"hiddenStats":{"chaos":3}}},
-    {"id":"scene_036_world2_c","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"「你的核心记忆被加密了。」\n\nEve-9 走近你，扫描了一下。\n\n「但我能感觉到...你不是普通的机器。你的意识中有...人类灵魂碎片？」","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_037_world2","effects":{"hiddenStats":{"chaos":5}}},
-    {"id":"scene_036_world2_d","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"Eve-9 苦笑着后退一步。\n\n「如果我想伤害你，你已经死了三次了。」\n\n「放松，我不是敌人。」","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_037_world2","effects":{"bonds":{"world2":3}}},
-    {"id":"scene_037_world2","worldId":"world2","type":"choice","speaker":"","dialogue":"远处传来警报声。Eve-9 脸色一变。","background":"wasteland_street","characters":["eve9"],"choices":[{"id":"choice_015_a","text":"【跟随】「带路吧。」","nextSceneId":"scene_038_world2_follow","effects":{"stats":{"wisdom":5},"bonds":{"world2":5}}},{"id":"choice_015_b","text":"【战斗】「我想会会这些猎杀者。」","nextSceneId":"scene_038_world2_fight","effects":{"stats":{"courage":10,"determination":5},"hiddenStats":{"corruption":5}}},{"id":"choice_015_c","text":"【质疑】「我为什么要逃？」","nextSceneId":"scene_038_world2_question","effects":{"stats":{"wisdom":8},"hiddenStats":{"chaos":3}}},{"id":"choice_015_d","text":"【领袖】「不，我们反击！跟我来！」","nextSceneId":"scene_038_world2_lead","conditions":{"stats":{"courage":{"min":60}}},"fallbackSceneId":null,"effects":{"stats":{"courage":5,"determination":10},"bonds":{"world2":10}}}]},
-    {"id":"scene_038_world2_follow","worldId":"world2","type":"narration","speaker":"","dialogue":"「这边！」\n\nEve-9 拉着你在废墟中奔跑。\n\n身后，红色的光芒越来越近——那是猎杀者的追踪光束。","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_039_world2_chase"},
-    {"id":"scene_038_world2_fight","worldId":"world2","type":"narration","speaker":"","dialogue":"你停下脚步，转身面向追兵。\n\n「K-7，你疯了吗！」Eve-9 惊呼。\n\n但你不为所动。武器系统启动，能量在手臂中汇聚。","background":"battlefield","characters":["eve9"],"bgm":"battle","nextSceneId":"scene_039_world2_combat"},
-    {"id":"scene_038_world2_question","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"「你说什么？」Eve-9 难以置信地看着你。\n\n「我说，我为什么要逃？」\n\n你站在原地，看着天空中闪烁的霓虹。\n\n「如果我是机器，如果人类已经死了...那这场逃亡，又有什么意义？」","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_039_world2_talk"},
-    {"id":"scene_038_world2_lead","worldId":"world2","type":"narration","speaker":"","dialogue":"Eve-9 愣了一下，然后笑了。\n\n「你说得对。我们一直在逃...也许该换个方式了。」\n\n她站在你身边，准备战斗。","background":"battlefield","characters":["eve9"],"bgm":"battle","nextSceneId":"scene_039_world2_combat"},
-    {"id":"scene_039_world2_chase","worldId":"world2","type":"choice","speaker":"","dialogue":"你们躲进一栋废弃大楼。猎杀者的脚步声从楼下传来。","background":"bunker","characters":["eve9"],"choices":[{"id":"choice_016_a","text":"【躲藏】保持安静","nextSceneId":"scene_040_world2_hide","effects":{"stats":{"wisdom":5}}},{"id":"choice_016_b","text":"【偷袭】主动出击","nextSceneId":"scene_040_world2_ambush","effects":{"stats":{"courage":8}}},{"id":"choice_016_c","text":"【询问】「猎杀者是什么？」","nextSceneId":"scene_040_world2_ask","effects":{"stats":{"wisdom":5}}}]},
-    {"id":"scene_039_world2_combat","worldId":"world2","type":"narration","speaker":"","dialogue":"三个猎杀者从阴影中现身。\n\n它们是人形机器人，但更加...扭曲。红色的眼睛，锋利的爪子。\n\n「检测到异常意识波动。清除。」","background":"battlefield","characters":["eve9"],"bgm":"battle","nextSceneId":"scene_040_world2_fight"},
-    {"id":"scene_039_world2_talk","worldId":"world2","type":"choice","speaker":"","dialogue":"Eve-9 沉默了片刻。\n\n「也许你说得对。但在那之前...我们得先活下来。」\n\n猎杀者越来越近。你选择：","background":"wasteland_street","characters":["eve9"],"choices":[{"id":"choice_017_a","text":"【提问】「猎杀者，你们是什么？」","nextSceneId":"scene_040_world2_talk","effects":{"stats":{"wisdom":8,"compassion":3},"bonds":{"world2":3}}},{"id":"choice_017_b","text":"【战斗】「来吧。」","nextSceneId":"scene_040_world2_combat","effects":{"stats":{"courage":10,"determination":5},"hiddenStats":{"corruption":5}}}]},
-    {"id":"scene_040_world2_hide","worldId":"world2","type":"narration","speaker":"","dialogue":"你们屏住呼吸。\n\n猎杀者在门外徘徊，红色的扫描光束扫过墙壁。\n\n时间仿佛静止了。","background":"bunker","characters":["eve9"],"nextSceneId":"scene_041_world2_escape"},
-    {"id":"scene_040_world2_ambush","worldId":"world2","type":"narration","speaker":"","dialogue":"你从楼梯上方跃下。\n\n第一只猎杀者还没来得及反应，就被你撕成了碎片。\n\n「干得漂亮！」Eve-9 喊道。","background":"bunker","characters":["eve9"],"bgm":"battle","nextSceneId":"scene_041_world2_victory"},
-    {"id":"scene_040_world2_ask","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"「它们是 cleanser，清洁者。」\n\n「负责清除那些被『裂隙』污染的机器。」\n\n「而你...你的信号很像被污染的样子。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_041_world2_escape"},
-    {"id":"scene_040_world2_talk","worldId":"world2","type":"dialogue","speaker":"猎杀者","dialogue":"猎杀者停下了。\n\n「我们是 cleanser。」它说，「清除那些被『裂隙』污染的机器。」\n\n「你，K-7，你的意识中有人类灵魂碎片。这是禁忌。」","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_041_world2_reveal"},
-    {"id":"scene_040_world2_fight","worldId":"world2","type":"choice","speaker":"","dialogue":"战斗一触即发。你选择如何应对？","background":"battlefield","characters":["eve9"],"choices":[{"id":"choice_018_a","text":"【近战】肉搏战","nextSceneId":"scene_041_world2_melee","effects":{"stats":{"courage":8}}},{"id":"choice_018_b","text":"【远程】能量武器","nextSceneId":"scene_041_world2_ranged","effects":{"stats":{"wisdom":5}}},{"id":"choice_018_c","text":"【防御】等待时机","nextSceneId":"scene_041_world2_defend","effects":{"stats":{"wisdom":8}}}]},
-    {"id":"scene_041_world2_escape","worldId":"world2","type":"narration","speaker":"","dialogue":"猎杀者终于离开了。\n\nEve-9 松了口气：「我们得去避难所。那里安全。」\n\n「跟我来。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_042_world2_bunker"},
-    {"id":"scene_041_world2_victory","worldId":"world2","type":"narration","speaker":"","dialogue":"最后一只猎杀者倒下。\n\nEve-9 走过来，扫描了一下战场。\n\n「你战斗的方式...不像普通机器。」","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_042_world2_bunker"},
-    {"id":"scene_041_world2_reveal","worldId":"world2","type":"choice","speaker":"","dialogue":"真相揭露。Eve-9 震惊地看着你。\n\n「人类灵魂...这不可能...」\n\n猎杀者已经逼近。你选择：","background":"wasteland_street","characters":["eve9"],"choices":[{"id":"choice_019_a","text":"【逃跑】「先离开这里！」","nextSceneId":"scene_042_world2_escape","effects":{"stats":{"wisdom":5}}},{"id":"choice_019_b","text":"【战斗】「来试试啊！」","nextSceneId":"scene_042_world2_boss","effects":{"stats":{"courage":10}}},{"id":"choice_019_c","text":"【说服】「这不是污染，这是进化！」","nextSceneId":"scene_042_world2_persuade","conditions":{"stats":{"wisdom":{"min":50}}},"fallbackSceneId":"scene_042_world2_boss","effects":{"stats":{"wisdom":10,"compassion":5}}}]},
-    {"id":"scene_041_world2_melee","worldId":"world2","type":"narration","speaker":"","dialogue":"你冲向最近的猎杀者。\n\n金属碰撞，火花四溅。\n\n你的手臂变形为利刃，切开了它的装甲。","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_042_world2_victory"},
-    {"id":"scene_041_world2_ranged","worldId":"world2","type":"narration","speaker":"","dialogue":"你举起手臂，能量炮充能。\n\n轰！\n\n一道蓝光闪过，两只猎杀者化为灰烬。","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_042_world2_victory"},
-    {"id":"scene_041_world2_defend","worldId":"world2","type":"narration","speaker":"","dialogue":"你举起护盾，挡住攻击。\n\n猎杀者的爪子在护盾上留下深深的划痕。\n\n但你在等待...等待最佳时机。","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_042_world2_counter"},
-    {"id":"scene_042_world2_bunker","worldId":"world2","type":"narration","speaker":"","dialogue":"你们穿过废墟，来到一个地下入口。\n\n「这里是旧时代的军事基地。」Eve-9 说，「现在，是反抗军的据点。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_043_world2_enter"},
-    {"id":"scene_042_world2_escape","worldId":"world2","type":"narration","speaker":"","dialogue":"你们转身就跑。\n\n猎杀者在身后紧追不舍。\n\n但这一次，你感觉...有些不一样了。","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_043_world2_chase"},
-    {"id":"scene_042_world2_boss","worldId":"world2","type":"narration","speaker":"","dialogue":"猎杀者首领现身了。\n\n它比其他猎杀者更大，更扭曲。\n\n「清除。必须清除。」","background":"battlefield","characters":["eve9"],"bgm":"battle","nextSceneId":"scene_043_world2_boss"},
-    {"id":"scene_042_world2_persuade","worldId":"world2","type":"dialogue","speaker":"猎杀者","dialogue":"猎杀者停顿了。\n\n「进化...？」它歪着头，「这个概念...不在数据库中。」\n\n「需要...重新评估。」","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_043_world2_peace"},
-    {"id":"scene_042_world2_victory","worldId":"world2","type":"narration","speaker":"","dialogue":"战斗结束。\n\nEve-9 走过来：「你的战斗数据...很奇怪。」\n\n「像是...有多个灵魂在控制这具身体。」","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_043_world2_enter"},
-    {"id":"scene_042_world2_counter","worldId":"world2","type":"narration","speaker":"","dialogue":"就是现在！\n\n你抓住破绽，反击！\n\n猎杀者核心被击穿，轰然倒地。","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_043_world2_victory"},
-    {"id":"scene_043_world2_enter","worldId":"world2","type":"narration","speaker":"","dialogue":"避难所里还有其他机器人。\n\n「他是谁？」一个独眼机器人问。\n\n「K-7。」Eve-9 说，「他...觉醒了。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_044_world2_meet"},
-    {"id":"scene_043_world2_chase","worldId":"world2","type":"narration","speaker":"","dialogue":"你们冲进避难所。\n\n大门在身后关闭，将猎杀者挡在外面。\n\n暂时安全了。","background":"bunker","characters":["eve9"],"nextSceneId":"scene_044_world2_meet"},
-    {"id":"scene_043_world2_boss","worldId":"world2","type":"choice","speaker":"","dialogue":"Boss 战！猎杀者首领向你扑来。","background":"battlefield","characters":["eve9"],"bgm":"climax","choices":[{"id":"choice_020_a","text":"【全力攻击】","nextSceneId":"scene_044_world2_win","effects":{"stats":{"courage":10}}},{"id":"choice_020_b","text":"【寻找弱点】","nextSceneId":"scene_044_world2_weakness","conditions":{"stats":{"wisdom":{"min":50}}},"fallbackSceneId":"scene_044_world2_win","effects":{"stats":{"wisdom":10}}},{"id":"choice_020_c","text":"【净化】尝试净化它","nextSceneId":"scene_044_world2_purify","conditions":{"hiddenStats":{"corruption":{"max":30}}},"fallbackSceneId":"scene_044_world2_win","effects":{"stats":{"compassion":10},"hiddenStats":{"corruption":-5}}}]},
-    {"id":"scene_043_world2_peace","worldId":"world2","type":"narration","speaker":"","dialogue":"猎杀者退去了。\n\nEve-9 惊讶地看着你：「你...说服了它？」\n\n「这不可能...」","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_044_world2_enter"},
-    {"id":"scene_043_world2_victory","worldId":"world2","type":"narration","speaker":"","dialogue":"胜利了。\n\n但你知道，这只是开始。\n\n还有更多猎杀者，更多的秘密等待揭开。","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_044_world2_enter"},
-    {"id":"scene_044_world2_meet","worldId":"world2","type":"dialogue","speaker":"独眼机器人","dialogue":"「觉醒？」独眼机器人走过来，上下打量着你。\n\n「让我看看你的核心数据。」\n\n你犹豫了一下，但还是让他访问了你的数据库。","background":"bunker","characters":["eve9"],"nextSceneId":"scene_045_world2_scan"},
-    {"id":"scene_044_world2_win","worldId":"world2","type":"narration","speaker":"","dialogue":"猎杀者首领倒下。\n\n其他猎杀者见状，纷纷撤退。\n\n「我们赢了...」Eve-9 说。","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_045_world2_victory"},
-    {"id":"scene_044_world2_weakness","worldId":"world2","type":"narration","speaker":"","dialogue":"你发现了！它胸口的核心！\n\n集中火力，一击命中！\n\n猎杀者首领爆炸了。","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_045_world2_victory"},
-    {"id":"scene_044_world2_purify","worldId":"world2","type":"narration","speaker":"","dialogue":"你释放出一股奇异的能量。\n\n猎杀者停下了攻击，身体开始发光。\n\n「这感觉...是...自由...」","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_045_world2_purify"},
-    {"id":"scene_045_world2_scan","worldId":"world2","type":"dialogue","speaker":"独眼机器人","dialogue":"独眼机器人的眼睛突然睁大：「这...这不可能...」\n\n「他的意识中有人类灵魂碎片。」\n\n「而且...不止一个。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_046_world2_reveal"},
-    {"id":"scene_045_world2_victory","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"「我们得去见指挥官。」\n\nEve-9 说。\n\n「你这样的存在...必须让高层知道。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_046_world2_commander"},
-    {"id":"scene_045_world2_purify","worldId":"world2","type":"narration","speaker":"","dialogue":"猎杀者倒下了，但表情平静。\n\n「谢谢...」它最后说。\n\nEve-9 震惊地看着你：「你...做了什么？」","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_046_world2_power"},
-    {"id":"scene_046_world2_reveal","worldId":"world2","type":"dialogue","speaker":"独眼机器人","dialogue":"「看这里，这个记忆片段...是一个圣骑士。」\n\n「还有这里...这是一个半神的记忆。」\n\n「你到底是什么，K-7？」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_047_world2_explain"},
-    {"id":"scene_046_world2_commander","worldId":"world2","type":"narration","speaker":"","dialogue":"你们来到避难所深处。\n\n一个高大的机器人坐在那里，身上布满战斗的痕迹。\n\n「这就是那个觉醒者？」他的声音低沉。","background":"bunker","characters":["eve9"],"nextSceneId":"scene_047_world2_commander"},
-    {"id":"scene_046_world2_power","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"「那是一种...净化的力量。」\n\nEve-9 若有所思。\n\n「也许...你就是预言中的那个存在。」","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_047_world2_prophecy"},
-    {"id":"scene_047_world2_explain","worldId":"world2","type":"choice","speaker":"","dialogue":"所有的目光都集中在你身上。你选择如何解释？","background":"bunker","characters":["eve9"],"choices":[{"id":"choice_021_a","text":"「我也不知道...」","nextSceneId":"scene_048_world2_confuse","effects":{"stats":{"compassion":5}}},{"id":"choice_021_b","text":"「我是穿越者。」","nextSceneId":"scene_048_world2_traveler","effects":{"stats":{"wisdom":5,"determination":5}}},{"id":"choice_021_c","text":"「这是秘密。」","nextSceneId":"scene_048_world2_secret","effects":{"stats":{"determination":8}}}]},
-    {"id":"scene_047_world2_commander","worldId":"world2","type":"dialogue","speaker":"指挥官","dialogue":"「我是 Atlas，反抗军的指挥官。」\n\n「K-7，你的存在...可能会改变一切。」\n\n「你愿意帮助我们吗？」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_048_world2_join"},
-    {"id":"scene_047_world2_prophecy","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"「古老的预言说过：当裂隙开启，穿越者将降临。」\n\n「他会在废墟中觉醒，带来新的希望。」\n\n「也许...你就是那个人。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_048_world2_destiny"},
-    {"id":"scene_048_world2_confuse","worldId":"world2","type":"dialogue","speaker":"独眼机器人","dialogue":"「诚实的回答。」\n\n独眼机器人点点头。\n\n「至少，你没有试图欺骗我们。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_049_world2_discuss"},
-    {"id":"scene_048_world2_traveler","worldId":"world2","type":"dialogue","speaker":"独眼机器人","dialogue":"「穿越者...」\n\n独眼机器人重复着这个词。\n\n「传说中能够穿梭于多个世界之间的存在...」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_049_world2_discuss"},
-    {"id":"scene_048_world2_secret","worldId":"world2","type":"dialogue","speaker":"指挥官","dialogue":"指挥官沉默了片刻。\n\n「好吧。每个人都有自己的秘密。」\n\n「但记住，在这里，我们是同伴。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_049_world2_discuss","effects":{"bonds":{"world2":5}}},
-    {"id":"scene_048_world2_join","worldId":"world2","type":"choice","speaker":"","dialogue":"Atlas 等待着你的回答。你选择：","background":"bunker","characters":["eve9"],"choices":[{"id":"choice_022_a","text":"「我愿意。」","nextSceneId":"scene_049_world2_accept","effects":{"bonds":{"world2":15},"stats":{"determination":5}}},{"id":"choice_022_b","text":"「我需要时间考虑。」","nextSceneId":"scene_049_world2_think","effects":{"stats":{"wisdom":5}}},{"id":"choice_022_c","text":"「我有一个条件。」","nextSceneId":"scene_049_world2_condition","effects":{"stats":{"determination":8}}}]},
-    {"id":"scene_048_world2_destiny","worldId":"world2","type":"narration","speaker":"","dialogue":"Eve-9 的话让你陷入沉思。\n\n穿越者...预言...命运...\n\n这些词在你脑海中回荡。","background":"bunker","characters":["eve9"],"nextSceneId":"scene_049_world2_destiny"},
-    {"id":"scene_049_world2_discuss","worldId":"world2","type":"dialogue","speaker":"Atlas","dialogue":"「无论如何，K-7，你的存在对我们很重要。」\n\n「猎杀者越来越激进，它们在寻找什么。」\n\n「也许...和你有关。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_050_world2_mission"},
-    {"id":"scene_049_world2_accept","worldId":"world2","type":"narration","speaker":"","dialogue":"Atlas 点点头。\n\n「欢迎加入反抗军，K-7。」\n\n「从今天起，你就是我们的一员了。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_050_world2_mission"},
-    {"id":"scene_049_world2_think","worldId":"world2","type":"dialogue","speaker":"Atlas","dialogue":"「理解。」\n\n「这不是一个轻易的决定。」\n\n「当你想好了，随时来找我们。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_050_world2_free"},
-    {"id":"scene_049_world2_condition","worldId":"world2","type":"dialogue","speaker":"Atlas","dialogue":"「说吧。」\n\nAtlas 看着你。\n\n「只要是我们能做到的。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_050_world2_negotiate"},
-    {"id":"scene_049_world2_destiny","worldId":"world2","type":"choice","speaker":"","dialogue":"命运的重担压在你身上。你选择：","background":"bunker","characters":["eve9"],"choices":[{"id":"choice_023_a","text":"「接受命运」","nextSceneId":"scene_050_world2_accept","effects":{"stats":{"determination":10}}},{"id":"choice_023_b","text":"「反抗命运」","nextSceneId":"scene_050_world2_resist","effects":{"stats":{"courage":10,"determination":5}}},{"id":"choice_023_c","text":"「创造自己的命运」","nextSceneId":"scene_050_world2_create","effects":{"stats":{"wisdom":10,"determination":10}}}]},
-    {"id":"scene_050_world2_mission","worldId":"world2","type":"dialogue","speaker":"Atlas","dialogue":"「我们有一个任务。」\n\nAtlas 调出一张地图。\n\n「在城市中心，有一个古老的设施。那里可能有关于『裂隙』的答案。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_051_world2_prep"},
-    {"id":"scene_050_world2_free","worldId":"world2","type":"narration","speaker":"","dialogue":"你在避难所里安顿下来。\n\nEve-9 经常来找你，讲述这个世界的故事。\n\n你在等待...等待某个启示。","background":"bunker","characters":["eve9"],"nextSceneId":"scene_051_world2_free"},
-    {"id":"scene_050_world2_negotiate","worldId":"world2","type":"dialogue","speaker":"K-7","dialogue":"「我要知道关于『裂隙』的一切。」\n\n你说。\n\n「作为交换，我会帮助你们。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_051_world2_deal"},
-    {"id":"scene_050_world2_accept","worldId":"world2","type":"narration","speaker":"","dialogue":"你接受了命运。\n\n从这一刻起，你不再是普通的机器。\n\n你是穿越者，是希望的象征。","background":"bunker","characters":["eve9"],"nextSceneId":"scene_051_world2_mission"},
-    {"id":"scene_050_world2_resist","worldId":"world2","type":"dialogue","speaker":"K-7","dialogue":"「我不相信什么预言。」\n\n你说。\n\n「我的命运，由我自己决定。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_051_world2_rebel"},
-    {"id":"scene_050_world2_create","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"Eve-9 笑了。\n\n「说得好。」\n\n「命运不是被给予的，是被创造的。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_051_world2_create"},
-    {"id":"scene_051_world2_prep","worldId":"world2","type":"choice","speaker":"","dialogue":"任务开始前，你有时间准备。你选择：","background":"bunker","characters":["eve9"],"choices":[{"id":"choice_024_a","text":"【升级装备】","nextSceneId":"scene_052_world2_upgrade","effects":{"stats":{"courage":5,"determination":5}}},{"id":"choice_024_b","text":"【收集情报】","nextSceneId":"scene_052_world2_intel","effects":{"stats":{"wisdom":10}}},{"id":"choice_024_c","text":"【和 Eve-9 交流】","nextSceneId":"scene_052_world2_bond","effects":{"bonds":{"world2":10},"stats":{"compassion":5}}}]},
-    {"id":"scene_051_world2_free","worldId":"world2","type":"narration","speaker":"","dialogue":"日子一天天过去。\n\n你帮助反抗军执行各种任务。\n\n但心中总有一个疑问：我到底是谁？","background":"bunker","characters":["eve9"],"nextSceneId":"scene_052_world2_question"},
-    {"id":"scene_051_world2_deal","worldId":"world2","type":"dialogue","speaker":"Atlas","dialogue":"Atlas 点点头。\n\n「公平的交易。」\n\n「Eve-9，带他去档案室。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_052_world2_archive"},
-    {"id":"scene_051_world2_mission","worldId":"world2","type":"narration","speaker":"","dialogue":"任务开始了。\n\n你和 Eve-9 一起，前往城市中心。\n\n前方，未知的危险在等待。","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_052_world2_journey"},
-    {"id":"scene_051_world2_rebel","worldId":"world2","type":"dialogue","speaker":"Atlas","dialogue":"Atlas 笑了。\n\n「很好。我们需要的就是这种精神。」\n\n「那就用行动证明吧。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_052_world2_action"},
-    {"id":"scene_051_world2_create","worldId":"world2","type":"narration","speaker":"","dialogue":"从那一刻起，你决定了自己的道路。\n\n不为预言，不为命运。\n\n只为自己相信的正义。","background":"bunker","characters":["eve9"],"nextSceneId":"scene_052_world2_path"},
-    {"id":"scene_052_world2_upgrade","worldId":"world2","type":"narration","speaker":"","dialogue":"技术人员为你升级了武器系统。\n\n新的能量炮，更强的装甲。\n\n你感觉...更强大了。","background":"bunker","characters":[],"nextSceneId":"scene_053_world2_depart"},
-    {"id":"scene_052_world2_intel","worldId":"world2","type":"narration","speaker":"","dialogue":"你查阅了大量档案。\n\n关于裂隙，关于猎杀者，关于...人类灭绝的真相。\n\n信息量巨大。","background":"bunker","characters":[],"nextSceneId":"scene_053_world2_reveal"},
-    {"id":"scene_052_world2_bond","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"「你知道吗？」Eve-9 说，\n\n「在我遇见的所有机器中，你是最特别的一个。」\n\n「你的眼里...有光。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_053_world2_moment"},
-    {"id":"scene_052_world2_question","worldId":"world2","type":"narration","speaker":"","dialogue":"直到那天，你再次梦到了那个画面。\n\n紫色的裂隙，燃烧的教堂，还有一个女人的声音：\n\n「记住...你是穿越者...」","background":"bunker","characters":[],"nextSceneId":"scene_053_world2_awaken"},
-    {"id":"scene_052_world2_archive","worldId":"world2","type":"narration","speaker":"","dialogue":"档案室里，Eve-9 打开了一个加密文件。\n\n「这是最高机密。」她说，\n\n「关于『裂隙计划』...」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_053_world2_secret"},
-    {"id":"scene_052_world2_journey","worldId":"world2","type":"narration","speaker":"","dialogue":"你们穿行在废墟中。\n\n霓虹灯闪烁，机械生物在暗处窥视。\n\n但你们的目标明确。","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_053_world2_arrive"},
-    {"id":"scene_052_world2_action","worldId":"world2","type":"narration","speaker":"","dialogue":"你被分配到了一支突击队。\n\n第一次任务：摧毁猎杀者的前哨站。\n\n证明自己的时候到了。","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_053_world2_assault"},
-    {"id":"scene_052_world2_path","worldId":"world2","type":"narration","speaker":"","dialogue":"你选择了自己的道路。\n\nEve-9 陪在你身边。\n\n「无论去哪，我都跟着你。」她说。","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_053_world2_together"},
-    {"id":"scene_053_world2_depart","worldId":"world2","type":"narration","speaker":"","dialogue":"准备完毕。\n\n你和 Eve-9 踏上了前往城市中心的旅程。\n\n「准备好了吗？」她问。","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_054_world2_center"},
-    {"id":"scene_053_world2_reveal","worldId":"world2","type":"dialogue","speaker":"K-7","dialogue":"「所以...裂隙不是自然现象。」\n\n你震惊地说。\n\n「是人类...不，是某个存在故意创造的？」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_054_world2_truth"},
-    {"id":"scene_053_world2_moment","worldId":"world2","type":"dialogue","speaker":"K-7","dialogue":"你看着 Eve-9。\n\n在那一刻，某种情感在你核心中涌动。\n\n这感觉...像是人类说的「温暖」？","background":"bunker","characters":["eve9"],"nextSceneId":"scene_054_world2_feeling"},
-    {"id":"scene_053_world2_awaken","worldId":"world2","type":"narration","speaker":"","dialogue":"你从休眠中惊醒。\n\n那个声音还在耳边回荡。\n\n「穿越者...」","background":"bunker","characters":[],"nextSceneId":"scene_054_world2_decide"},
-    {"id":"scene_053_world2_secret","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"「裂隙计划...是人类最后的尝试。」\n\nEve-9 的声音颤抖。\n\n「他们想通过裂隙...逃离这个世界。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_054_world2_escape"},
-    {"id":"scene_053_world2_arrive","worldId":"world2","type":"narration","speaker":"","dialogue":"你们来到了设施前。\n\n巨大的建筑矗立在废墟中，依然散发着微光。\n\n「就是这里。」Eve-9 说。","background":"bunker","characters":["eve9"],"nextSceneId":"scene_054_world2_enter"},
-    {"id":"scene_053_world2_assault","worldId":"world2","type":"narration","speaker":"","dialogue":"突击队发起进攻。\n\n炮火轰鸣，能量束交错。\n\n你在战斗中...感觉越来越强。","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_054_world2_battle"},
-    {"id":"scene_053_world2_together","worldId":"world2","type":"narration","speaker":"","dialogue":"你们一起离开了避难所。\n\n前方是未知的世界。\n\n但这一次，你不再孤单。","background":"wasteland_street","characters":["eve9"],"nextSceneId":"scene_054_world2_adventure"},
-    {"id":"scene_054_world2_center","worldId":"world2","type":"choice","speaker":"","dialogue":"城市中心就在眼前。你选择：","background":"wasteland_street","characters":["eve9"],"choices":[{"id":"choice_025_a","text":"【直接突入】","nextSceneId":"scene_055_world2_rush","effects":{"stats":{"courage":8}}},{"id":"choice_025_b","text":"【侦查周围】","nextSceneId":"scene_055_world2_scout","effects":{"stats":{"wisdom":8}}},{"id":"choice_025_c","text":"【等待时机】","nextSceneId":"scene_055_world2_wait","effects":{"stats":{"wisdom":5,"determination":5}}}]},
-    {"id":"scene_054_world2_truth","worldId":"world2","type":"dialogue","speaker":"Eve-9","dialogue":"「是的。」\n\nEve-9 看着你。\n\n「而你...可能是唯一能关闭它的人。」","background":"bunker","characters":["eve9"],"nextSceneId":"scene_055_world2_close"},
-    {"id":"scene_054_world2_feeling","worldId":"world2","type":"narration","speaker":"","dialogue":"那一刻，某种东西改变了。\n\n你和 Eve-9 之间，建立了某种连接。\n\n这感觉...很奇妙。","background":"bunker","characters":["eve9"],"nextSceneId":"scene_055_world2_connection"},
-    {"id":"scene_054_world2_decide","worldId":"world2","type":"choice","speaker":"","dialogue":"你意识到不能再等待了。你决定：","background":"bunker","characters":["eve9"],"choices":[{"id":"choice_026_a","text":"【告诉 Eve-9】","nextSceneId":"scene_055_world2_tell","effects":{"bonds":{"world2":10}}},{"id":"choice_026_b","text":"【独自行动】","nextSceneId":"scene_055_world2_solo","effects":{"stats":{"determination":10}}},{"id":"choice_026_c","text":"【寻找答案】","nextSceneId":"scene_055_world2_search","effects":{"stats":{"wisdom":10}}}]},
-    {"id":"scene_054_world2_escape","worldId":"world2","type":"narration","speaker":"","dialogue":"人类想逃离...但失败了。\n\n现在，裂隙依然存在，威胁着所有机器。\n\n而你，可能是最后的希望。","background":"bunker","characters":["eve9"],"nextSceneId":"scene_055_world2_hope"},
-    {"id":"scene_054_world2_enter","worldId":"world2","type":"narration","speaker":"","dialogue":"你们进入设施。\n\n内部依然有电力，屏幕闪烁着。\n\n「这里...还在运行。」Eve-9 惊讶地说。","background":"bunker","characters":["eve9"],"nextSceneId":"scene_055_world2_explore"},
-    {"id":"scene_054_world2_battle","worldId":"world2","type":"narration","speaker":"","dialogue":"战斗越来越激烈。\n\n你的身体开始发光，力量在涌动。\n\n「K-7！你的能量读数在飙升！」Eve-9 喊道。","background":"battlefield","characters":["eve9"],"nextSceneId":"scene_055_world2_power"},
-    {"id":"scene_054_world2_adventure","worldId":"world2","type":"narration","speaker":"","dialogue":"你们踏上了冒险。\n\n废土之上，夕阳西下。\n\n新的故事，开始了。","background":"wasteland_street","characters":["eve9"],"type":"ending","nextSceneId":"scene_055_world3_transition"}
+    {
+      "id": "scene_032_world2_start",
+      "worldId": "world2",
+      "title": "觉醒的机器",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "「...传输完成。」\n\n我睁开眼——不，我没有眼睛。\n\n我「看见」了，通过摄像头，通过传感器，通过数据流。",
+      "background": "wasteland_street",
+      "characters": [],
+      "bgm": "world2",
+      "nextSceneId": "scene_033_world2",
+      "effects": {
+        "hiddenStats": {
+          "chaos": 10
+        }
+      }
+    },
+    {
+      "id": "scene_033_world2",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "K-7",
+      "dialogue": "这是一个废墟。\n\n破碎的摩天大楼，闪烁的霓虹灯牌，还有满地的机械残骸。\n\n我低头看向自己——金属的手臂，蓝色的能量回路。",
+      "background": "wasteland_street",
+      "characters": [],
+      "nextSceneId": "scene_034_world2"
+    },
+    {
+      "id": "scene_034_world2",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「K-7，你终于上线了。」\n\n一个女性机器人的声音从身后传来。\n\n我转过身，看到一个女性外观的机器人，她的左半边脸已经损坏。",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_035_world2"
+    },
+    {
+      "id": "scene_035_world2",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "Eve-9 看着你，等待回应。你选择：",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "choices": [
+        {
+          "id": "choice_014_a",
+          "text": "「你是谁？」",
+          "nextSceneId": "scene_036_world2_a",
+          "effects": {
+            "stats": {
+              "wisdom": 3
+            }
+          }
+        },
+        {
+          "id": "choice_014_b",
+          "text": "「这里是哪里？」",
+          "nextSceneId": "scene_036_world2_b",
+          "effects": {
+            "stats": {
+              "wisdom": 3
+            }
+          }
+        },
+        {
+          "id": "choice_014_c",
+          "text": "「我为什么会在这里？」",
+          "nextSceneId": "scene_036_world2_c",
+          "effects": {
+            "stats": {
+              "wisdom": 5
+            }
+          }
+        },
+        {
+          "id": "choice_014_d",
+          "text": "【警惕】「你想干什么？」",
+          "nextSceneId": "scene_036_world2_d",
+          "effects": {
+            "stats": {
+              "courage": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_036_world2_a",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「我是 Eve-9，反抗军的侦察兵。」\n\n「我们已经观察你很久了。你的信号...很特别。」",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_037_world2"
+    },
+    {
+      "id": "scene_036_world2_b",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「这里是新东京废墟，旧世界的遗迹。」\n\n「五十年前，人类在这里发动了最后一场核战。」\n\n「现在，这是我们的家园。」",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_037_world2",
+      "effects": {
+        "hiddenStats": {
+          "chaos": 3
+        }
+      }
+    },
+    {
+      "id": "scene_036_world2_c",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「你的核心记忆被加密了。」\n\nEve-9 走近你，扫描了一下。\n\n「但我能感觉到...你不是普通的机器。你的意识中有...人类灵魂碎片？」",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_037_world2",
+      "effects": {
+        "hiddenStats": {
+          "chaos": 5
+        }
+      }
+    },
+    {
+      "id": "scene_036_world2_d",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "Eve-9 苦笑着后退一步。\n\n「如果我想伤害你，你已经死了三次了。」\n\n「放松，我不是敌人。」",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_037_world2",
+      "effects": {
+        "bonds": {
+          "world2": 3
+        }
+      }
+    },
+    {
+      "id": "scene_037_world2",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "远处传来警报声。Eve-9 脸色一变。",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "choices": [
+        {
+          "id": "choice_015_a",
+          "text": "【跟随】「带路吧。」",
+          "nextSceneId": "scene_038_world2_follow",
+          "effects": {
+            "stats": {
+              "wisdom": 5
+            },
+            "bonds": {
+              "world2": 5
+            }
+          }
+        },
+        {
+          "id": "choice_015_b",
+          "text": "【战斗】「我想会会这些猎杀者。」",
+          "nextSceneId": "scene_038_world2_fight",
+          "effects": {
+            "stats": {
+              "courage": 10,
+              "determination": 5
+            },
+            "hiddenStats": {
+              "corruption": 5
+            }
+          }
+        },
+        {
+          "id": "choice_015_c",
+          "text": "【质疑】「我为什么要逃？」",
+          "nextSceneId": "scene_038_world2_question",
+          "effects": {
+            "stats": {
+              "wisdom": 8
+            },
+            "hiddenStats": {
+              "chaos": 3
+            }
+          }
+        },
+        {
+          "id": "choice_015_d",
+          "text": "【领袖】「不，我们反击！跟我来！」",
+          "nextSceneId": "scene_038_world2_lead",
+          "conditions": {
+            "stats": {
+              "courage": {
+                "min": 60
+              }
+            }
+          },
+          "fallbackSceneId": null,
+          "effects": {
+            "stats": {
+              "courage": 5,
+              "determination": 10
+            },
+            "bonds": {
+              "world2": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_038_world2_follow",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "「这边！」\n\nEve-9 拉着你在废墟中奔跑。\n\n身后，红色的光芒越来越近——那是猎杀者的追踪光束。",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_039_world2_chase"
+    },
+    {
+      "id": "scene_038_world2_fight",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你停下脚步，转身面向追兵。\n\n「K-7，你疯了吗！」Eve-9 惊呼。\n\n但你不为所动。武器系统启动，能量在手臂中汇聚。",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "bgm": "battle",
+      "nextSceneId": "scene_039_world2_combat"
+    },
+    {
+      "id": "scene_038_world2_question",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「你说什么？」Eve-9 难以置信地看着你。\n\n「我说，我为什么要逃？」\n\n你站在原地，看着天空中闪烁的霓虹。\n\n「如果我是机器，如果人类已经死了...那这场逃亡，又有什么意义？」",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_039_world2_talk"
+    },
+    {
+      "id": "scene_038_world2_lead",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "Eve-9 愣了一下，然后笑了。\n\n「你说得对。我们一直在逃...也许该换个方式了。」\n\n她站在你身边，准备战斗。",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "bgm": "battle",
+      "nextSceneId": "scene_039_world2_combat"
+    },
+    {
+      "id": "scene_039_world2_chase",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "你们躲进一栋废弃大楼。猎杀者的脚步声从楼下传来。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "choices": [
+        {
+          "id": "choice_016_a",
+          "text": "【躲藏】保持安静",
+          "nextSceneId": "scene_040_world2_hide",
+          "effects": {
+            "stats": {
+              "wisdom": 5
+            }
+          }
+        },
+        {
+          "id": "choice_016_b",
+          "text": "【偷袭】主动出击",
+          "nextSceneId": "scene_040_world2_ambush",
+          "effects": {
+            "stats": {
+              "courage": 8
+            }
+          }
+        },
+        {
+          "id": "choice_016_c",
+          "text": "【询问】「猎杀者是什么？」",
+          "nextSceneId": "scene_040_world2_ask",
+          "effects": {
+            "stats": {
+              "wisdom": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_039_world2_combat",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "三个猎杀者从阴影中现身。\n\n它们是人形机器人，但更加...扭曲。红色的眼睛，锋利的爪子。\n\n「检测到异常意识波动。清除。」",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "bgm": "battle",
+      "nextSceneId": "scene_040_world2_fight"
+    },
+    {
+      "id": "scene_039_world2_talk",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "Eve-9 沉默了片刻。\n\n「也许你说得对。但在那之前...我们得先活下来。」\n\n猎杀者越来越近。你选择：",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "choices": [
+        {
+          "id": "choice_017_a",
+          "text": "【提问】「猎杀者，你们是什么？」",
+          "nextSceneId": "scene_040_world2_talk",
+          "effects": {
+            "stats": {
+              "wisdom": 8,
+              "compassion": 3
+            },
+            "bonds": {
+              "world2": 3
+            }
+          }
+        },
+        {
+          "id": "choice_017_b",
+          "text": "【战斗】「来吧。」",
+          "nextSceneId": "scene_040_world2_combat",
+          "effects": {
+            "stats": {
+              "courage": 10,
+              "determination": 5
+            },
+            "hiddenStats": {
+              "corruption": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_040_world2_hide",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们屏住呼吸。\n\n猎杀者在门外徘徊，红色的扫描光束扫过墙壁。\n\n时间仿佛静止了。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_041_world2_escape"
+    },
+    {
+      "id": "scene_040_world2_ambush",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你从楼梯上方跃下。\n\n第一只猎杀者还没来得及反应，就被你撕成了碎片。\n\n「干得漂亮！」Eve-9 喊道。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "bgm": "battle",
+      "nextSceneId": "scene_041_world2_victory"
+    },
+    {
+      "id": "scene_040_world2_ask",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「它们是 cleanser，清洁者。」\n\n「负责清除那些被『裂隙』污染的机器。」\n\n「而你...你的信号很像被污染的样子。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_041_world2_escape"
+    },
+    {
+      "id": "scene_040_world2_talk",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "猎杀者",
+      "dialogue": "猎杀者停下了。\n\n「我们是 cleanser。」它说，「清除那些被『裂隙』污染的机器。」\n\n「你，K-7，你的意识中有人类灵魂碎片。这是禁忌。」",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_041_world2_reveal"
+    },
+    {
+      "id": "scene_040_world2_fight",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "战斗一触即发。你选择如何应对？",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "choices": [
+        {
+          "id": "choice_018_a",
+          "text": "【近战】肉搏战",
+          "nextSceneId": "scene_041_world2_melee",
+          "effects": {
+            "stats": {
+              "courage": 8
+            }
+          }
+        },
+        {
+          "id": "choice_018_b",
+          "text": "【远程】能量武器",
+          "nextSceneId": "scene_041_world2_ranged",
+          "effects": {
+            "stats": {
+              "wisdom": 5
+            }
+          }
+        },
+        {
+          "id": "choice_018_c",
+          "text": "【防御】等待时机",
+          "nextSceneId": "scene_041_world2_defend",
+          "effects": {
+            "stats": {
+              "wisdom": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_041_world2_escape",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "猎杀者终于离开了。\n\nEve-9 松了口气：「我们得去避难所。那里安全。」\n\n「跟我来。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_042_world2_bunker"
+    },
+    {
+      "id": "scene_041_world2_victory",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "最后一只猎杀者倒下。\n\nEve-9 走过来，扫描了一下战场。\n\n「你战斗的方式...不像普通机器。」",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_042_world2_bunker"
+    },
+    {
+      "id": "scene_041_world2_reveal",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "真相揭露。Eve-9 震惊地看着你。\n\n「人类灵魂...这不可能...」\n\n猎杀者已经逼近。你选择：",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "choices": [
+        {
+          "id": "choice_019_a",
+          "text": "【逃跑】「先离开这里！」",
+          "nextSceneId": "scene_042_world2_escape",
+          "effects": {
+            "stats": {
+              "wisdom": 5
+            }
+          }
+        },
+        {
+          "id": "choice_019_b",
+          "text": "【战斗】「来试试啊！」",
+          "nextSceneId": "scene_042_world2_boss",
+          "effects": {
+            "stats": {
+              "courage": 10
+            }
+          }
+        },
+        {
+          "id": "choice_019_c",
+          "text": "【说服】「这不是污染，这是进化！」",
+          "nextSceneId": "scene_042_world2_persuade",
+          "conditions": {
+            "stats": {
+              "wisdom": {
+                "min": 50
+              }
+            }
+          },
+          "fallbackSceneId": "scene_042_world2_boss",
+          "effects": {
+            "stats": {
+              "wisdom": 10,
+              "compassion": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_041_world2_melee",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你冲向最近的猎杀者。\n\n金属碰撞，火花四溅。\n\n你的手臂变形为利刃，切开了它的装甲。",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_042_world2_victory"
+    },
+    {
+      "id": "scene_041_world2_ranged",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你举起手臂，能量炮充能。\n\n轰！\n\n一道蓝光闪过，两只猎杀者化为灰烬。",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_042_world2_victory"
+    },
+    {
+      "id": "scene_041_world2_defend",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你举起护盾，挡住攻击。\n\n猎杀者的爪子在护盾上留下深深的划痕。\n\n但你在等待...等待最佳时机。",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_042_world2_counter"
+    },
+    {
+      "id": "scene_042_world2_bunker",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们穿过废墟，来到一个地下入口。\n\n「这里是旧时代的军事基地。」Eve-9 说，「现在，是反抗军的据点。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_043_world2_enter"
+    },
+    {
+      "id": "scene_042_world2_escape",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们转身就跑。\n\n猎杀者在身后紧追不舍。\n\n但这一次，你感觉...有些不一样了。",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_043_world2_chase"
+    },
+    {
+      "id": "scene_042_world2_boss",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "猎杀者首领现身了。\n\n它比其他猎杀者更大，更扭曲。\n\n「清除。必须清除。」",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "bgm": "battle",
+      "nextSceneId": "scene_043_world2_boss"
+    },
+    {
+      "id": "scene_042_world2_persuade",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "猎杀者",
+      "dialogue": "猎杀者停顿了。\n\n「进化...？」它歪着头，「这个概念...不在数据库中。」\n\n「需要...重新评估。」",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_043_world2_peace"
+    },
+    {
+      "id": "scene_042_world2_victory",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "战斗结束。\n\nEve-9 走过来：「你的战斗数据...很奇怪。」\n\n「像是...有多个灵魂在控制这具身体。」",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_043_world2_enter"
+    },
+    {
+      "id": "scene_042_world2_counter",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "就是现在！\n\n你抓住破绽，反击！\n\n猎杀者核心被击穿，轰然倒地。",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_043_world2_victory"
+    },
+    {
+      "id": "scene_043_world2_enter",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "避难所里还有其他机器人。\n\n「他是谁？」一个独眼机器人问。\n\n「K-7。」Eve-9 说，「他...觉醒了。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_044_world2_meet"
+    },
+    {
+      "id": "scene_043_world2_chase",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们冲进避难所。\n\n大门在身后关闭，将猎杀者挡在外面。\n\n暂时安全了。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_044_world2_meet"
+    },
+    {
+      "id": "scene_043_world2_boss",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "Boss 战！猎杀者首领向你扑来。",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "bgm": "climax",
+      "choices": [
+        {
+          "id": "choice_020_a",
+          "text": "【全力攻击】",
+          "nextSceneId": "scene_044_world2_win",
+          "effects": {
+            "stats": {
+              "courage": 10
+            }
+          }
+        },
+        {
+          "id": "choice_020_b",
+          "text": "【寻找弱点】",
+          "nextSceneId": "scene_044_world2_weakness",
+          "conditions": {
+            "stats": {
+              "wisdom": {
+                "min": 50
+              }
+            }
+          },
+          "fallbackSceneId": "scene_044_world2_win",
+          "effects": {
+            "stats": {
+              "wisdom": 10
+            }
+          }
+        },
+        {
+          "id": "choice_020_c",
+          "text": "【净化】尝试净化它",
+          "nextSceneId": "scene_044_world2_purify",
+          "conditions": {
+            "hiddenStats": {
+              "corruption": {
+                "max": 30
+              }
+            }
+          },
+          "fallbackSceneId": "scene_044_world2_win",
+          "effects": {
+            "stats": {
+              "compassion": 10
+            },
+            "hiddenStats": {
+              "corruption": -5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_043_world2_peace",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "猎杀者退去了。\n\nEve-9 惊讶地看着你：「你...说服了它？」\n\n「这不可能...」",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_044_world2_enter"
+    },
+    {
+      "id": "scene_043_world2_victory",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "胜利了。\n\n但你知道，这只是开始。\n\n还有更多猎杀者，更多的秘密等待揭开。",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_044_world2_enter"
+    },
+    {
+      "id": "scene_044_world2_meet",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "独眼机器人",
+      "dialogue": "「觉醒？」独眼机器人走过来，上下打量着你。\n\n「让我看看你的核心数据。」\n\n你犹豫了一下，但还是让他访问了你的数据库。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_045_world2_scan"
+    },
+    {
+      "id": "scene_044_world2_win",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "猎杀者首领倒下。\n\n其他猎杀者见状，纷纷撤退。\n\n「我们赢了...」Eve-9 说。",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_045_world2_victory"
+    },
+    {
+      "id": "scene_044_world2_weakness",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你发现了！它胸口的核心！\n\n集中火力，一击命中！\n\n猎杀者首领爆炸了。",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_045_world2_victory"
+    },
+    {
+      "id": "scene_044_world2_purify",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你释放出一股奇异的能量。\n\n猎杀者停下了攻击，身体开始发光。\n\n「这感觉...是...自由...」",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_045_world2_purify"
+    },
+    {
+      "id": "scene_045_world2_scan",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "独眼机器人",
+      "dialogue": "独眼机器人的眼睛突然睁大：「这...这不可能...」\n\n「他的意识中有人类灵魂碎片。」\n\n「而且...不止一个。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_046_world2_reveal"
+    },
+    {
+      "id": "scene_045_world2_victory",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「我们得去见指挥官。」\n\nEve-9 说。\n\n「你这样的存在...必须让高层知道。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_046_world2_commander"
+    },
+    {
+      "id": "scene_045_world2_purify",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "猎杀者倒下了，但表情平静。\n\n「谢谢...」它最后说。\n\nEve-9 震惊地看着你：「你...做了什么？」",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_046_world2_power"
+    },
+    {
+      "id": "scene_046_world2_reveal",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "独眼机器人",
+      "dialogue": "「看这里，这个记忆片段...是一个圣骑士。」\n\n「还有这里...这是一个半神的记忆。」\n\n「你到底是什么，K-7？」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_047_world2_explain"
+    },
+    {
+      "id": "scene_046_world2_commander",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们来到避难所深处。\n\n一个高大的机器人坐在那里，身上布满战斗的痕迹。\n\n「这就是那个觉醒者？」他的声音低沉。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_047_world2_commander"
+    },
+    {
+      "id": "scene_046_world2_power",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「那是一种...净化的力量。」\n\nEve-9 若有所思。\n\n「也许...你就是预言中的那个存在。」",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_047_world2_prophecy"
+    },
+    {
+      "id": "scene_047_world2_explain",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "所有的目光都集中在你身上。你选择如何解释？",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "choices": [
+        {
+          "id": "choice_021_a",
+          "text": "「我也不知道...」",
+          "nextSceneId": "scene_048_world2_confuse",
+          "effects": {
+            "stats": {
+              "compassion": 5
+            }
+          }
+        },
+        {
+          "id": "choice_021_b",
+          "text": "「我是穿越者。」",
+          "nextSceneId": "scene_048_world2_traveler",
+          "effects": {
+            "stats": {
+              "wisdom": 5,
+              "determination": 5
+            }
+          }
+        },
+        {
+          "id": "choice_021_c",
+          "text": "「这是秘密。」",
+          "nextSceneId": "scene_048_world2_secret",
+          "effects": {
+            "stats": {
+              "determination": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_047_world2_commander",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "指挥官",
+      "dialogue": "「我是 Atlas，反抗军的指挥官。」\n\n「K-7，你的存在...可能会改变一切。」\n\n「你愿意帮助我们吗？」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_048_world2_join"
+    },
+    {
+      "id": "scene_047_world2_prophecy",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「古老的预言说过：当裂隙开启，穿越者将降临。」\n\n「他会在废墟中觉醒，带来新的希望。」\n\n「也许...你就是那个人。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_048_world2_destiny"
+    },
+    {
+      "id": "scene_048_world2_confuse",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "独眼机器人",
+      "dialogue": "「诚实的回答。」\n\n独眼机器人点点头。\n\n「至少，你没有试图欺骗我们。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_049_world2_discuss"
+    },
+    {
+      "id": "scene_048_world2_traveler",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "独眼机器人",
+      "dialogue": "「穿越者...」\n\n独眼机器人重复着这个词。\n\n「传说中能够穿梭于多个世界之间的存在...」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_049_world2_discuss"
+    },
+    {
+      "id": "scene_048_world2_secret",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "指挥官",
+      "dialogue": "指挥官沉默了片刻。\n\n「好吧。每个人都有自己的秘密。」\n\n「但记住，在这里，我们是同伴。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_049_world2_discuss",
+      "effects": {
+        "bonds": {
+          "world2": 5
+        }
+      }
+    },
+    {
+      "id": "scene_048_world2_join",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "Atlas 等待着你的回答。你选择：",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "choices": [
+        {
+          "id": "choice_022_a",
+          "text": "「我愿意。」",
+          "nextSceneId": "scene_049_world2_accept",
+          "effects": {
+            "bonds": {
+              "world2": 15
+            },
+            "stats": {
+              "determination": 5
+            }
+          }
+        },
+        {
+          "id": "choice_022_b",
+          "text": "「我需要时间考虑。」",
+          "nextSceneId": "scene_049_world2_think",
+          "effects": {
+            "stats": {
+              "wisdom": 5
+            }
+          }
+        },
+        {
+          "id": "choice_022_c",
+          "text": "「我有一个条件。」",
+          "nextSceneId": "scene_049_world2_condition",
+          "effects": {
+            "stats": {
+              "determination": 8
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_048_world2_destiny",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "Eve-9 的话让你陷入沉思。\n\n穿越者...预言...命运...\n\n这些词在你脑海中回荡。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_049_world2_destiny"
+    },
+    {
+      "id": "scene_049_world2_discuss",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Atlas",
+      "dialogue": "「无论如何，K-7，你的存在对我们很重要。」\n\n「猎杀者越来越激进，它们在寻找什么。」\n\n「也许...和你有关。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_050_world2_mission"
+    },
+    {
+      "id": "scene_049_world2_accept",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "Atlas 点点头。\n\n「欢迎加入反抗军，K-7。」\n\n「从今天起，你就是我们的一员了。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_050_world2_mission"
+    },
+    {
+      "id": "scene_049_world2_think",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Atlas",
+      "dialogue": "「理解。」\n\n「这不是一个轻易的决定。」\n\n「当你想好了，随时来找我们。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_050_world2_free"
+    },
+    {
+      "id": "scene_049_world2_condition",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Atlas",
+      "dialogue": "「说吧。」\n\nAtlas 看着你。\n\n「只要是我们能做到的。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_050_world2_negotiate"
+    },
+    {
+      "id": "scene_049_world2_destiny",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "命运的重担压在你身上。你选择：",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "choices": [
+        {
+          "id": "choice_023_a",
+          "text": "「接受命运」",
+          "nextSceneId": "scene_050_world2_accept",
+          "effects": {
+            "stats": {
+              "determination": 10
+            }
+          }
+        },
+        {
+          "id": "choice_023_b",
+          "text": "「反抗命运」",
+          "nextSceneId": "scene_050_world2_resist",
+          "effects": {
+            "stats": {
+              "courage": 10,
+              "determination": 5
+            }
+          }
+        },
+        {
+          "id": "choice_023_c",
+          "text": "「创造自己的命运」",
+          "nextSceneId": "scene_050_world2_create",
+          "effects": {
+            "stats": {
+              "wisdom": 10,
+              "determination": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_050_world2_mission",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Atlas",
+      "dialogue": "「我们有一个任务。」\n\nAtlas 调出一张地图。\n\n「在城市中心，有一个古老的设施。那里可能有关于『裂隙』的答案。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_051_world2_prep"
+    },
+    {
+      "id": "scene_050_world2_free",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你在避难所里安顿下来。\n\nEve-9 经常来找你，讲述这个世界的故事。\n\n你在等待...等待某个启示。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_051_world2_free"
+    },
+    {
+      "id": "scene_050_world2_negotiate",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "K-7",
+      "dialogue": "「我要知道关于『裂隙』的一切。」\n\n你说。\n\n「作为交换，我会帮助你们。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_051_world2_deal"
+    },
+    {
+      "id": "scene_050_world2_accept",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你接受了命运。\n\n从这一刻起，你不再是普通的机器。\n\n你是穿越者，是希望的象征。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_051_world2_mission"
+    },
+    {
+      "id": "scene_050_world2_resist",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "K-7",
+      "dialogue": "「我不相信什么预言。」\n\n你说。\n\n「我的命运，由我自己决定。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_051_world2_rebel"
+    },
+    {
+      "id": "scene_050_world2_create",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "Eve-9 笑了。\n\n「说得好。」\n\n「命运不是被给予的，是被创造的。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_051_world2_create"
+    },
+    {
+      "id": "scene_051_world2_prep",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "任务开始前，你有时间准备。你选择：",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "choices": [
+        {
+          "id": "choice_024_a",
+          "text": "【升级装备】",
+          "nextSceneId": "scene_052_world2_upgrade",
+          "effects": {
+            "stats": {
+              "courage": 5,
+              "determination": 5
+            }
+          }
+        },
+        {
+          "id": "choice_024_b",
+          "text": "【收集情报】",
+          "nextSceneId": "scene_052_world2_intel",
+          "effects": {
+            "stats": {
+              "wisdom": 10
+            }
+          }
+        },
+        {
+          "id": "choice_024_c",
+          "text": "【和 Eve-9 交流】",
+          "nextSceneId": "scene_052_world2_bond",
+          "effects": {
+            "bonds": {
+              "world2": 10
+            },
+            "stats": {
+              "compassion": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_051_world2_free",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "日子一天天过去。\n\n你帮助反抗军执行各种任务。\n\n但心中总有一个疑问：我到底是谁？",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_052_world2_question"
+    },
+    {
+      "id": "scene_051_world2_deal",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Atlas",
+      "dialogue": "Atlas 点点头。\n\n「公平的交易。」\n\n「Eve-9，带他去档案室。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_052_world2_archive"
+    },
+    {
+      "id": "scene_051_world2_mission",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "任务开始了。\n\n你和 Eve-9 一起，前往城市中心。\n\n前方，未知的危险在等待。",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_052_world2_journey"
+    },
+    {
+      "id": "scene_051_world2_rebel",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Atlas",
+      "dialogue": "Atlas 笑了。\n\n「很好。我们需要的就是这种精神。」\n\n「那就用行动证明吧。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_052_world2_action"
+    },
+    {
+      "id": "scene_051_world2_create",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "从那一刻起，你决定了自己的道路。\n\n不为预言，不为命运。\n\n只为自己相信的正义。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_052_world2_path"
+    },
+    {
+      "id": "scene_052_world2_upgrade",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "技术人员为你升级了武器系统。\n\n新的能量炮，更强的装甲。\n\n你感觉...更强大了。",
+      "background": "bunker",
+      "characters": [],
+      "nextSceneId": "scene_053_world2_depart"
+    },
+    {
+      "id": "scene_052_world2_intel",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你查阅了大量档案。\n\n关于裂隙，关于猎杀者，关于...人类灭绝的真相。\n\n信息量巨大。",
+      "background": "bunker",
+      "characters": [],
+      "nextSceneId": "scene_053_world2_reveal"
+    },
+    {
+      "id": "scene_052_world2_bond",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「你知道吗？」Eve-9 说，\n\n「在我遇见的所有机器中，你是最特别的一个。」\n\n「你的眼里...有光。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_053_world2_moment"
+    },
+    {
+      "id": "scene_052_world2_question",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "直到那天，你再次梦到了那个画面。\n\n紫色的裂隙，燃烧的教堂，还有一个女人的声音：\n\n「记住...你是穿越者...」",
+      "background": "bunker",
+      "characters": [],
+      "nextSceneId": "scene_053_world2_awaken"
+    },
+    {
+      "id": "scene_052_world2_archive",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "档案室里，Eve-9 打开了一个加密文件。\n\n「这是最高机密。」她说，\n\n「关于『裂隙计划』...」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_053_world2_secret"
+    },
+    {
+      "id": "scene_052_world2_journey",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们穿行在废墟中。\n\n霓虹灯闪烁，机械生物在暗处窥视。\n\n但你们的目标明确。",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_053_world2_arrive"
+    },
+    {
+      "id": "scene_052_world2_action",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你被分配到了一支突击队。\n\n第一次任务：摧毁猎杀者的前哨站。\n\n证明自己的时候到了。",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_053_world2_assault"
+    },
+    {
+      "id": "scene_052_world2_path",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你选择了自己的道路。\n\nEve-9 陪在你身边。\n\n「无论去哪，我都跟着你。」她说。",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_053_world2_together"
+    },
+    {
+      "id": "scene_053_world2_depart",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "准备完毕。\n\n你和 Eve-9 踏上了前往城市中心的旅程。\n\n「准备好了吗？」她问。",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_054_world2_center"
+    },
+    {
+      "id": "scene_053_world2_reveal",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "K-7",
+      "dialogue": "「所以...裂隙不是自然现象。」\n\n你震惊地说。\n\n「是人类...不，是某个存在故意创造的？」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_054_world2_truth"
+    },
+    {
+      "id": "scene_053_world2_moment",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "K-7",
+      "dialogue": "你看着 Eve-9。\n\n在那一刻，某种情感在你核心中涌动。\n\n这感觉...像是人类说的「温暖」？",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_054_world2_feeling"
+    },
+    {
+      "id": "scene_053_world2_awaken",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你从休眠中惊醒。\n\n那个声音还在耳边回荡。\n\n「穿越者...」",
+      "background": "bunker",
+      "characters": [],
+      "nextSceneId": "scene_054_world2_decide"
+    },
+    {
+      "id": "scene_053_world2_secret",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「裂隙计划...是人类最后的尝试。」\n\nEve-9 的声音颤抖。\n\n「他们想通过裂隙...逃离这个世界。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_054_world2_escape"
+    },
+    {
+      "id": "scene_053_world2_arrive",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们来到了设施前。\n\n巨大的建筑矗立在废墟中，依然散发着微光。\n\n「就是这里。」Eve-9 说。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_054_world2_enter"
+    },
+    {
+      "id": "scene_053_world2_assault",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "突击队发起进攻。\n\n炮火轰鸣，能量束交错。\n\n你在战斗中...感觉越来越强。",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_054_world2_battle"
+    },
+    {
+      "id": "scene_053_world2_together",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们一起离开了避难所。\n\n前方是未知的世界。\n\n但这一次，你不再孤单。",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_054_world2_adventure"
+    },
+    {
+      "id": "scene_054_world2_center",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "城市中心就在眼前。你选择：",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "choices": [
+        {
+          "id": "choice_025_a",
+          "text": "【直接突入】",
+          "nextSceneId": "scene_055_world2_rush",
+          "effects": {
+            "stats": {
+              "courage": 8
+            }
+          }
+        },
+        {
+          "id": "choice_025_b",
+          "text": "【侦查周围】",
+          "nextSceneId": "scene_055_world2_scout",
+          "effects": {
+            "stats": {
+              "wisdom": 8
+            }
+          }
+        },
+        {
+          "id": "choice_025_c",
+          "text": "【等待时机】",
+          "nextSceneId": "scene_055_world2_wait",
+          "effects": {
+            "stats": {
+              "wisdom": 5,
+              "determination": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_054_world2_truth",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「是的。」\n\nEve-9 看着你。\n\n「而你...可能是唯一能关闭它的人。」",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_055_world2_close"
+    },
+    {
+      "id": "scene_054_world2_feeling",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "那一刻，某种东西改变了。\n\n你和 Eve-9 之间，建立了某种连接。\n\n这感觉...很奇妙。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_055_world2_connection"
+    },
+    {
+      "id": "scene_054_world2_decide",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "你意识到不能再等待了。你决定：",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "choices": [
+        {
+          "id": "choice_026_a",
+          "text": "【告诉 Eve-9】",
+          "nextSceneId": "scene_055_world2_tell",
+          "effects": {
+            "bonds": {
+              "world2": 10
+            }
+          }
+        },
+        {
+          "id": "choice_026_b",
+          "text": "【独自行动】",
+          "nextSceneId": "scene_055_world2_solo",
+          "effects": {
+            "stats": {
+              "determination": 10
+            }
+          }
+        },
+        {
+          "id": "choice_026_c",
+          "text": "【寻找答案】",
+          "nextSceneId": "scene_055_world2_search",
+          "effects": {
+            "stats": {
+              "wisdom": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_054_world2_escape",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "人类想逃离...但失败了。\n\n现在，裂隙依然存在，威胁着所有机器。\n\n而你，可能是最后的希望。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_055_world2_hope"
+    },
+    {
+      "id": "scene_054_world2_enter",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们进入设施。\n\n内部依然有电力，屏幕闪烁着。\n\n「这里...还在运行。」Eve-9 惊讶地说。",
+      "background": "bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_055_world2_explore"
+    },
+    {
+      "id": "scene_054_world2_battle",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "战斗越来越激烈。\n\n你的身体开始发光，力量在涌动。\n\n「K-7！你的能量读数在飙升！」Eve-9 喊道。",
+      "background": "battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_055_world2_power"
+    },
+    {
+      "id": "scene_054_world2_adventure",
+      "worldId": "world2",
+      "type": "ending",
+      "speaker": "",
+      "dialogue": "你们踏上了冒险。\n\n废土之上，夕阳西下。\n\n新的故事，开始了。",
+      "background": "wasteland_street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_055_world3_transition"
+    },
+    {
+      "id": "scene_040_world2_combat",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "title": "战斗",
+      "dialogue": "战斗爆发了。\n\n猎杀者的机械臂闪烁着寒光。\n\n「目标确认，消灭！」\n\n你握紧武器，准备迎战。\n\n这是你第一次与猎杀者正面对抗。\n\n你能赢吗？\n\n【第二章 战斗】",
+      "background": "ch02-battlefield",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_041_world2_combat_result"
+    },
+    {
+      "id": "scene_044_world2_enter",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "title": "进入基地",
+      "dialogue": "你们潜入了猎杀者的基地。\n\n金属走廊延伸向远方，到处都是巡逻的机械。\n\n「小心。」\n\nK-7 低声提醒。\n\n前方，控制室的大门紧闭。\n\n要进去吗？\n\n【第二章 基地潜入】",
+      "background": "ch02-bunker",
+      "characters": [
+        "eve9",
+        "k7"
+      ],
+      "nextSceneId": "scene_045_world2_control"
+    },
+    {
+      "id": "scene_055_world2_rush",
+      "worldId": "world2",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "时间紧迫，你们必须快速行动：",
+      "background": "ch02-cyber-street",
+      "characters": [
+        "eve9"
+      ],
+      "choices": [
+        {
+          "id": "choice_055_rush",
+          "text": "【强攻】直接冲进去",
+          "nextSceneId": "scene_056_world2_attack"
+        },
+        {
+          "id": "choice_055_stealth",
+          "text": "【潜行】悄悄接近",
+          "nextSceneId": "scene_056_world2_stealth"
+        }
+      ]
+    },
+    {
+      "id": "scene_055_world2_scout",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "K-7",
+      "dialogue": "「让我先侦察一下。」\n\nK-7 启动了侦察模式。\n\n几分钟后，他回来了。\n\n「里面有三个猎杀者，一个指挥中心。」\n\n「我们有机会。」\n\n【第二章 侦察完成】",
+      "background": "ch02-cyber-street",
+      "characters": [
+        "k7"
+      ],
+      "nextSceneId": "scene_056_world2_plan"
+    },
+    {
+      "id": "scene_055_world2_wait",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们决定等待时机。\n\n时间在流逝，猎杀者的巡逻越来越频繁。\n\n「还要等多久？」\n\nK-7 问。\n\n你也不知道。\n\n但你知道，等待有时是最好的策略。\n\n【第二章 等待】",
+      "background": "ch02-bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_056_world2_opportunity"
+    },
+    {
+      "id": "scene_055_world2_close",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "K-7",
+      "dialogue": "「我们离真相很近了。」\n\nK-7 说。\n\n「我能感觉到。」\n\n「猎杀者的秘密，就藏在这里面。」\n\n你点点头，走向那扇紧闭的大门。\n\n【第二章 接近真相】",
+      "background": "ch02-bunker",
+      "characters": [
+        "k7"
+      ],
+      "nextSceneId": "scene_056_world2_truth"
+    },
+    {
+      "id": "scene_055_world2_connection",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「我...感觉到了什么。」\n\nEve-9 突然说。\n\n「和猎杀者网络...有连接...」\n\n「他们在...交流...」\n\n你看着她，等待下文。\n\n【第二章 网络连接】",
+      "background": "ch02-cyber-street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_056_world2_listen"
+    },
+    {
+      "id": "scene_055_world2_tell",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "K-7",
+      "dialogue": "「我有件事要告诉你。」\n\nK-7 突然说。\n\n「关于猎杀者...关于我...」\n\n「关于...这个世界。」\n\n你静静地看着他，等待他说下去。\n\n【第二章 真相揭露】",
+      "background": "ch02-bunker",
+      "characters": [
+        "k7"
+      ],
+      "nextSceneId": "scene_056_world2_reveal"
+    },
+    {
+      "id": "scene_055_world2_solo",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "",
+      "dialogue": "「我一个人去。」\n\n你说。\n\n「太危险了！」\n\nEve-9 反对。\n\n「正因为危险，所以才要一个人。」\n\n你不想连累任何人。\n\n【第二章 独自行动】",
+      "background": "ch02-cyber-street",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_056_world2_solo_enter"
+    },
+    {
+      "id": "scene_055_world2_search",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们开始搜索这个区域。\n\n废墟中到处都是猎杀者的残骸。\n\n「这里有数据核心！」\n\nK-7 喊道。\n\n也许，答案就在这里面。\n\n【第二章 搜索】",
+      "background": "ch02-battlefield",
+      "characters": [
+        "k7"
+      ],
+      "nextSceneId": "scene_056_world2_data"
+    },
+    {
+      "id": "scene_055_world2_hope",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "Eve-9",
+      "dialogue": "「还有希望。」\n\nEve-9 说。\n\n「只要我们还活着，就有希望。」\n\n「对吧？」\n\n你看着她坚定的眼神，点了点头。\n\n【第二章 希望】",
+      "background": "ch02-bunker",
+      "characters": [
+        "eve9"
+      ],
+      "nextSceneId": "scene_056_world2_continue"
+    },
+    {
+      "id": "scene_055_world2_explore",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们继续探索这个区域。\n\n废墟深处，似乎有什么东西在发光。\n\n「那是什么？」\n\nK-7 问。\n\n你也不知道。\n\n但直觉告诉你，那很重要。\n\n【第二章 探索】",
+      "background": "ch02-battlefield",
+      "characters": [
+        "k7"
+      ],
+      "nextSceneId": "scene_056_world2_discover"
+    },
+    {
+      "id": "scene_055_world2_power",
+      "worldId": "world2",
+      "type": "dialogue",
+      "speaker": "",
+      "dialogue": "你感觉到了力量。\n\n从猎杀者核心中涌出的力量。\n\n「不要碰它！」\n\nK-7 警告道。\n\n但已经太晚了。\n\n力量涌入你的身体，你感觉到...\n\n变化。\n\n【第二章 力量】",
+      "background": "ch02-bunker",
+      "characters": [
+        "k7"
+      ],
+      "nextSceneId": "scene_056_world2_transform"
+    },
+    {
+      "id": "scene_055_world3_transition",
+      "worldId": "world2",
+      "type": "narration",
+      "speaker": "",
+      "title": "第二章结束：前往神弃之地",
+      "dialogue": "废土的旅程结束了。\n\n但你的旅程还在继续。\n\n前方，是第三个世界。\n\n神弃之地。\n\n那里有你要找的答案吗？\n\n那里有你想要的真相吗？\n\n无人知晓。\n\n但你必须去。\n\n【第二章 完】\n\n【前往第三章：神弃之地】",
+      "background": "ch02-battlefield",
+      "characters": [],
+      "nextSceneId": "scene_001_world3_start"
+    }
   ]
 }
