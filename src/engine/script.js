@@ -102,9 +102,33 @@ export const gameScript = {
       speaker: '神秘老人',
       type: 'dialogue',
       choices: [
-        { id: 'choice_001_a', text: '「圣骑士...我不明白。」', nextSceneId: 'scene_006_a' },
-        { id: 'choice_001_b', text: '「王国发生了什么？」', nextSceneId: 'scene_006_b' },
-        { id: 'choice_001_c', text: '「你认识我？」', nextSceneId: 'scene_006_c' }
+        { 
+          id: 'choice_001_a', 
+          text: '「圣骑士...我不明白。」', 
+          nextSceneId: 'scene_006_a',
+          effects: {
+            stats: { wisdom: +5 },
+            bonds: { world1: +3 }
+          }
+        },
+        { 
+          id: 'choice_001_b', 
+          text: '「王国发生了什么？」', 
+          nextSceneId: 'scene_006_b',
+          effects: {
+            stats: { wisdom: +3, courage: +3 },
+            bonds: { world1: +5 }
+          }
+        },
+        { 
+          id: 'choice_001_c', 
+          text: '「你认识我？」', 
+          nextSceneId: 'scene_006_c',
+          effects: {
+            stats: { compassion: +5 },
+            bonds: { world1: +4 }
+          }
+        }
       ],
       type: 'choice'
     },
@@ -155,8 +179,24 @@ export const gameScript = {
       speaker: '神秘老人',
       type: 'dialogue',
       choices: [
-        { id: 'choice_002_a', text: '【战斗】「我会守住这里！」', nextSceneId: 'scene_010_combat' },
-        { id: 'choice_002_b', text: '【逃跑】「我们从后门走！」', nextSceneId: 'scene_010_escape' }
+        { 
+          id: 'choice_002_a', 
+          text: '【战斗】「我会守住这里！」', 
+          nextSceneId: 'scene_010_combat',
+          effects: {
+            stats: { courage: +10, determination: +5 },
+            hiddenStats: { corruption: +3 }
+          }
+        },
+        { 
+          id: 'choice_002_b', 
+          text: '【逃跑】「我们从后门走！」', 
+          nextSceneId: 'scene_010_escape',
+          effects: {
+            stats: { wisdom: +8 },
+            hiddenStats: { chaos: +2 }
+          }
+        }
       ],
       type: 'choice'
     },
@@ -263,9 +303,47 @@ export const gameScript = {
       speaker: 'Eve-9',
       type: 'dialogue',
       choices: [
-        { id: 'choice_004_a', text: '【跟随】「带路吧。」', nextSceneId: 'scene_019_world2_follow' },
-        { id: 'choice_004_b', text: '【战斗】「我想会会这些猎杀者。」', nextSceneId: 'scene_019_world2_fight' },
-        { id: 'choice_004_c', text: '【质疑】「我为什么要逃？」', nextSceneId: 'scene_019_world2_question' }
+        { 
+          id: 'choice_004_a', 
+          text: '【跟随】「带路吧。」', 
+          nextSceneId: 'scene_019_world2_follow',
+          effects: {
+            stats: { wisdom: +5 },
+            bonds: { world2: +5 }
+          }
+        },
+        { 
+          id: 'choice_004_b', 
+          text: '【战斗】「我想会会这些猎杀者。」', 
+          nextSceneId: 'scene_019_world2_fight',
+          effects: {
+            stats: { courage: +10, determination: +5 },
+            hiddenStats: { corruption: +5 }
+          }
+        },
+        { 
+          id: 'choice_004_c', 
+          text: '【质疑】「我为什么要逃？」', 
+          nextSceneId: 'scene_019_world2_question',
+          effects: {
+            stats: { wisdom: +8 },
+            hiddenStats: { chaos: +3 }
+          }
+        },
+        // 条件解锁的特殊选项（需要勇气≥60）
+        { 
+          id: 'choice_004_d', 
+          text: '【领袖】「不，我们反击！跟我来！」', 
+          nextSceneId: 'scene_019_world2_lead',
+          conditions: {
+            stats: { courage: { min: 60 } }
+          },
+          fallbackSceneId: null, // 不满足条件时此选项隐藏
+          effects: {
+            stats: { courage: +5, determination: +10 },
+            bonds: { world2: +10 }
+          }
+        }
       ],
       type: 'choice'
     },

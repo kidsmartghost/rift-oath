@@ -7,7 +7,25 @@ export const useGameStore = defineStore('game', () => {
     currentSceneId: 'scene_001',
     completedScenes: [],
     choiceHistory: [],
-    stats: { courage: 50, wisdom: 50, compassion: 50, determination: 50 },
+    // 基础属性
+    stats: { 
+      courage: 50,      // 勇气
+      wisdom: 50,       // 智慧
+      compassion: 50,   // 同情
+      determination: 50 // 决心
+    },
+    // 隐藏属性
+    hiddenStats: {
+      corruption: 0,    // 腐化度 (0-100)
+      chaos: 0          // 混乱度 (0-100)
+    },
+    // 羁绊值
+    bonds: {
+      world1: 0,  // 永夜王国
+      world2: 0,  // 机械废土
+      world3: 0,  // 神弃之地
+      world4: 0   // 学园都市
+    },
     unlockedEndings: [],
     unlockedAchievements: [],
     unlockedMemories: [],
@@ -57,6 +75,8 @@ export const useGameStore = defineStore('game', () => {
       completedScenes: [],
       choiceHistory: [],
       stats: { courage: 50, wisdom: 50, compassion: 50, determination: 50 },
+      hiddenStats: { corruption: 0, chaos: 0 },
+      bonds: { world1: 0, world2: 0, world3: 0, world4: 0 },
       unlockedEndings: playerState.value.unlockedEndings || [],
       unlockedAchievements: playerState.value.unlockedAchievements || [],
       unlockedMemories: playerState.value.unlockedMemories || [],
@@ -68,10 +88,139 @@ export const useGameStore = defineStore('game', () => {
     isPlaying.value = true
   }
 
+  // 应用属性效果
+  function applyEffects(effects) {
+    if (!effects) return []
+    
+    const changes = []
+    
+    // 应用基础属性
+    if (effects.stats) {
+      Object.entries(effects.stats).forEach(([key, value]) => {
+        if (playerState.value.stats.hasOwnProperty(key)) {
+          const oldVal = playerState.value.stats[key]
+          playerState.value.stats[key] = Math.max(0, Math.min(100, oldVal + value))
+          const newVal = playerState.value.stats[key]
+          if (value !== 0) {
+            changes.push({ 
+              stat: key, 
+              delta: value,
+              from: oldVal,
+              to: newVal
+            })
+          }
+        }
+      })
+    }
+    
+    // 应用隐藏属性
+    if (effects.hiddenStats) {
+      Object.entries(effects.hiddenStats).forEach(([key, value]) => {
+        if (playerState.value.hiddenStats.hasOwnProperty(key)) {
+          const oldVal = playerState.value.hiddenStats[key]
+          playerState.value.hiddenStats[key] = Math.max(0, Math.min(100, oldVal + value))
+          const newVal = playerState.value.hiddenStats[key]
+          if (value !== 0) {
+            changes.push({ 
+              stat: key, 
+              delta: value,
+              from: oldVal,
+              to: newVal,
+              hidden: true
+            })
+          }
+        }
+      })
+    }
+    
+    // 应用羁绊值
+    if (effects.bonds) {
+      Object.entries(effects.bonds).forEach(([key, value]) => {
+        if (playerState.value.bonds.hasOwnProperty(key)) {
+          const oldVal = playerState.value.bonds[key]
+          playerState.value.bonds[key] = Math.max(0, Math.min(100, oldVal + value))
+          const newVal = playerState.value.bonds[key]
+          if (value !== 0) {
+            changes.push({ 
+              stat: `bond_${key}`, 
+              delta: value,
+              from: oldVal,
+              to: newVal
+            })
+          }
+        }
+      })
+    }
+    
+    return changes
+  }
+  
+  // 检查条件是否满足
+  function checkConditions(conditions) {
+    if (!conditions) return { met: true, failed: [] }
+    
+    const failed = []
+    
+    // 检查基础属性
+    if (conditions.stats) {
+      Object.entries(conditions.stats).forEach(([key, req]) => {
+        const val = playerState.value.stats[key]
+        if (req.min !== undefined && val < req.min) {
+          failed.push({ stat: key, required: `≥${req.min}`, current: val })
+        }
+        if (req.max !== undefined && val > req.max) {
+          failed.push({ stat: key, required: `≤${req.max}`, current: val })
+        }
+      })
+    }
+    
+    // 检查隐藏属性
+    if (conditions.hiddenStats) {
+      Object.entries(conditions.hiddenStats).forEach(([key, req]) => {
+        const val = playerState.value.hiddenStats[key]
+        if (req.min !== undefined && val < req.min) {
+          failed.push({ stat: key, required: `≥${req.min}`, current: val, hidden: true })
+        }
+        if (req.max !== undefined && val > req.max) {
+          failed.push({ stat: key, required: `≤${req.max}`, current: val, hidden: true })
+        }
+      })
+    }
+    
+    // 检查羁绊值
+    if (conditions.bonds) {
+      Object.entries(conditions.bonds).forEach(([key, req]) => {
+        const val = playerState.value.bonds[key]
+        if (req.min !== undefined && val < req.min) {
+          failed.push({ stat: `bond_${key}`, required: `≥${req.min}`, current: val })
+        }
+      })
+    }
+    
+    return { met: failed.length === 0, failed }
+  }
+  
   function makeChoice(choice) {
     playerState.value.choiceHistory.push(choice.id)
-    playerState.value.currentSceneId = choice.nextSceneId
-    checkUnlocks()
+    
+    // 应用效果
+    const changes = applyEffects(choice.effects)
+    
+    // 确定下一场景
+    let nextSceneId = choice.nextSceneId
+    
+    // 如果有条件检查，根据结果选择场景
+    if (choice.conditions) {
+      const { met } = checkConditions(choice.conditions)
+      if (!met && choice.fallbackSceneId) {
+        nextSceneId = choice.fallbackSceneId
+      }
+    }
+    
+    playerState.value.currentSceneId = nextSceneId
+    
+    // 返回变化用于显示
+    return changes
   }
 
   function completeScene(sceneId) {
@@ -175,6 +324,8 @@ export const useGameStore = defineStore('game', () => {
     endingProgress,
     startNewGame,
     makeChoice,
+    applyEffects,
+    checkConditions,
     completeScene,
     unlockEnding,
     checkUnlocks,
