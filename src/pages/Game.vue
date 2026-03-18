@@ -392,10 +392,7 @@ function checkEndingConditions(conditions) {
 
 
 // 获取世界名称
-function getWorldName(worldId) {
-  const world = gameScript.worlds.find(w => w.id === worldId)
-  return world?.name || '这个世界'
-}
+
 
 function startDialogue(text) {
   displayedText.value = ''
@@ -427,20 +424,32 @@ function onDialogueClick() {
 }
 
 function onChoiceClick(choice) {
+  console.log('点击选项:', choice.id, choice.text)
+  console.log('选项条件:', choice.conditions)
+  console.log('玩家属性:', playerState.value)
+  
   // 检查选择是否可用（使用 ScriptLoader 的函数）
-  if (!isChoiceAvailable(choice, playerState.value)) {
+  const available = isChoiceAvailable(choice, playerState.value)
+  console.log('选项可用:', available)
+  
+  if (!available) {
+    console.log('选项不可用，播放点击音效')
     if (audioManager) audioManager.playClick()
     return
   }
   
+  console.log('选项可用，继续处理')
   if (audioManager) audioManager.playSelect()
   
   // 应用效果（使用 ScriptLoader 的函数）
   const changes = applyChoiceEffects(choice, playerState.value)
+  console.log('属性变化:', changes)
   
   // 更新场景 ID
   playerState.value.choiceHistory.push(choice.id)
   playerState.value.currentSceneId = choice.nextSceneId
+  
+  console.log('下一场景 ID:', choice.nextSceneId)
   
   gameStore.completeScene(currentScene.value.id)
   gameStore.checkUnlocks()
@@ -458,7 +467,10 @@ function onChoiceClick(choice) {
   }
   
   if (choice.nextSceneId) {
+    console.log('加载下一场景:', choice.nextSceneId)
     loadScene(choice.nextSceneId)
+  } else {
+    console.warn('没有下一场景 ID!')
   }
 }
 
@@ -476,15 +488,18 @@ function showStatChangesNotification(changes) {
 
 // 检查选择是否可用（使用 ScriptLoader 的函数）
 function isChoiceAvailableLocal(choice) {
-  return isChoiceAvailable(choice, playerState.value)
+  const result = isChoiceAvailable(choice, playerState.value)
+  console.log('检查选项可用:', choice.id, result)
+  return result
 }
 
 // 获取失败原因（使用 ScriptLoader 的函数）
 function getFailedReasonLocal(choice) {
   const reason = window.ScriptLoaderUtils?.getChoiceFailedReason 
     ? window.ScriptLoaderUtils.getChoiceFailedReason(choice, playerState.value)
-    : ''
-  return reason || '条件不足'
+    : '条件不足'
+  console.log('失败原因:', reason)
+  return reason
 }
 
 // 获取属性图标
