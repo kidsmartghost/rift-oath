@@ -10,10 +10,10 @@ permissions:
   pages: write
   id-token: write
 
-# 允许一个部署
+# 允许一个部署，取消进行中的部署
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
