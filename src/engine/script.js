@@ -378,8 +378,24 @@ export const gameScript = {
       speaker: '',
       type: 'narration',
       choices: [
-        { id: 'choice_005_a', text: '【提问】「猎杀者，你们是什么？」', nextSceneId: 'scene_021_world2_talk' },
-        { id: 'choice_005_b', text: '【战斗】「来吧。」', nextSceneId: 'scene_020_world2_combat' }
+        { 
+          id: 'choice_005_a', 
+          text: '【提问】「猎杀者，你们是什么？」', 
+          nextSceneId: 'scene_021_world2_talk',
+          effects: {
+            stats: { wisdom: +8, compassion: +3 },
+            bonds: { world2: +3 }
+          }
+        },
+        { 
+          id: 'choice_005_b', 
+          text: '【战斗】「来吧。」', 
+          nextSceneId: 'scene_020_world2_combat',
+          effects: {
+            stats: { courage: +10, determination: +5 },
+            hiddenStats: { corruption: +5 }
+          }
+        }
       ],
       type: 'choice'
     },
@@ -414,8 +430,25 @@ export const gameScript = {
       speaker: 'Eve-9',
       type: 'dialogue',
       choices: [
-        { id: 'choice_006_a', text: '「我看到了另一个世界...」', nextSceneId: 'scene_024_world2' },
-        { id: 'choice_006_b', text: '「没什么，我们继续走吧。」', nextSceneId: 'scene_024_world2_b' }
+        { 
+          id: 'choice_006_a', 
+          text: '「我看到了另一个世界...」', 
+          nextSceneId: 'scene_024_world2',
+          effects: {
+            stats: { wisdom: +5 },
+            bonds: { world2: +5 },
+            hiddenStats: { chaos: +2 }
+          }
+        },
+        { 
+          id: 'choice_006_b', 
+          text: '「没什么，我们继续走吧。」', 
+          nextSceneId: 'scene_024_world2_b',
+          effects: {
+            stats: { determination: +5 },
+            hiddenStats: { corruption: +2 }
+          }
+        }
       ],
       type: 'choice'
     },
@@ -525,8 +558,24 @@ export const gameScript = {
       speaker: '米迦勒',
       type: 'dialogue',
       choices: [
-        { id: 'choice_007_a', text: '「为什么告诉我这些？」', nextSceneId: 'scene_036_world3_a' },
-        { id: 'choice_007_b', text: '「我能做什么？」', nextSceneId: 'scene_036_world3_b' }
+        { 
+          id: 'choice_007_a', 
+          text: '「为什么告诉我这些？」', 
+          nextSceneId: 'scene_036_world3_a',
+          effects: {
+            stats: { wisdom: +8 },
+            bonds: { world3: +5 }
+          }
+        },
+        { 
+          id: 'choice_007_b', 
+          text: '「我能做什么？」', 
+          nextSceneId: 'scene_036_world3_b',
+          effects: {
+            stats: { courage: +5, compassion: +5 },
+            bonds: { world3: +8 }
+          }
+        }
       ],
       type: 'choice'
     },
@@ -628,8 +677,24 @@ export const gameScript = {
       speaker: '观察者',
       type: 'dialogue',
       choices: [
-        { id: 'choice_008_a', text: '「创造者？」', nextSceneId: 'scene_047_world3_a' },
-        { id: 'choice_008_b', text: '「我不相信。」', nextSceneId: 'scene_047_world3_b' }
+        { 
+          id: 'choice_008_a', 
+          text: '「创造者？」', 
+          nextSceneId: 'scene_047_world3_a',
+          effects: {
+            stats: { wisdom: +10 },
+            hiddenStats: { chaos: +5 }
+          }
+        },
+        { 
+          id: 'choice_008_b', 
+          text: '「我不相信。」', 
+          nextSceneId: 'scene_047_world3_b',
+          effects: {
+            stats: { determination: +10 },
+            hiddenStats: { corruption: +3 }
+          }
+        }
       ],
       type: 'choice'
     },
@@ -723,13 +788,82 @@ export const gameScript = {
       speaker: '创造者',
       type: 'dialogue',
       choices: [
-        { id: 'choice_009_a', text: '「阻止他。」', nextSceneId: 'scene_057_final_a' },
-        { id: 'choice_009_b', text: '「接受他。」', nextSceneId: 'scene_057_final_b' },
-        { id: 'choice_009_c', text: '「问他一个问题。」', nextSceneId: 'scene_057_final_c' }
+        { 
+          id: 'choice_009_a', 
+          text: '「阻止他。」', 
+          nextSceneId: 'scene_057_final_a',
+          effects: {
+            stats: { courage: +10, determination: +10 },
+            hiddenStats: { corruption: +10 }
+          }
+        },
+        { 
+          id: 'choice_009_b', 
+          text: '「接受他。」', 
+          nextSceneId: 'scene_057_final_b',
+          effects: {
+            stats: { compassion: +10, wisdom: +5 },
+            hiddenStats: { chaos: +10 }
+          }
+        },
+        { 
+          id: 'choice_009_c', 
+          text: '「问他一个问题。」', 
+          nextSceneId: 'scene_057_final_c',
+          effects: {
+            stats: { wisdom: +15 }
+          }
+        },
+        // 特殊选项：高腐化路线（需要腐化度≥50）
+        { 
+          id: 'choice_009_d', 
+          text: '【毁灭】「毁灭吧，所有世界。」', 
+          nextSceneId: 'scene_057_final_destroy',
+          conditions: {
+            hiddenStats: { corruption: { min: 50 } }
+          },
+          fallbackSceneId: null,
+          effects: {
+            hiddenStats: { corruption: +20 }
+          }
+        },
+        // 特殊选项：高羁绊路线（需要任意世界羁绊≥50）
+        { 
+          id: 'choice_009_e', 
+          text: '【守护】「为了所有世界的人！」', 
+          nextSceneId: 'scene_057_final_protect',
+          conditions: {
+            bonds: { world1: { min: 30 } }
+          },
+          fallbackSceneId: null,
+          effects: {
+            stats: { determination: +15, compassion: +10 },
+            bonds: { world1: +10, world2: +10, world3: +10, world4: +10 }
+          }
+        }
       ],
       type: 'choice'
     },
     
+    // 特殊结局路线
+    {
+      id: 'scene_057_final_destroy',
+      worldId: 'world5',
+      title: '毁灭之路',
+      dialogue: '「毁灭吧。」\n\n你感受着体内涌动的黑暗力量。\n\n腐化已经吞噬了你，现在，你只想看着一切燃烧。',
+      speaker: '？？？',
+      type: 'narration',
+      nextSceneId: 'ending_destroyer'
+    },
+    {
+      id: 'scene_057_final_protect',
+      worldId: 'world5',
+      title: '守护之路',
+      dialogue: '「为了所有世界！」\n\n你感受到了羁绊的力量。\n\n艾莉娅、K-7、洛恩、林小满...他们的记忆在你心中闪耀。',
+      speaker: '？？？',
+      type: 'narration',
+      nextSceneId: 'scene_058_final_confront'
+    },
     // 最终选择分支
     {
       id: 'scene_057_final_a',
@@ -754,8 +888,24 @@ export const gameScript = {
       speaker: '？？？',
       type: 'dialogue',
       choices: [
-        { id: 'choice_010_a', text: '【说服】「让他们继续存在吧。」', nextSceneId: 'scene_058_final_persuade' },
-        { id: 'choice_010_b', text: '【挑战】「你根本没有答案，对吧？」', nextSceneId: 'scene_058_final_challenge' }
+        { 
+          id: 'choice_010_a', 
+          text: '【说服】「让他们继续存在吧。」', 
+          nextSceneId: 'scene_058_final_persuade',
+          effects: {
+            stats: { compassion: +15, wisdom: +10 },
+            bonds: { world1: +5, world2: +5, world3: +5, world4: +5 }
+          }
+        },
+        { 
+          id: 'choice_010_b', 
+          text: '【挑战】「你根本没有答案，对吧？」', 
+          nextSceneId: 'scene_058_final_challenge',
+          effects: {
+            stats: { courage: +10, determination: +10 },
+            hiddenStats: { chaos: +5 }
+          }
+        }
       ],
       type: 'choice'
     },
@@ -768,9 +918,30 @@ export const gameScript = {
       speaker: '？？？',
       type: 'narration',
       choices: [
-        { id: 'choice_11_a', text: '【毁灭】「我选择毁灭。」', nextSceneId: 'ending_destroyer' },
-        { id: 'choice_11_b', text: '【牺牲】「我选择牺牲自己。」', nextSceneId: 'ending_sacrifice' },
-        { id: 'choice_11_c', text: '【守护】「我选择守护。」', nextSceneId: 'ending_guardian' }
+        { 
+          id: 'choice_11_a', 
+          text: '【毁灭】「我选择毁灭。」', 
+          nextSceneId: 'ending_destroyer',
+          effects: { hiddenStats: { corruption: +30 } }
+        },
+        { 
+          id: 'choice_11_b', 
+          text: '【牺牲】「我选择牺牲自己。」', 
+          nextSceneId: 'ending_sacrifice',
+          effects: { 
+            stats: { compassion: +20 },
+            hiddenStats: { corruption: -20 }
+          }
+        },
+        { 
+          id: 'choice_11_c', 
+          text: '【守护】「我选择守护。」', 
+          nextSceneId: 'ending_guardian',
+          effects: { 
+            stats: { determination: +20, courage: +10 },
+            bonds: { world1: +10, world2: +10, world3: +10, world4: +10 }
+          }
+        }
       ],
       type: 'choice'
     },
@@ -781,8 +952,24 @@ export const gameScript = {
       speaker: '？？？',
       type: 'narration',
       choices: [
-        { id: 'choice_12_a', text: '【统治】「我选择统治所有世界。」', nextSceneId: 'ending_tyant' },
-        { id: 'choice_12_b', text: '【解放】「我选择让所有世界自由。」', nextSceneId: 'ending_liberator' }
+        { 
+          id: 'choice_12_a', 
+          text: '【统治】「我选择统治所有世界。」', 
+          nextSceneId: 'ending_tyant',
+          effects: { 
+            stats: { determination: +15 },
+            hiddenStats: { corruption: +15, chaos: +10 }
+          }
+        },
+        { 
+          id: 'choice_12_b', 
+          text: '【解放】「我选择让所有世界自由。」', 
+          nextSceneId: 'ending_liberator',
+          effects: { 
+            stats: { wisdom: +15, compassion: +10 },
+            bonds: { world1: +15, world2: +15, world3: +15, world4: +15 }
+          }
+        }
       ],
       type: 'choice'
     },
