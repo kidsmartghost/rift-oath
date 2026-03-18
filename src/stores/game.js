@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { achievements, memoryFragments, checkAchievements, checkMemoryFragments } from '@/data/achievements'
+import { gameScript } from '@/engine/script'
 
 export const useGameStore = defineStore('game', () => {
   const playerState = ref({
@@ -230,8 +231,21 @@ export const useGameStore = defineStore('game', () => {
     checkUnlocks()
   }
 
-  // 记录结局解锁
-  function unlockEnding(endingId) {
+  // 记录结局解锁（带条件检查）
+  function unlockEnding(endingId, force = false) {
+    // 检查解锁条件（除非强制解锁）
+    if (!force) {
+      const ending = gameScript.endings?.find(e => e.id === endingId)
+      if (ending?.unlockConditions) {
+        const { met } = checkConditions(ending.unlockConditions)
+        if (!met) {
+          // 条件不满足，解锁默认结局
+          unlockEnding('ending_lost', true)
+          return
+        }
+      }
+    }
+    
     if (!playerState.value.unlockedEndings.includes(endingId)) {
       playerState.value.unlockedEndings.push(endingId)
       checkUnlocks()

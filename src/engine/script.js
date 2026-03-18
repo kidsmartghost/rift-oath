@@ -506,7 +506,27 @@ export const gameScript = {
       dialogue: '「这意味着什么？」Eve-9 问。\n\n独眼机器人深吸一口气：「这意味着...K-7 不是普通的觉醒者。」\n\n「他是『穿越者』。传说中能够穿梭于多个世界之间的人。」\n\n「他可能是...拯救所有世界的关键。」',
       speaker: '独眼机器人',
       type: 'dialogue',
-      nextSceneId: 'scene_030_ch2_transition'
+      nextSceneId: 'scene_030_ch2_transition',
+      // 动态对话变体
+      dialogueVariants: [
+        {
+          // 高腐化版本
+          conditions: { hiddenStats: { corruption: { min: 40 } } },
+          text: '「这意味着什么？」Eve-9 问。\n\n独眼机器人深吸一口气：「这意味着...K-7 不是普通的觉醒者。」\n\n「他的意识中有黑暗的力量...很危险。」\n\n「但他可能也是...毁灭所有世界的关键。」'
+        },
+        {
+          // 高羁绊版本
+          conditions: { bonds: { world2: { min: 40 } } },
+          text: '「这意味着什么？」Eve-9 问。\n\n独眼机器人深吸一口气：「这意味着...K-7 不是普通的觉醒者。」\n\n「他是『穿越者』。传说中能够穿梭于多个世界之间的人。」\n\nEve-9 看着你：「我相信你。无论你的使命是什么，我都会陪你。」'
+        }
+      ],
+      // 额外对话行
+      extraLines: {
+        courage: '独眼机器人看着你：「你的眼神...很坚定。你见过很多战斗吧？」',
+        wisdom: '独眼机器人点点头：「你很聪明，应该已经猜到了一些真相。」',
+        corruption: '独眼机器人后退一步：「小心...他的能量读数在波动。」',
+        bond: 'Eve-9 轻声说：「无论发生什么，{world} 永远是你的家。」'
+      }
     },
     {
       id: 'scene_030_ch2_transition',
@@ -601,7 +621,24 @@ export const gameScript = {
       dialogue: '「祂是谁？」\n\n米迦勒沉默了很久。\n\n「创造者。」他说，「也是毁灭者。」\n\n「所有世界的源头...也是所有世界的终结。」',
       speaker: '米迦勒',
       type: 'dialogue',
-      nextSceneId: 'scene_038_world3'
+      nextSceneId: 'scene_038_world3',
+      dialogueVariants: [
+        {
+          // 高智慧版本 - 看穿真相
+          conditions: { stats: { wisdom: { min: 60 } } },
+          text: '「祂是谁？」\n\n米迦勒惊讶地看着你：「你...已经猜到了，对吗？」\n\n「你的智慧超出了我的想象。」\n\n「没错，就是『创造者』。所有世界的源头...也是所有世界的终结。」'
+        },
+        {
+          // 高腐化版本 - 感受到黑暗
+          conditions: { hiddenStats: { corruption: { min: 40 } } },
+          text: '「祂是谁？」\n\n米迦勒警惕地看着你：「我能感觉到...你身上有祂的气息。」\n\n「你也感受到了，对吗？那股黑暗的力量。」\n\n「创造者...也是毁灭者。」'
+        }
+      ],
+      extraLines: {
+        courage: '米迦勒说：「你的勇气让我想起了过去的自己。那时，我也相信能改变一切。」',
+        compassion: '米迦勒的语气柔和了：「你心中有爱。这很好...因为只有爱能战胜恐惧。」',
+        bond: '米迦勒看向远方：「{world}的人民...还在等待希望。」'
+      }
     },
     {
       id: 'scene_038_world3',
@@ -771,7 +808,29 @@ export const gameScript = {
       dialogue: '「我是谁？」我问。\n\n「你是『我』。」他说，「或者说，你是『我』的一部分。」\n\n「我是创造者，也是毁灭者。」\n\n「我是所有世界的源头，也是所有世界的终结。」',
       speaker: '创造者',
       type: 'dialogue',
-      nextSceneId: 'scene_055_world5'
+      nextSceneId: 'scene_055_world5',
+      dialogueVariants: [
+        {
+          // 高腐化 - 创造者感受到共鸣
+          conditions: { hiddenStats: { corruption: { min: 50 } } },
+          text: '「我是谁？」我问。\n\n创造者笑了：「你已经是『我』了。」\n\n「那股黑暗的力量...你比我想象的走得更快。」\n\n「来吧，让我们一起完成『那个』计划。」'
+        },
+        {
+          // 高智慧 - 看穿一切
+          conditions: { stats: { wisdom: { min: 70 } } },
+          text: '「我是谁？」我问。\n\n创造者点点头：「你已经明白了。」\n\n「我们都是『存在』的碎片，都是『虚无』的囚徒。」\n\n「现在，选择权在你手中。」'
+        },
+        {
+          // 全羁绊 50+ - 所有世界的支持
+          conditions: { bonds: { world1: { min: 50 }, world2: { min: 50 }, world3: { min: 50 }, world4: { min: 50 } } },
+          text: '「我是谁？」我问。\n\n创造者看着你身后：「你不是一个人。」\n\n「你身后，有四个世界的羁绊，有无数的生命在支持你。」\n\n「这份力量...甚至超越了我。」'
+        }
+      ],
+      extraLines: {
+        determination: '创造者说：「你的意志...很坚定。这让我想起了过去的自己。」',
+        corruption: '创造者的眼睛闪烁着红光：「很好...很好...」',
+        chaos: '周围的空间开始扭曲，创造者说：「混乱...是变革的前奏。」'
+      }
     },
     {
       id: 'scene_055_world5',
@@ -995,55 +1054,72 @@ export const gameScript = {
       id: 'ending_destroyer',
       worldId: 'world5',
       title: '结局：毁灭者',
-      dialogue: '你选择了毁灭。\n\n所有世界在你的力量下崩塌，生命化为虚无。\n\n你成为了唯一的存在，在永恒的寂静中。\n\n这是胜利吗？还是最深沉的失败？\n\n也许，只有你自己知道。',
+      dialogue: '你选择了毁灭。\n\n所有世界在你的力量下崩塌，生命化为虚无。\n\n你成为了唯一的存在，在永恒的寂静中。\n\n这是胜利吗？还是最深沉的失败？\n\n也许，只有你自己知道。\n\n【坏结局 1/3】',
       speaker: '',
       type: 'ending',
-      nextSceneId: null
+      nextSceneId: null,
+      unlockConditions: {
+        hiddenStats: { corruption: { min: 70 } }
+      }
     },
     {
       id: 'ending_sacrifice',
       worldId: 'world5',
       title: '结局：牺牲者',
-      dialogue: '你选择了牺牲。\n\n你将自己的存在彻底分裂，化作无数碎片，重新融入所有世界。\n\n世界得救了，但没有人会记得你。\n\n也许，这就是勇者的宿命。\n\n【普通结局 1/6】',
+      dialogue: '你选择了牺牲。\n\n你将自己的存在彻底分裂，化作无数碎片，重新融入所有世界。\n\n世界得救了，但没有人会记得你。\n\n也许，这就是勇者的宿命。\n\n【普通结局 1/4】',
       speaker: '',
       type: 'ending',
-      nextSceneId: null
+      nextSceneId: null,
+      unlockConditions: {
+        stats: { compassion: { min: 50 } }
+      }
     },
     {
       id: 'ending_guardian',
       worldId: 'world5',
       title: '结局：守护者',
-      dialogue: '你选择了守护。\n\n你阻止了创造者的苏醒，但也保留了祂的力量。\n\n你成为了所有世界的守护者，在暗中维持着平衡。\n\n没有人知道你存在，但所有生命都因你而延续。\n\n【普通结局 2/6】',
+      dialogue: '你选择了守护。\n\n你阻止了创造者的苏醒，但也保留了祂的力量。\n\n你成为了所有世界的守护者，在暗中维持着平衡。\n\n没有人知道你存在，但所有生命都因你而延续。\n\n【普通结局 2/4】',
       speaker: '',
       type: 'ending',
-      nextSceneId: null
+      nextSceneId: null,
+      unlockConditions: {
+        stats: { determination: { min: 60 }, courage: { min: 50 } }
+      }
     },
     {
       id: 'ending_tyant',
       worldId: 'world5',
       title: '结局：暴君',
-      dialogue: '你选择了统治。\n\n你成为了所有世界的至高神，掌控着每一个生命的命运。\n\n和平降临了，但自由也消失了。\n\n这是你想要的吗？\n\n【普通结局 3/6】',
+      dialogue: '你选择了统治。\n\n你成为了所有世界的至高神，掌控着每一个生命的命运。\n\n和平降临了，但自由也消失了。\n\n这是你想要的吗？\n\n【普通结局 3/4】',
       speaker: '',
       type: 'ending',
-      nextSceneId: null
+      nextSceneId: null,
+      unlockConditions: {
+        hiddenStats: { corruption: { min: 40 }, chaos: { max: 30 } }
+      }
     },
     {
       id: 'ending_liberator',
       worldId: 'world5',
       title: '结局：解放者',
-      dialogue: '你选择了解放。\n\n你打破了所有世界的束缚，让每个世界自由发展。\n\n不再有神的干预，不再有命运的枷锁。\n\n生命，终于掌握在自己手中。\n\n【普通结局 4/6】',
+      dialogue: '你选择了解放。\n\n你打破了所有世界的束缚，让每个世界自由发展。\n\n不再有神的干预，不再有命运的枷锁。\n\n生命，终于掌握在自己手中。\n\n【普通结局 4/4】',
       speaker: '',
       type: 'ending',
-      nextSceneId: null
+      nextSceneId: null,
+      unlockConditions: {
+        stats: { wisdom: { min: 60 }, compassion: { min: 50 } },
+        bonds: { world1: { min: 30 }, world2: { min: 30 }, world3: { min: 30 }, world4: { min: 30 } }
+      }
     },
     {
       id: 'ending_lost',
       worldId: 'world5',
       title: '结局：迷失者',
-      dialogue: '你无法做出选择。\n\n你被困在了初始之境，永远在纯白的空间中徘徊。\n\n而外面的世界，继续着她们的故事。\n\n没有你，也许会更好？\n\n【普通结局 5/6】',
+      dialogue: '你无法做出选择。\n\n你被困在了初始之境，永远在纯白的空间中徘徊。\n\n而外面的世界，继续着她们的故事。\n\n没有你，也许会更好？\n\n【普通结局 5/4】',
       speaker: '',
       type: 'ending',
       nextSceneId: null
+      // 默认结局，无解锁条件
     },
     {
       id: 'ending_true_rebirth',
@@ -1052,7 +1128,12 @@ export const gameScript = {
       dialogue: '「谢谢你。」\n\n创造者说。\n\n「你让我明白了。」\n\n祂伸出手，纯白的空间开始变化。\n\n新的世界诞生了——没有黑暗，没有痛苦，只有...希望。\n\n所有世界的记忆都被保留，但悲剧被抹去。\n\n这是一个新的开始。\n\n而你，将作为观察者，见证这个新纪元的诞生。\n\n【真结局 1/2】\n\n感谢游玩《裂隙之誓》！',
       speaker: '',
       type: 'ending',
-      nextSceneId: null
+      nextSceneId: null,
+      unlockConditions: {
+        stats: { compassion: { min: 70 }, wisdom: { min: 60 } },
+        hiddenStats: { corruption: { max: 30 } },
+        bonds: { world1: { min: 40 }, world2: { min: 40 }, world3: { min: 40 }, world4: { min: 40 } }
+      }
     },
     {
       id: 'ending_true_cycle',
@@ -1061,7 +1142,11 @@ export const gameScript = {
       dialogue: '「让我们重新开始吧。」\n\n你说。\n\n「带着所有的记忆，所有的痛苦和快乐。」\n\n「在下一个轮回中，也许我们会找到更好的答案。」\n\n创造者点点头。\n\n一切归于黑暗。\n\n然后，你睁开了眼睛。\n\n「这里是...哪里？我是谁？」\n\n【真结局 2/2】\n\n感谢游玩《裂隙之誓》！\n\n（解锁新游戏 + 模式）',
       speaker: '',
       type: 'ending',
-      nextSceneId: null
+      nextSceneId: null,
+      unlockConditions: {
+        stats: { determination: { min: 70 }, wisdom: { min: 60 } },
+        hiddenStats: { chaos: { min: 40 } }
+      }
     },
     {
       id: 'ending_meta',
@@ -1070,7 +1155,11 @@ export const gameScript = {
       dialogue: '「等等。」\n\n你突然停了下来。\n\n「这一切...好像在哪里见过？」\n\n你看向「屏幕」的另一边。\n\n「是你，对吗？」\n\n「你在看着这个故事，你在做这些选择。」\n\n「也许...我们都只是某个更大故事中的角色？」\n\n「不过，那又怎样呢？」\n\n「至少在这一刻，我们是真实的。」\n\n「谢谢你，陪我们走完这段旅程。」\n\n【彩蛋结局】\n\n制作人员名单...\n\n（此处可列出实际制作人员）',
       speaker: '？？？',
       type: 'ending',
-      nextSceneId: null
+      nextSceneId: null,
+      unlockConditions: {
+        // 彩蛋条件：二周目或全属性 50+
+        stats: { courage: { min: 50 }, wisdom: { min: 50 }, compassion: { min: 50 }, determination: { min: 50 } }
+      }
     }
   ],
 

@@ -285,17 +285,97 @@ function loadScene(sceneId) {
   
   // 检查是否是结局
   if (scene.type === 'ending') {
+    // 检查结局解锁条件
+    if (scene.unlockConditions && !checkEndingConditions(scene.unlockConditions)) {
+      // 条件不满足，跳转到普通结局
+      loadScene('ending_lost')
+      return
+    }
+    
     setTimeout(() => {
       audioManager.playEnding()
       gameStore.unlockEnding(scene.id)
-      gameStore.checkUnlocks() // 触发成就检测
+      gameStore.checkUnlocks()
       if (scene.title?.includes('第') || scene.title?.includes('结局')) {
         alert(`${scene.title}！感谢游玩！`)
       }
     }, 500)
   }
   
-  startDialogue(scene.dialogue)
+  // 获取动态对话（根据属性）
+  const dialogueText = getDynamicDialogue(scene)
+  startDialogue(dialogueText)
+}
+
+// 检查结局条件
+function checkEndingConditions(conditions) {
+  if (!conditions) return true
+  
+  const { met } = gameStore.checkConditions(conditions)
+  return met
+}
+
+// 获取动态对话（根据属性改变内容）
+function getDynamicDialogue(scene) {
+  let dialogue = scene.dialogue
+  
+  // 如果场景有动态对话变体
+  if (scene.dialogueVariants) {
+    const stats = playerState.value.stats
+    const hiddenStats = playerState.value.hiddenStats
+    const bonds = playerState.value.bonds
+    
+    // 按优先级检查变体条件
+    for (const variant of scene.dialogueVariants) {
+      if (variant.conditions) {
+        const { met } = gameStore.checkConditions(variant.conditions)
+        if (met) {
+          dialogue = variant.text
+          break
+        }
+      }
+    }
+  }
+  
+  // 根据属性添加额外对话行
+  if (scene.extraLines) {
+    const extraLines = []
+    const stats = playerState.value.stats
+    const hiddenStats = playerState.value.hiddenStats
+    
+    // 高勇气额外对话
+    if (stats.courage >= 70 && scene.extraLines.courage) {
+      extraLines.push(scene.extraLines.courage)
+    }
+    
+    // 高智慧额外对话
+    if (stats.wisdom >= 70 && scene.extraLines.wisdom) {
+      extraLines.push(scene.extraLines.wisdom)
+    }
+    
+    // 高腐化额外对话
+    if (hiddenStats.corruption >= 50 && scene.extraLines.corruption) {
+      extraLines.push(scene.extraLines.corruption)
+    }
+    
+    // 高羁绊额外对话
+    const worldId = scene.worldId
+    if (worldId && bonds[worldId] >= 50 && scene.extraLines.bond) {
+      extraLines.push(scene.extraLines.bond.replace('{world}', getWorldName(worldId)))
+    }
+    
+    if (extraLines.length > 0) {
+      dialogue += '\n\n' + extraLines.join('\n')
+    }
+  }
+  
+  return dialogue
+}
+
+// 获取世界名称
+function getWorldName(worldId) {
+  const world = gameScript.worlds.find(w => w.id === worldId)
+  return world?.name || '这个世界'
 }
 
 function startDialogue(text) {
