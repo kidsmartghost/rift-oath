@@ -750,30 +750,31 @@ onMounted(async () => {
   left: 0;
   width: 100%;
   height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.9) 100%);
 }
 
-/* 背景图片层 */
+/* 背景图片层 - 上半部分显示 */
 .background-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 65%;
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
   z-index: 1;
 }
 
-/* 角色立绘层 */
+/* 角色立绘层 - 在背景区域内 */
 .character-layer {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 65%;
   pointer-events: none;
-  z-index: 10;
+  z-index: 2;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -782,10 +783,10 @@ onMounted(async () => {
 /* 角色立绘 */
 .character-portrait {
   position: absolute;
-  bottom: 0;
+  bottom: 10%;
   width: 25%;
   max-width: 400px;
-  height: 70%;
+  height: 80%;
   background-size: contain;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -867,36 +868,41 @@ onMounted(async () => {
 
 .dialogue-layer {
   width: 100%;
-  padding: 15px 20px 10px 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 25%, rgba(0,0,0,0.5) 55%, transparent 100%);
+  padding: 20px 25px 15px 25px;
+  background: rgba(10, 10, 15, 0.95);
+  border-top: 2px solid rgba(139, 0, 0, 0.6);
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 20;
-  max-height: 50vh;
+  max-height: 40vh;
+  min-height: 180px;
 }
 
-/* 有选择支时，对话区域收缩留出空间 */
+/* 有选择支时，对话区域扩展留出空间 */
 .main-content:has(.choices-layer) .dialogue-layer {
-  max-height: 38vh;
-  padding-bottom: 5px;
+  max-height: 35vh;
+  border-top: 2px solid rgba(139, 0, 0, 0.4);
 }
 
 .scene-title {
-  font-size: 14px;
-  color: rgba(255,255,255,0.5);
-  letter-spacing: 3px;
-  margin-bottom: 12px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
   text-align: center;
   flex-shrink: 0;
+  text-transform: uppercase;
 }
 
 .speaker-name {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: bold;
-  color: #e0d0e8;
-  margin-bottom: 8px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  color: #ff6b6b;
+  margin-bottom: 10px;
+  padding-left: 12px;
+  border-left: 3px solid #ff6b6b;
   flex-shrink: 0;
 }
 
@@ -928,12 +934,15 @@ onMounted(async () => {
 }
 
 .dialogue-text {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #ffffff;
+  font-size: 17px;
+  line-height: 1.9;
+  color: #f0f0f0;
   white-space: pre-wrap;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-  padding: 5px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+  padding: 10px 15px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  border-left: 3px solid rgba(139, 0, 0, 0.5);
   user-select: none;
   -webkit-user-select: none;
 }
