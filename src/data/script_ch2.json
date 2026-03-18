@@ -1701,7 +1701,7 @@
       "characters": [
         "eve9"
       ],
-      "nextSceneId": "scene_041_world2_combat_result"
+      "nextSceneId": null
     },
     {
       "id": "scene_044_world2_enter",
@@ -1715,7 +1715,7 @@
         "eve9",
         "k7"
       ],
-      "nextSceneId": "scene_045_world2_control"
+      "nextSceneId": null
     },
     {
       "id": "scene_055_world2_rush",
@@ -1731,12 +1731,12 @@
         {
           "id": "choice_055_rush",
           "text": "【强攻】直接冲进去",
-          "nextSceneId": "scene_056_world2_attack"
+          "nextSceneId": null
         },
         {
           "id": "choice_055_stealth",
           "text": "【潜行】悄悄接近",
-          "nextSceneId": "scene_056_world2_stealth"
+          "nextSceneId": null
         }
       ]
     },
@@ -1750,7 +1750,7 @@
       "characters": [
         "k7"
       ],
-      "nextSceneId": "scene_056_world2_plan"
+      "nextSceneId": null
     },
     {
       "id": "scene_055_world2_wait",
@@ -1762,7 +1762,7 @@
       "characters": [
         "eve9"
       ],
-      "nextSceneId": "scene_056_world2_opportunity"
+      "nextSceneId": null
     },
     {
       "id": "scene_055_world2_close",
@@ -1774,7 +1774,7 @@
       "characters": [
         "k7"
       ],
-      "nextSceneId": "scene_056_world2_truth"
+      "nextSceneId": null
     },
     {
       "id": "scene_055_world2_connection",
@@ -1786,7 +1786,7 @@
       "characters": [
         "eve9"
       ],
-      "nextSceneId": "scene_056_world2_listen"
+      "nextSceneId": null
     },
     {
       "id": "scene_055_world2_tell",
@@ -1798,7 +1798,7 @@
       "characters": [
         "k7"
       ],
-      "nextSceneId": "scene_056_world2_reveal"
+      "nextSceneId": null
     },
     {
       "id": "scene_055_world2_solo",
@@ -1810,7 +1810,7 @@
       "characters": [
         "eve9"
       ],
-      "nextSceneId": "scene_056_world2_solo_enter"
+      "nextSceneId": null
     },
     {
       "id": "scene_055_world2_search",
@@ -1822,7 +1822,7 @@
       "characters": [
         "k7"
       ],
-      "nextSceneId": "scene_056_world2_data"
+      "nextSceneId": null
     },
     {
       "id": "scene_055_world2_hope",
@@ -1834,7 +1834,7 @@
       "characters": [
         "eve9"
       ],
-      "nextSceneId": "scene_056_world2_continue"
+      "nextSceneId": null
     },
     {
       "id": "scene_055_world2_explore",
@@ -1846,7 +1846,7 @@
       "characters": [
         "k7"
       ],
-      "nextSceneId": "scene_056_world2_discover"
+      "nextSceneId": null
     },
     {
       "id": "scene_055_world2_power",
@@ -1858,7 +1858,7 @@
       "characters": [
         "k7"
       ],
-      "nextSceneId": "scene_056_world2_transform"
+      "nextSceneId": null
     },
     {
       "id": "scene_055_world3_transition",
@@ -1869,7 +1869,7 @@
       "dialogue": "废土的旅程结束了。\n\n但你的旅程还在继续。\n\n前方，是第三个世界。\n\n神弃之地。\n\n那里有你要找的答案吗？\n\n那里有你想要的真相吗？\n\n无人知晓。\n\n但你必须去。\n\n【第二章 完】\n\n【前往第三章：神弃之地】",
       "background": "ch02-battlefield",
       "characters": [],
-      "nextSceneId": "scene_001_world3_start"
+      "nextSceneId": null
     }
   ]
 }

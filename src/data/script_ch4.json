@@ -1354,7 +1354,7 @@
       "characters": [
         "lin"
       ],
-      "nextSceneId": "scene_114_world4_discover"
+      "nextSceneId": null
     },
     {
       "id": "scene_118_world4_enter",
@@ -1367,7 +1367,7 @@
       "characters": [
         "lin"
       ],
-      "nextSceneId": "scene_119_world4_truth"
+      "nextSceneId": null
     },
     {
       "id": "scene_118_world4_journey",
@@ -1379,7 +1379,7 @@
       "characters": [
         "lin"
       ],
-      "nextSceneId": "scene_119_world4_continue"
+      "nextSceneId": null
     },
     {
       "id": "scene_118_world4_final",
@@ -1390,7 +1390,7 @@
       "dialogue": "最终的时刻到了。\n\n你站在敌人面前。\n\n「结束了。」\n\n你说。\n\n「不。」\n\n敌人回答。\n\n「这才刚刚开始。」\n\n【第四章 最终对决】",
       "background": "ch04-classroom",
       "characters": [],
-      "nextSceneId": "scene_119_world4_battle"
+      "nextSceneId": null
     },
     {
       "id": "scene_118_world4_memory",
@@ -1401,7 +1401,7 @@
       "dialogue": "记忆如潮水般涌来。\n\n你想起了...\n\n一切。\n\n「原来...是这样。」\n\n你喃喃自语。\n\n「原来...我们一直都在...」\n\n【第四章 回忆】",
       "background": "ch05-memory",
       "characters": [],
-      "nextSceneId": "scene_119_world4_understand"
+      "nextSceneId": null
     },
     {
       "id": "scene_118_world4_fearless",
@@ -1413,7 +1413,7 @@
       "characters": [
         "lin"
       ],
-      "nextSceneId": "scene_119_world4_brave"
+      "nextSceneId": null
     },
     {
       "id": "scene_118_world4_dark",
@@ -1426,7 +1426,7 @@
       "characters": [
         "lin"
       ],
-      "nextSceneId": "scene_119_world4_light"
+      "nextSceneId": null
     },
     {
       "id": "scene_118_world4_last",
@@ -1438,7 +1438,7 @@
       "characters": [
         "lin"
       ],
-      "nextSceneId": "scene_119_world4_end"
+      "nextSceneId": null
     },
     {
       "id": "scene_118_world4_new",
@@ -1451,7 +1451,7 @@
       "characters": [
         "lin"
       ],
-      "nextSceneId": "scene_119_world4_story"
+      "nextSceneId": null
     },
     {
       "id": "scene_118_world4_consequence",
@@ -1463,7 +1463,7 @@
       "characters": [
         "lin"
       ],
-      "nextSceneId": "scene_119_world4_reflect"
+      "nextSceneId": null
     },
     {
       "id": "scene_118_world4_whole",
@@ -1474,7 +1474,7 @@
       "dialogue": "你终于明白了。\n\n所有的碎片，拼凑在一起。\n\n「原来...这就是真相。」\n\n「完整的...真相。」\n\n【第四章 完整】",
       "background": "ch05-memory",
       "characters": [],
-      "nextSceneId": "scene_119_world4_complete"
+      "nextSceneId": null
     }
   ]
 }

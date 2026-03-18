@@ -1682,7 +1682,7 @@
       "dialogue": "你踏入裂隙。\n\n身体被撕裂，意识在时空中穿梭。\n\n永夜王国在身后远去，新的世界在前方等待。\n\n【第一章 完】",
       "background": "void",
       "characters": [],
-      "nextSceneId": "scene_032_world2_start"
+      "nextSceneId": "scene_001_world2"
     },
     {
       "id": "scene_031_prepare",
@@ -1694,7 +1694,7 @@
       "characters": [
         "oldman"
       ],
-      "nextSceneId": "scene_032_world2_start"
+      "nextSceneId": "scene_001_world2"
     },
     {
       "id": "scene_031_cedric_answer",
@@ -1706,7 +1706,7 @@
       "characters": [
         "oldman"
       ],
-      "nextSceneId": "scene_032_world2_start"
+      "nextSceneId": "scene_001_world2"
     },
     {
       "id": "scene_010_escape",
@@ -1717,7 +1717,7 @@
       "dialogue": "你选择了逃亡。\n\n身后，追兵的脚步声越来越近。\n\n「别让他们跑了！」\n\n你咬紧牙关，在废墟中狂奔。\n\n前方，是一个岔路口。\n\n左边的路狭窄但隐蔽，右边的路宽阔但危险。\n\n你选择了...\n\n【第一章 逃亡路线】",
       "background": "ch01-ruins",
       "characters": [],
-      "nextSceneId": "scene_011_escape_continue"
+      "nextSceneId": null
     },
     {
       "id": "scene_010_hide",
@@ -1728,7 +1728,7 @@
       "dialogue": "你选择了躲藏。\n\n迅速闪进一处废墟的阴影中，屏住呼吸。\n\n追兵从你身边跑过，没有发现你。\n\n「人呢？刚才还在这里！」\n\n「搜！一定要找到他！」\n\n等脚步声远去，你才敢大口呼吸。\n\n现在，你暂时安全了。\n\n但接下来...\n\n【第一章 躲藏路线】",
       "background": "ch01-crypt",
       "characters": [],
-      "nextSceneId": "scene_011_hide_think"
+      "nextSceneId": null
     }
   ],
   "endings": [
