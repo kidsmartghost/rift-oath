@@ -9,102 +9,1517 @@
     "world": "初始之境",
     "hero": "？？？"
   },
-  "worlds": [{
-    "id": "world5",
-    "name": "初始之境",
-    "description": "所有世界的源头，创造者的领域，纯白虚无的空间",
-    "theme": "void",
-    "heroName": "？？？",
-    "heroClass": "完整体",
-    "backgroundColor": "#ffffff",
-    "accentColor": "#000000",
-    "gradient": "linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #ffffff 100%)"
-  }],
+  "worlds": [
+    {
+      "id": "world5",
+      "name": "初始之境",
+      "description": "所有世界的源头，创造者的领域，纯白虚无的空间",
+      "theme": "void",
+      "heroName": "？？？",
+      "heroClass": "完整体",
+      "backgroundColor": "#ffffff",
+      "accentColor": "#000000",
+      "gradient": "linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #ffffff 100%)"
+    }
+  ],
   "scenes": [
-    {"id":"scene_156_world5_start","worldId":"world5","title":"纯白","type":"narration","speaker":"","dialogue":"我站在纯白的空间中。\n\n没有上下，没有左右。\n\n只有...我。\n\n不，不止我。\n\n艾莉娅，K-7，洛恩，林小满...\n\n我们...终于汇聚了。","background":"void","characters":[],"bgm":"world5","nextSceneId":"scene_157_world5","effects":{"hiddenStats":{"chaos":15}}},
-    {"id":"scene_157_world5","worldId":"world5","type":"narration","speaker":"？？？","dialogue":"「欢迎回家。」\n\n一个声音从四面八方传来。\n\n我转过身，看到了...\n\n我自己。\n\n不，那是...创造者。","background":"void","characters":["creator"],"nextSceneId":"scene_158_world5"},
-    {"id":"scene_158_world5","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「我是谁？」我问。\n\n「我是『一』。」他说，「也是『万』。」\n\n「我是开始，也是终结。」\n\n「我是...创造者。」","background":"void","characters":["creator"],"nextSceneId":"scene_159_world5"},
-    {"id":"scene_159_world5","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「为什么...要把自己分裂？」\n\n创造者沉默了很久。\n\n「因为孤独。」他说，「绝对的孤独。」\n\n「我创造了所有世界，所有生命...但我无法参与。」\n\n「我是观察者，不是参与者。」","background":"void","characters":["creator"],"nextSceneId":"scene_160_world5"},
-    {"id":"scene_160_world5","worldId":"world5","type":"choice","speaker":"","dialogue":"真相揭露。你选择：","background":"void","characters":["creator"],"choices":[{"id":"choice_050_a","text":"「所以你要收回所有碎片？」","nextSceneId":"scene_161_world5_reclaim","effects":{"stats":{"wisdom":10}}},{"id":"choice_050_b","text":"「你后悔创造世界吗？」","nextSceneId":"scene_161_world5_regret","effects":{"stats":{"compassion":10}}},{"id":"choice_050_c","text":"「我拒绝回归。」","nextSceneId":"scene_161_world5_refuse","effects":{"stats":{"courage":15,"determination":10}}},{"id":"choice_050_d","text":"「告诉我真正的目的。」","nextSceneId":"scene_161_world5_truth","effects":{"stats":{"wisdom":15}}}]},
-    {"id":"scene_161_world5_reclaim","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「不是收回。」\n\n「是...完整。」\n\n「碎片回归，我才能再次完整。」\n\n「但这也意味着...所有世界的终结。」","background":"void","characters":["creator"],"nextSceneId":"scene_162_world5_meaning"},
-    {"id":"scene_161_world5_regret","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"创造者沉默了。\n\n「后悔...？」\n\n「不。我从不后悔。」\n\n「但我...累了。」","background":"void","characters":["creator"],"nextSceneId":"scene_162_world5_tired"},
-    {"id":"scene_161_world5_refuse","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「拒绝？」\n\n创造者笑了。\n\n「你有这个权利。」\n\n「但后果...所有世界都会崩塌。」","background":"void","characters":["creator"],"nextSceneId":"scene_162_world5_consequence"},
-    {"id":"scene_161_world5_truth","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「真正的目的...」\n\n创造者看着我。\n\n「我想...体验死亡。」\n\n「只有死亡，才能让我完整。」","background":"void","characters":["creator"],"nextSceneId":"scene_162_world5_death"},
-    {"id":"scene_162_world5_meaning","worldId":"world5","type":"choice","speaker":"","dialogue":"世界的意义...你选择：","background":"void","characters":["creator"],"choices":[{"id":"choice_051_a","text":"【毁灭】「那就终结吧。」","nextSceneId":"scene_163_world5_end","effects":{"hiddenStats":{"corruption":20}}},{"id":"choice_051_b","text":"【守护】「不，还有希望。」","nextSceneId":"scene_163_world5_hope","effects":{"stats":{"determination":15,"compassion":10}}},{"id":"choice_051_c","text":"【谈判】「还有别的选择。」","nextSceneId":"scene_163_world5_negotiate","effects":{"stats":{"wisdom":15}}}]},
-    {"id":"scene_162_world5_tired","worldId":"world5","type":"dialogue","speaker":"你","dialogue":"「累了？」\n\n「永恒的孤独...确实会让人疲惫。」\n\n「但毁灭所有世界...就能解脱吗？」","background":"void","characters":["creator"],"nextSceneId":"scene_163_world5_question"},
-    {"id":"scene_162_world5_consequence","worldId":"world5","type":"narration","speaker":"","dialogue":"后果...\n\n你看着创造者。\n\n「那就让我看看...后果是什么。」","background":"void","characters":["creator"],"nextSceneId":"scene_163_world5_dare"},
-    {"id":"scene_162_world5_death","worldId":"world5","type":"dialogue","speaker":"你","dialogue":"「死亡...？」\n\n你愣住了。\n\n「作为神...你想体验死亡？」","background":"void","characters":["creator"],"nextSceneId":"scene_163_world5_understand"},
-    {"id":"scene_163_world5_end","worldId":"world5","type":"narration","speaker":"","dialogue":"你选择了毁灭。\n\n创造者点点头。\n\n「如你所愿。」\n\n纯白的空间开始崩塌...\n\n所有世界...开始终结。","background":"void","characters":["creator"],"nextSceneId":"ending_final_destroy"},
-    {"id":"scene_163_world5_hope","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「希望？」\n\n创造者苦笑。\n\n「我已经见过太多希望...太多失望。」\n\n「但你...也许不一样。」","background":"void","characters":["creator"],"nextSceneId":"scene_164_world5_persuade"},
-    {"id":"scene_163_world5_negotiate","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「别的选择？」\n\n「说来听听。」\n\n创造者看着你，眼中闪过一丝...期待？","background":"void","characters":["creator"],"nextSceneId":"scene_164_world5_propose"},
-    {"id":"scene_163_world5_question","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「不能。」\n\n创造者说。\n\n「但...可以暂时忘记。」\n\n「沉睡...也许是更好的选择。」","background":"void","characters":["creator"],"nextSceneId":"scene_164_world5_sleep"},
-    {"id":"scene_163_world5_dare","worldId":"world5","type":"narration","speaker":"","dialogue":"你敢于挑战后果。\n\n创造者似乎...欣赏你的勇气。\n\n「很好。」他说，「那就让我们看看。」","background":"void","characters":["creator"],"nextSceneId":"scene_164_world5_test"},
-    {"id":"scene_163_world5_understand","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「是的。」\n\n「只有死亡...才能让我理解生命的意义。」\n\n「但我无法自己选择死亡。」\n\n「需要你...帮我。」","background":"void","characters":["creator"],"nextSceneId":"scene_164_world5_help"},
-    {"id":"scene_164_world5_persuade","worldId":"world5","type":"choice","speaker":"","dialogue":"你尝试说服创造者。你选择：","background":"void","characters":["creator"],"choices":[{"id":"choice_052_a","text":"【生命】「生命的意义在于延续。」","nextSceneId":"scene_165_world5_life","effects":{"stats":{"compassion":15,"wisdom":10}}},{"id":"choice_052_b","text":"【故事】「每个生命都是一个故事。」","nextSceneId":"scene_165_world5_story","effects":{"stats":{"compassion":20}}},{"id":"choice_052_c","text":"【爱】「因为有爱，所以值得。」","nextSceneId":"scene_165_world5_love","effects":{"stats":{"compassion":25},"bonds":{"world1":10,"world2":10,"world3":10,"world4":10}}}]},
-    {"id":"scene_164_world5_propose","worldId":"world5","type":"dialogue","speaker":"你","dialogue":"「你可以...继续观察。」\n\n「但不是作为旁观者。」\n\n「作为...参与者。」\n\n「让碎片继续存在，你偶尔...体验一下。」","background":"void","characters":["creator"],"nextSceneId":"scene_165_world5_consider"},
-    {"id":"scene_164_world5_sleep","worldId":"world5","type":"dialogue","speaker":"你","dialogue":"「沉睡...」\n\n「那所有世界呢？」\n\n「它们会继续存在吗？」","background":"void","characters":["creator"],"nextSceneId":"scene_165_world5_continue"},
-    {"id":"scene_164_world5_test","worldId":"world5","type":"narration","speaker":"","dialogue":"创造者开始测试你。\n\n「证明给我看。」\n\n「证明所有世界...值得存在。」","background":"void","characters":["creator"],"nextSceneId":"scene_165_world5_prove"},
-    {"id":"scene_164_world5_help","worldId":"world5","type":"choice","speaker":"","dialogue":"创造者请求你的帮助。你选择：","background":"void","characters":["creator"],"choices":[{"id":"choice_053_a","text":"【同意】「我帮你。」","nextSceneId":"scene_165_world5_agree","effects":{"stats":{"compassion":20},"hiddenStats":{"chaos":10}}},{"id":"choice_053_b","text":"【拒绝】「这不是答案。」","nextSceneId":"scene_165_world5_disagree","effects":{"stats":{"wisdom":15,"determination":10}}},{"id":"choice_053_c","text":"【条件】「我有一个条件。」","nextSceneId":"scene_165_world5_condition","effects":{"stats":{"wisdom":10,"determination":15}}}]},
-    {"id":"scene_165_world5_life","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「延续...」\n\n创造者若有所思。\n\n「也许...你说得对。」\n\n「但我已经累了。」","background":"void","characters":["creator"],"nextSceneId":"scene_166_world5_tired2"},
-    {"id":"scene_165_world5_story","worldId":"world5","type":"narration","speaker":"","dialogue":"你讲述了所有故事。\n\n艾莉娅的觉醒，K-7 的羁绊，洛恩的责任，林小满的选择...\n\n创造者静静地听着。","background":"void","characters":["creator"],"nextSceneId":"scene_166_world5_listen"},
-    {"id":"scene_165_world5_love","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"创造者的眼中...闪过一丝光芒。\n\n「爱...」\n\n「我已经...太久没有感受过了。」","background":"void","characters":["creator"],"nextSceneId":"scene_166_world5_feel"},
-    {"id":"scene_165_world5_consider","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「参与者...」\n\n创造者思考着。\n\n「这...也许是个办法。」","background":"void","characters":["creator"],"nextSceneId":"scene_166_world5_think"},
-    {"id":"scene_165_world5_continue","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「会的。」\n\n「我沉睡后，所有世界会继续存在。」\n\n「但...不再有神。」","background":"void","characters":["creator"],"nextSceneId":"scene_166_world5_godless"},
-    {"id":"scene_165_world5_prove","worldId":"world5","type":"choice","speaker":"","dialogue":"你如何证明？你选择：","background":"void","characters":["creator"],"choices":[{"id":"choice_054_a","text":"【展示记忆】","nextSceneId":"scene_166_world5_show","effects":{"stats":{"wisdom":10,"compassion":10}}},{"id":"choice_054_b","text":"【创造新事物】","nextSceneId":"scene_166_world5_create","effects":{"stats":{"determination":15,"wisdom":10}}},{"id":"choice_054_c","text":"【牺牲自己】","nextSceneId":"scene_166_world5_sacrifice","effects":{"stats":{"compassion":25},"hiddenStats":{"corruption":-20}}}]},
-    {"id":"scene_165_world5_agree","worldId":"world5","type":"narration","speaker":"","dialogue":"你同意了。\n\n创造者闭上眼睛。\n\n「谢谢你...」\n\n你伸出手，刺向他的心脏...","background":"void","characters":["creator"],"nextSceneId":"ending_final_godkill"},
-    {"id":"scene_165_world5_disagree","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「不是答案？」\n\n创造者苦笑。\n\n「那什么才是...」","background":"void","characters":["creator"],"nextSceneId":"scene_166_world5_search"},
-    {"id":"scene_165_world5_condition","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「说吧。」\n\n「什么条件？」","background":"void","characters":["creator"],"nextSceneId":"scene_166_world5_demand"},
-    {"id":"scene_166_world5_tired2","worldId":"world5","type":"dialogue","speaker":"你","dialogue":"「那就休息吧。」\n\n「但不是沉睡。」\n\n「只是...暂时放下。」","background":"void","characters":["creator"],"nextSceneId":"scene_167_world5_rest"},
-    {"id":"scene_166_world5_listen","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"创造者听完所有故事。\n\n他沉默了很久。\n\n「这些...都是我创造的？」","background":"void","characters":["creator"],"nextSceneId":"scene_167_world5_pride"},
-    {"id":"scene_166_world5_feel","worldId":"world5","type":"narration","speaker":"","dialogue":"创造者伸出手。\n\n他触碰到了...你的记忆。\n\n艾莉娅的勇气，K-7 的羁绊，洛恩的责任，林小满的爱...\n\n他哭了。","background":"void","characters":["creator"],"nextSceneId":"scene_167_world5_cry"},
-    {"id":"scene_166_world5_think","worldId":"world5","type":"choice","speaker":"","dialogue":"创造者在思考。你选择：","background":"void","characters":["creator"],"choices":[{"id":"choice_055_a","text":"【等待】给他时间","nextSceneId":"scene_167_world5_wait","effects":{"stats":{"wisdom":10}}},{"id":"choice_055_b","text":"【催促】「快点决定。」","nextSceneId":"scene_167_world5_rush","effects":{"stats":{"courage":10}}},{"id":"choice_055_c","text":"【建议】「让我来帮你。」","nextSceneId":"scene_167_world5_offer","effects":{"stats":{"determination":15}}}]},
-    {"id":"scene_166_world5_godless","worldId":"world5","type":"dialogue","speaker":"你","dialogue":"「没有神...也许更好。」\n\n「生命可以自己寻找意义。」","background":"void","characters":["creator"],"nextSceneId":"scene_167_world5_freedom"},
-    {"id":"scene_166_world5_show","worldId":"world5","type":"narration","speaker":"","dialogue":"你展示了所有记忆。\n\n所有世界的故事...\n\n创造者静静地看着。","background":"void","characters":["creator"],"nextSceneId":"scene_167_world5_watch"},
-    {"id":"scene_166_world5_create","worldId":"world5","type":"narration","speaker":"","dialogue":"你开始创造。\n\n一个新的世界...在你手中诞生。\n\n「这...」创造者惊讶地看着。","background":"void","characters":["creator"],"nextSceneId":"scene_167_world5_newworld"},
-    {"id":"scene_166_world5_sacrifice","worldId":"world5","type":"narration","speaker":"","dialogue":"你选择牺牲自己。\n\n「用我的存在...换取所有世界的未来。」","background":"void","characters":["creator"],"nextSceneId":"ending_final_sacrifice"},
-    {"id":"scene_166_world5_search","worldId":"world5","type":"narration","speaker":"","dialogue":"你们一起寻找答案。\n\n在纯白的空间中...\n\n也许还有别的可能。","background":"void","characters":["creator"],"nextSceneId":"scene_167_world5_together"},
-    {"id":"scene_166_world5_demand","worldId":"world5","type":"dialogue","speaker":"你","dialogue":"「答应我...」\n\n「即使你死了...所有世界也要继续存在。」","background":"void","characters":["creator"],"nextSceneId":"scene_167_world5_promise"},
-    {"id":"scene_167_world5_rest","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「休息...」\n\n创造者点点头。\n\n「也许...这是最好的选择。」","background":"void","characters":["creator"],"nextSceneId":"scene_168_world5_decision"},
-    {"id":"scene_167_world5_pride","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「我...创造了这些？」\n\n创造者的声音颤抖。\n\n「它们...很美。」","background":"void","characters":["creator"],"nextSceneId":"scene_168_world5_beauty"},
-    {"id":"scene_167_world5_cry","worldId":"world5","type":"narration","speaker":"","dialogue":"神...哭了。\n\n金色的泪水滴落。\n\n「我...明白了。」","background":"void","characters":["creator"],"nextSceneId":"scene_168_world5_understand"},
-    {"id":"scene_167_world5_wait","worldId":"world5","type":"narration","speaker":"","dialogue":"你等待着。\n\n时间...没有意义。\n\n但创造者终于开口了。","background":"void","characters":["creator"],"nextSceneId":"scene_168_world5_speak"},
-    {"id":"scene_167_world5_rush","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"创造者笑了。\n\n「你还是这么...急躁。」\n\n「好吧，我决定了。」","background":"void","characters":["creator"],"nextSceneId":"scene_168_world5_decide"},
-    {"id":"scene_167_world5_offer","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「帮我？」\n\n「怎么帮？」\n\n创造者好奇地看着你。","background":"void","characters":["creator"],"nextSceneId":"scene_168_world5_how"},
-    {"id":"scene_167_world5_freedom","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「自由...」\n\n「也许...这是最好的礼物。」","background":"void","characters":["creator"],"nextSceneId":"scene_168_world5_gift"},
-    {"id":"scene_167_world5_watch","worldId":"world5","type":"choice","speaker":"","dialogue":"创造者看完所有记忆。他选择：","background":"void","characters":["creator"],"choices":[{"id":"choice_056_a","text":"【继续存在】","nextSceneId":"scene_168_world5_continue","effects":{"stats":{"determination":15}}},{"id":"choice_056_b","text":"【沉睡】","nextSceneId":"scene_168_world5_sleep","effects":{"stats":{"wisdom":10}}},{"id":"choice_056_c","text":"【重生】","nextSceneId":"scene_168_world5_rebirth","effects":{"stats":{"compassion":20},"hiddenStats":{"chaos":10}}}]},
-    {"id":"scene_167_world5_newworld","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「你...也能创造？」\n\n创造者惊讶地看着你。\n\n「这就是...生命的奇迹。」","background":"void","characters":["creator"],"nextSceneId":"scene_168_world5_miracle"},
-    {"id":"scene_167_world5_together","worldId":"world5","type":"narration","speaker":"","dialogue":"你们一起寻找。\n\n在纯白的深处...\n\n有一个答案在等待。","background":"void","characters":["creator"],"nextSceneId":"scene_168_world5_find"},
-    {"id":"scene_167_world5_promise","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「我答应你。」\n\n创造者说。\n\n「所有世界...会继续存在。」","background":"void","characters":["creator"],"nextSceneId":"scene_168_world5_oath"},
-    {"id":"scene_168_world5_decision","worldId":"world5","type":"choice","speaker":"","dialogue":"最终的决定时刻。创造者选择：","background":"void","characters":["creator"],"choices":[{"id":"choice_057_a","text":"【沉睡】","nextSceneId":"ending_final_sleep","effects":{"stats":{"wisdom":15}}},{"id":"choice_057_b","text":"【放手】","nextSceneId":"ending_final_letgo","effects":{"stats":{"compassion":20}}},{"id":"choice_057_c","text":"【融合】","nextSceneId":"ending_final_merge","effects":{"stats":{"determination":20},"hiddenStats":{"chaos":15}}}]},
-    {"id":"scene_168_world5_beauty","worldId":"world5","type":"narration","speaker":"","dialogue":"创造者看到了世界的美。\n\n他...改变了想法。","background":"void","characters":["creator"],"nextSceneId":"scene_169_world5_change"},
-    {"id":"scene_168_world5_understand","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「我明白了。」\n\n创造者说。\n\n「生命的意义...就在于它的短暂。」","background":"void","characters":["creator"],"nextSceneId":"scene_169_world5_meaning"},
-    {"id":"scene_168_world5_speak","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「我决定了。」\n\n创造者说。\n\n「我选择...」","background":"void","characters":["creator"],"nextSceneId":"scene_169_world5_choice"},
-    {"id":"scene_168_world5_decide","worldId":"world5","type":"narration","speaker":"","dialogue":"创造者做出了决定。\n\n这个决定...\n\n将改变一切。","background":"void","characters":["creator"],"nextSceneId":"scene_169_world5_all"},
-    {"id":"scene_168_world5_how","worldId":"world5","type":"dialogue","speaker":"你","dialogue":"「让我成为...新的守护者。」\n\n「你休息，我来守护。」","background":"void","characters":["creator"],"nextSceneId":"scene_169_world5_guardian"},
-    {"id":"scene_168_world5_gift","worldId":"world5","type":"narration","speaker":"","dialogue":"自由...\n\n这是创造者给所有世界的...\n\n最后礼物。","background":"void","characters":["creator"],"nextSceneId":"scene_169_world5_free"},
-    {"id":"scene_168_world5_continue","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「那就...继续吧。」\n\n「我想看看...未来会怎样。」","background":"void","characters":["creator"],"nextSceneId":"scene_169_world5_future"},
-    {"id":"scene_168_world5_sleep","worldId":"world5","type":"narration","speaker":"","dialogue":"创造者选择沉睡。\n\n「等我醒来时...」\n\n「希望所有世界...依然存在。」","background":"void","characters":["creator"],"nextSceneId":"scene_169_world5_hope"},
-    {"id":"scene_168_world5_rebirth","worldId":"world5","type":"narration","speaker":"","dialogue":"创造者选择重生。\n\n他化身为新的生命...\n\n进入轮回。","background":"void","characters":["creator"],"nextSceneId":"scene_169_world5_cycle"},
-    {"id":"scene_168_world5_miracle","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「这就是...奇迹。」\n\n创造者感叹。\n\n「生命...真美妙。」","background":"void","characters":["creator"],"nextSceneId":"scene_169_world5_wonder"},
-    {"id":"scene_168_world5_find","worldId":"world5","type":"narration","speaker":"","dialogue":"你们找到了答案。\n\n在纯白的深处...\n\n有一个简单的真理。","background":"void","characters":["creator"],"nextSceneId":"scene_169_world5_truth"},
-    {"id":"scene_168_world5_oath","worldId":"world5","type":"narration","speaker":"","dialogue":"创造者立下了誓言。\n\n这个誓言...\n\n将永远约束他。","background":"void","characters":["creator"],"nextSceneId":"scene_169_world5_bound"},
-    {"id":"scene_169_world5_change","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「我改变主意了。」\n\n创造者说。\n\n「我不想毁灭...我想守护。」","background":"void","characters":["creator"],"nextSceneId":"scene_170_world5_protect"},
-    {"id":"scene_169_world5_meaning","worldId":"world5","type":"narration","speaker":"","dialogue":"生命的意义...\n\n在于短暂，在于珍贵。\n\n在于...爱。","background":"void","characters":["creator"],"nextSceneId":"scene_170_world5_love"},
-    {"id":"scene_169_world5_choice","worldId":"world5","type":"choice","speaker":"","dialogue":"创造者的选择是：","background":"void","characters":["creator"],"choices":[{"id":"choice_058_a","text":"【守护】","nextSceneId":"ending_final_guardian","effects":{"stats":{"determination":20}}},{"id":"choice_058_b","text":"【放手】","nextSceneId":"ending_final_free","effects":{"stats":{"compassion":20,"wisdom":10}}},{"id":"choice_058_c","text":"【轮回】","nextSceneId":"ending_final_reincarnate","effects":{"stats":{"wisdom":15},"hiddenStats":{"chaos":15}}}]},
-    {"id":"scene_169_world5_all","worldId":"world5","type":"narration","speaker":"","dialogue":"这个决定...\n\n将影响所有世界。\n\n所有人。","background":"void","characters":["creator"],"nextSceneId":"scene_170_world5_impact"},
-    {"id":"scene_169_world5_guardian","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「你愿意？」\n\n创造者惊讶地看着你。\n\n「那...我休息了。」","background":"void","characters":["creator"],"nextSceneId":"ending_final_newguardian"},
-    {"id":"scene_169_world5_future","worldId":"world5","type":"narration","speaker":"","dialogue":"未来...\n\n无人知晓。\n\n但充满希望。","background":"void","characters":["creator"],"nextSceneId":"ending_final_future"},
-    {"id":"scene_169_world5_hope","worldId":"world5","type":"narration","speaker":"","dialogue":"希望...\n\n这是创造者最后的...\n\n祝福。","background":"void","characters":["creator"],"nextSceneId":"ending_final_blessing"},
-    {"id":"scene_169_world5_cycle","worldId":"world5","type":"narration","speaker":"","dialogue":"轮回...\n\n创造者成为生命的一部分。\n\n永远循环。","background":"void","characters":["creator"],"nextSceneId":"ending_final_cycle"},
-    {"id":"scene_169_world5_wonder","worldId":"world5","type":"narration","speaker":"","dialogue":"生命的奇迹...\n\n让创造者改变了想法。","background":"void","characters":["creator"],"nextSceneId":"scene_170_world5_new"},
-    {"id":"scene_169_world5_truth","worldId":"world5","type":"dialogue","speaker":"创造者","dialogue":"「真理很简单。」\n\n「存在...就是意义。」","background":"void","characters":["creator"],"nextSceneId":"scene_170_world5_exist"},
-    {"id":"scene_169_world5_bound","worldId":"world5","type":"narration","speaker":"","dialogue":"誓言生效。\n\n创造者被约束...\n\n永远守护所有世界。","background":"void","characters":["creator"],"nextSceneId":"scene_170_world5_eternal"},
-    {"id":"scene_170_world5_protect","worldId":"world5","type":"narration","speaker":"","dialogue":"守护...\n\n这是新的开始。\n\n【最终章 完】","background":"void","characters":["creator"],"type":"ending","title":"最终结局：守护者","nextSceneId":null},
-    {"id":"scene_170_world5_love","worldId":"world5","type":"narration","speaker":"","dialogue":"爱...\n\n这是最终的真理。\n\n【最终章 完】","background":"void","characters":["creator"],"type":"ending","title":"最终结局：爱","nextSceneId":null},
-    {"id":"scene_170_world5_future","worldId":"world5","type":"narration","speaker":"","dialogue":"未来...\n\n等待着你。\n\n【最终章 完】","background":"void","characters":["creator"],"type":"ending","title":"最终结局：未来","nextSceneId":null},
-    {"id":"scene_170_world5_impact","worldId":"world5","type":"narration","speaker":"","dialogue":"影响...\n\n已经发生。\n\n【最终章 完】","background":"void","characters":["creator"],"type":"ending","title":"最终结局：改变","nextSceneId":null},
-    {"id":"scene_170_world5_new","worldId":"world5","type":"narration","speaker":"","dialogue":"新的想法...\n\n在创造者心中诞生。\n\n【最终章 完】","background":"void","characters":["creator"],"type":"ending","title":"最终结局：新生","nextSceneId":null},
-    {"id":"scene_170_world5_exist","worldId":"world5","type":"narration","speaker":"","dialogue":"存在即意义...\n\n这是最终的领悟。\n\n【最终章 完】","background":"void","characters":["creator"],"type":"ending","title":"最终结局：存在","nextSceneId":null},
-    {"id":"scene_170_world5_eternal","worldId":"world5","type":"narration","speaker":"","dialogue":"永恒的守护...\n\n这是创造者的誓言。\n\n【最终章 完】","background":"void","characters":["creator"],"type":"ending","title":"最终结局：永恒","nextSceneId":null}
+    {
+      "id": "scene_156_world5_start",
+      "worldId": "world5",
+      "title": "纯白",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "我站在纯白的空间中。\n\n没有上下，没有左右。\n\n只有...我。\n\n不，不止我。\n\n艾莉娅，K-7，洛恩，林小满...\n\n我们...终于汇聚了。",
+      "background": "void",
+      "characters": [],
+      "bgm": "world5",
+      "nextSceneId": "scene_157_world5",
+      "effects": {
+        "hiddenStats": {
+          "chaos": 15
+        }
+      }
+    },
+    {
+      "id": "scene_157_world5",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "？？？",
+      "dialogue": "「欢迎回家。」\n\n一个声音从四面八方传来。\n\n我转过身，看到了...\n\n我自己。\n\n不，那是...创造者。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_158_world5"
+    },
+    {
+      "id": "scene_158_world5",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「我是谁？」我问。\n\n「我是『一』。」他说，「也是『万』。」\n\n「我是开始，也是终结。」\n\n「我是...创造者。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_159_world5"
+    },
+    {
+      "id": "scene_159_world5",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「为什么...要把自己分裂？」\n\n创造者沉默了很久。\n\n「因为孤独。」他说，「绝对的孤独。」\n\n「我创造了所有世界，所有生命...但我无法参与。」\n\n「我是观察者，不是参与者。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_160_world5"
+    },
+    {
+      "id": "scene_160_world5",
+      "worldId": "world5",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "真相揭露。你选择：",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "choices": [
+        {
+          "id": "choice_050_a",
+          "text": "「所以你要收回所有碎片？」",
+          "nextSceneId": "scene_161_world5_reclaim",
+          "effects": {
+            "stats": {
+              "wisdom": 10
+            }
+          }
+        },
+        {
+          "id": "choice_050_b",
+          "text": "「你后悔创造世界吗？」",
+          "nextSceneId": "scene_161_world5_regret",
+          "effects": {
+            "stats": {
+              "compassion": 10
+            }
+          }
+        },
+        {
+          "id": "choice_050_c",
+          "text": "「我拒绝回归。」",
+          "nextSceneId": "scene_161_world5_refuse",
+          "effects": {
+            "stats": {
+              "courage": 15,
+              "determination": 10
+            }
+          }
+        },
+        {
+          "id": "choice_050_d",
+          "text": "「告诉我真正的目的。」",
+          "nextSceneId": "scene_161_world5_truth",
+          "effects": {
+            "stats": {
+              "wisdom": 15
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_161_world5_reclaim",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「不是收回。」\n\n「是...完整。」\n\n「碎片回归，我才能再次完整。」\n\n「但这也意味着...所有世界的终结。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_162_world5_meaning"
+    },
+    {
+      "id": "scene_161_world5_regret",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "创造者沉默了。\n\n「后悔...？」\n\n「不。我从不后悔。」\n\n「但我...累了。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_162_world5_tired"
+    },
+    {
+      "id": "scene_161_world5_refuse",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「拒绝？」\n\n创造者笑了。\n\n「你有这个权利。」\n\n「但后果...所有世界都会崩塌。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_162_world5_consequence"
+    },
+    {
+      "id": "scene_161_world5_truth",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「真正的目的...」\n\n创造者看着我。\n\n「我想...体验死亡。」\n\n「只有死亡，才能让我完整。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_162_world5_death"
+    },
+    {
+      "id": "scene_162_world5_meaning",
+      "worldId": "world5",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "世界的意义...你选择：",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "choices": [
+        {
+          "id": "choice_051_a",
+          "text": "【毁灭】「那就终结吧。」",
+          "nextSceneId": "scene_163_world5_end",
+          "effects": {
+            "hiddenStats": {
+              "corruption": 20
+            }
+          }
+        },
+        {
+          "id": "choice_051_b",
+          "text": "【守护】「不，还有希望。」",
+          "nextSceneId": "scene_163_world5_hope",
+          "effects": {
+            "stats": {
+              "determination": 15,
+              "compassion": 10
+            }
+          }
+        },
+        {
+          "id": "choice_051_c",
+          "text": "【谈判】「还有别的选择。」",
+          "nextSceneId": "scene_163_world5_negotiate",
+          "effects": {
+            "stats": {
+              "wisdom": 15
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_162_world5_tired",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "你",
+      "dialogue": "「累了？」\n\n「永恒的孤独...确实会让人疲惫。」\n\n「但毁灭所有世界...就能解脱吗？」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_163_world5_question"
+    },
+    {
+      "id": "scene_162_world5_consequence",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "后果...\n\n你看着创造者。\n\n「那就让我看看...后果是什么。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_163_world5_dare"
+    },
+    {
+      "id": "scene_162_world5_death",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "你",
+      "dialogue": "「死亡...？」\n\n你愣住了。\n\n「作为神...你想体验死亡？」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_163_world5_understand"
+    },
+    {
+      "id": "scene_163_world5_end",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你选择了毁灭。\n\n创造者点点头。\n\n「如你所愿。」\n\n纯白的空间开始崩塌...\n\n所有世界...开始终结。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "ending_final_destroy"
+    },
+    {
+      "id": "scene_163_world5_hope",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「希望？」\n\n创造者苦笑。\n\n「我已经见过太多希望...太多失望。」\n\n「但你...也许不一样。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_164_world5_persuade"
+    },
+    {
+      "id": "scene_163_world5_negotiate",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「别的选择？」\n\n「说来听听。」\n\n创造者看着你，眼中闪过一丝...期待？",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_164_world5_propose"
+    },
+    {
+      "id": "scene_163_world5_question",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「不能。」\n\n创造者说。\n\n「但...可以暂时忘记。」\n\n「沉睡...也许是更好的选择。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_164_world5_sleep"
+    },
+    {
+      "id": "scene_163_world5_dare",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你敢于挑战后果。\n\n创造者似乎...欣赏你的勇气。\n\n「很好。」他说，「那就让我们看看。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_164_world5_test"
+    },
+    {
+      "id": "scene_163_world5_understand",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「是的。」\n\n「只有死亡...才能让我理解生命的意义。」\n\n「但我无法自己选择死亡。」\n\n「需要你...帮我。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_164_world5_help"
+    },
+    {
+      "id": "scene_164_world5_persuade",
+      "worldId": "world5",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "你尝试说服创造者。你选择：",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "choices": [
+        {
+          "id": "choice_052_a",
+          "text": "【生命】「生命的意义在于延续。」",
+          "nextSceneId": "scene_165_world5_life",
+          "effects": {
+            "stats": {
+              "compassion": 15,
+              "wisdom": 10
+            }
+          }
+        },
+        {
+          "id": "choice_052_b",
+          "text": "【故事】「每个生命都是一个故事。」",
+          "nextSceneId": "scene_165_world5_story",
+          "effects": {
+            "stats": {
+              "compassion": 20
+            }
+          }
+        },
+        {
+          "id": "choice_052_c",
+          "text": "【爱】「因为有爱，所以值得。」",
+          "nextSceneId": "scene_165_world5_love",
+          "effects": {
+            "stats": {
+              "compassion": 25
+            },
+            "bonds": {
+              "world1": 10,
+              "world2": 10,
+              "world3": 10,
+              "world4": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_164_world5_propose",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "你",
+      "dialogue": "「你可以...继续观察。」\n\n「但不是作为旁观者。」\n\n「作为...参与者。」\n\n「让碎片继续存在，你偶尔...体验一下。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_165_world5_consider"
+    },
+    {
+      "id": "scene_164_world5_sleep",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "你",
+      "dialogue": "「沉睡...」\n\n「那所有世界呢？」\n\n「它们会继续存在吗？」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_165_world5_continue"
+    },
+    {
+      "id": "scene_164_world5_test",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "创造者开始测试你。\n\n「证明给我看。」\n\n「证明所有世界...值得存在。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_165_world5_prove"
+    },
+    {
+      "id": "scene_164_world5_help",
+      "worldId": "world5",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "创造者请求你的帮助。你选择：",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "choices": [
+        {
+          "id": "choice_053_a",
+          "text": "【同意】「我帮你。」",
+          "nextSceneId": "scene_165_world5_agree",
+          "effects": {
+            "stats": {
+              "compassion": 20
+            },
+            "hiddenStats": {
+              "chaos": 10
+            }
+          }
+        },
+        {
+          "id": "choice_053_b",
+          "text": "【拒绝】「这不是答案。」",
+          "nextSceneId": "scene_165_world5_disagree",
+          "effects": {
+            "stats": {
+              "wisdom": 15,
+              "determination": 10
+            }
+          }
+        },
+        {
+          "id": "choice_053_c",
+          "text": "【条件】「我有一个条件。」",
+          "nextSceneId": "scene_165_world5_condition",
+          "effects": {
+            "stats": {
+              "wisdom": 10,
+              "determination": 15
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_165_world5_life",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「延续...」\n\n创造者若有所思。\n\n「也许...你说得对。」\n\n「但我已经累了。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_166_world5_tired2"
+    },
+    {
+      "id": "scene_165_world5_story",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你讲述了所有故事。\n\n艾莉娅的觉醒，K-7 的羁绊，洛恩的责任，林小满的选择...\n\n创造者静静地听着。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_166_world5_listen"
+    },
+    {
+      "id": "scene_165_world5_love",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "创造者的眼中...闪过一丝光芒。\n\n「爱...」\n\n「我已经...太久没有感受过了。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_166_world5_feel"
+    },
+    {
+      "id": "scene_165_world5_consider",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「参与者...」\n\n创造者思考着。\n\n「这...也许是个办法。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_166_world5_think"
+    },
+    {
+      "id": "scene_165_world5_continue",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「会的。」\n\n「我沉睡后，所有世界会继续存在。」\n\n「但...不再有神。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_166_world5_godless"
+    },
+    {
+      "id": "scene_165_world5_prove",
+      "worldId": "world5",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "你如何证明？你选择：",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "choices": [
+        {
+          "id": "choice_054_a",
+          "text": "【展示记忆】",
+          "nextSceneId": "scene_166_world5_show",
+          "effects": {
+            "stats": {
+              "wisdom": 10,
+              "compassion": 10
+            }
+          }
+        },
+        {
+          "id": "choice_054_b",
+          "text": "【创造新事物】",
+          "nextSceneId": "scene_166_world5_create",
+          "effects": {
+            "stats": {
+              "determination": 15,
+              "wisdom": 10
+            }
+          }
+        },
+        {
+          "id": "choice_054_c",
+          "text": "【牺牲自己】",
+          "nextSceneId": "scene_166_world5_sacrifice",
+          "effects": {
+            "stats": {
+              "compassion": 25
+            },
+            "hiddenStats": {
+              "corruption": -20
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_165_world5_agree",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你同意了。\n\n创造者闭上眼睛。\n\n「谢谢你...」\n\n你伸出手，刺向他的心脏...",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "ending_final_godkill"
+    },
+    {
+      "id": "scene_165_world5_disagree",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「不是答案？」\n\n创造者苦笑。\n\n「那什么才是...」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_166_world5_search"
+    },
+    {
+      "id": "scene_165_world5_condition",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「说吧。」\n\n「什么条件？」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_166_world5_demand"
+    },
+    {
+      "id": "scene_166_world5_tired2",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "你",
+      "dialogue": "「那就休息吧。」\n\n「但不是沉睡。」\n\n「只是...暂时放下。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_167_world5_rest"
+    },
+    {
+      "id": "scene_166_world5_listen",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "创造者听完所有故事。\n\n他沉默了很久。\n\n「这些...都是我创造的？」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_167_world5_pride"
+    },
+    {
+      "id": "scene_166_world5_feel",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "创造者伸出手。\n\n他触碰到了...你的记忆。\n\n艾莉娅的勇气，K-7 的羁绊，洛恩的责任，林小满的爱...\n\n他哭了。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_167_world5_cry"
+    },
+    {
+      "id": "scene_166_world5_think",
+      "worldId": "world5",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "创造者在思考。你选择：",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "choices": [
+        {
+          "id": "choice_055_a",
+          "text": "【等待】给他时间",
+          "nextSceneId": "scene_167_world5_wait",
+          "effects": {
+            "stats": {
+              "wisdom": 10
+            }
+          }
+        },
+        {
+          "id": "choice_055_b",
+          "text": "【催促】「快点决定。」",
+          "nextSceneId": "scene_167_world5_rush",
+          "effects": {
+            "stats": {
+              "courage": 10
+            }
+          }
+        },
+        {
+          "id": "choice_055_c",
+          "text": "【建议】「让我来帮你。」",
+          "nextSceneId": "scene_167_world5_offer",
+          "effects": {
+            "stats": {
+              "determination": 15
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_166_world5_godless",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "你",
+      "dialogue": "「没有神...也许更好。」\n\n「生命可以自己寻找意义。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_167_world5_freedom"
+    },
+    {
+      "id": "scene_166_world5_show",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你展示了所有记忆。\n\n所有世界的故事...\n\n创造者静静地看着。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_167_world5_watch"
+    },
+    {
+      "id": "scene_166_world5_create",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你开始创造。\n\n一个新的世界...在你手中诞生。\n\n「这...」创造者惊讶地看着。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_167_world5_newworld"
+    },
+    {
+      "id": "scene_166_world5_sacrifice",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你选择牺牲自己。\n\n「用我的存在...换取所有世界的未来。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "ending_final_sacrifice"
+    },
+    {
+      "id": "scene_166_world5_search",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们一起寻找答案。\n\n在纯白的空间中...\n\n也许还有别的可能。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_167_world5_together"
+    },
+    {
+      "id": "scene_166_world5_demand",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "你",
+      "dialogue": "「答应我...」\n\n「即使你死了...所有世界也要继续存在。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_167_world5_promise"
+    },
+    {
+      "id": "scene_167_world5_rest",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「休息...」\n\n创造者点点头。\n\n「也许...这是最好的选择。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_168_world5_decision"
+    },
+    {
+      "id": "scene_167_world5_pride",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「我...创造了这些？」\n\n创造者的声音颤抖。\n\n「它们...很美。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_168_world5_beauty"
+    },
+    {
+      "id": "scene_167_world5_cry",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "神...哭了。\n\n金色的泪水滴落。\n\n「我...明白了。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_168_world5_understand"
+    },
+    {
+      "id": "scene_167_world5_wait",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你等待着。\n\n时间...没有意义。\n\n但创造者终于开口了。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_168_world5_speak"
+    },
+    {
+      "id": "scene_167_world5_rush",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "创造者笑了。\n\n「你还是这么...急躁。」\n\n「好吧，我决定了。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_168_world5_decide"
+    },
+    {
+      "id": "scene_167_world5_offer",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「帮我？」\n\n「怎么帮？」\n\n创造者好奇地看着你。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_168_world5_how"
+    },
+    {
+      "id": "scene_167_world5_freedom",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「自由...」\n\n「也许...这是最好的礼物。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_168_world5_gift"
+    },
+    {
+      "id": "scene_167_world5_watch",
+      "worldId": "world5",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "创造者看完所有记忆。他选择：",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "choices": [
+        {
+          "id": "choice_056_a",
+          "text": "【继续存在】",
+          "nextSceneId": "scene_168_world5_continue",
+          "effects": {
+            "stats": {
+              "determination": 15
+            }
+          }
+        },
+        {
+          "id": "choice_056_b",
+          "text": "【沉睡】",
+          "nextSceneId": "scene_168_world5_sleep",
+          "effects": {
+            "stats": {
+              "wisdom": 10
+            }
+          }
+        },
+        {
+          "id": "choice_056_c",
+          "text": "【重生】",
+          "nextSceneId": "scene_168_world5_rebirth",
+          "effects": {
+            "stats": {
+              "compassion": 20
+            },
+            "hiddenStats": {
+              "chaos": 10
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_167_world5_newworld",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「你...也能创造？」\n\n创造者惊讶地看着你。\n\n「这就是...生命的奇迹。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_168_world5_miracle"
+    },
+    {
+      "id": "scene_167_world5_together",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们一起寻找。\n\n在纯白的深处...\n\n有一个答案在等待。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_168_world5_find"
+    },
+    {
+      "id": "scene_167_world5_promise",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「我答应你。」\n\n创造者说。\n\n「所有世界...会继续存在。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_168_world5_oath"
+    },
+    {
+      "id": "scene_168_world5_decision",
+      "worldId": "world5",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "最终的决定时刻。创造者选择：",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "choices": [
+        {
+          "id": "choice_057_a",
+          "text": "【沉睡】",
+          "nextSceneId": "ending_final_sleep",
+          "effects": {
+            "stats": {
+              "wisdom": 15
+            }
+          }
+        },
+        {
+          "id": "choice_057_b",
+          "text": "【放手】",
+          "nextSceneId": "ending_final_letgo",
+          "effects": {
+            "stats": {
+              "compassion": 20
+            }
+          }
+        },
+        {
+          "id": "choice_057_c",
+          "text": "【融合】",
+          "nextSceneId": "ending_final_merge",
+          "effects": {
+            "stats": {
+              "determination": 20
+            },
+            "hiddenStats": {
+              "chaos": 15
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_168_world5_beauty",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "创造者看到了世界的美。\n\n他...改变了想法。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_169_world5_change"
+    },
+    {
+      "id": "scene_168_world5_understand",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「我明白了。」\n\n创造者说。\n\n「生命的意义...就在于它的短暂。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_169_world5_meaning"
+    },
+    {
+      "id": "scene_168_world5_speak",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「我决定了。」\n\n创造者说。\n\n「我选择...」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_169_world5_choice"
+    },
+    {
+      "id": "scene_168_world5_decide",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "创造者做出了决定。\n\n这个决定...\n\n将改变一切。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_169_world5_all"
+    },
+    {
+      "id": "scene_168_world5_how",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "你",
+      "dialogue": "「让我成为...新的守护者。」\n\n「你休息，我来守护。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_169_world5_guardian"
+    },
+    {
+      "id": "scene_168_world5_gift",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "自由...\n\n这是创造者给所有世界的...\n\n最后礼物。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_169_world5_free"
+    },
+    {
+      "id": "scene_168_world5_continue",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「那就...继续吧。」\n\n「我想看看...未来会怎样。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_169_world5_future"
+    },
+    {
+      "id": "scene_168_world5_sleep",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "创造者选择沉睡。\n\n「等我醒来时...」\n\n「希望所有世界...依然存在。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_169_world5_hope"
+    },
+    {
+      "id": "scene_168_world5_rebirth",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "创造者选择重生。\n\n他化身为新的生命...\n\n进入轮回。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_169_world5_cycle"
+    },
+    {
+      "id": "scene_168_world5_miracle",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「这就是...奇迹。」\n\n创造者感叹。\n\n「生命...真美妙。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_169_world5_wonder"
+    },
+    {
+      "id": "scene_168_world5_find",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "你们找到了答案。\n\n在纯白的深处...\n\n有一个简单的真理。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_169_world5_truth"
+    },
+    {
+      "id": "scene_168_world5_oath",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "创造者立下了誓言。\n\n这个誓言...\n\n将永远约束他。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_169_world5_bound"
+    },
+    {
+      "id": "scene_169_world5_change",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「我改变主意了。」\n\n创造者说。\n\n「我不想毁灭...我想守护。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_170_world5_protect"
+    },
+    {
+      "id": "scene_169_world5_meaning",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "生命的意义...\n\n在于短暂，在于珍贵。\n\n在于...爱。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_170_world5_love"
+    },
+    {
+      "id": "scene_169_world5_choice",
+      "worldId": "world5",
+      "type": "choice",
+      "speaker": "",
+      "dialogue": "创造者的选择是：",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "choices": [
+        {
+          "id": "choice_058_a",
+          "text": "【守护】",
+          "nextSceneId": "ending_final_guardian",
+          "effects": {
+            "stats": {
+              "determination": 20
+            }
+          }
+        },
+        {
+          "id": "choice_058_b",
+          "text": "【放手】",
+          "nextSceneId": "ending_final_free",
+          "effects": {
+            "stats": {
+              "compassion": 20,
+              "wisdom": 10
+            }
+          }
+        },
+        {
+          "id": "choice_058_c",
+          "text": "【轮回】",
+          "nextSceneId": "ending_final_reincarnate",
+          "effects": {
+            "stats": {
+              "wisdom": 15
+            },
+            "hiddenStats": {
+              "chaos": 15
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene_169_world5_all",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "这个决定...\n\n将影响所有世界。\n\n所有人。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_170_world5_impact"
+    },
+    {
+      "id": "scene_169_world5_guardian",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「你愿意？」\n\n创造者惊讶地看着你。\n\n「那...我休息了。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "ending_final_newguardian"
+    },
+    {
+      "id": "scene_169_world5_future",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "未来...\n\n无人知晓。\n\n但充满希望。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "ending_final_future"
+    },
+    {
+      "id": "scene_169_world5_hope",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "希望...\n\n这是创造者最后的...\n\n祝福。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "ending_final_blessing"
+    },
+    {
+      "id": "scene_169_world5_cycle",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "轮回...\n\n创造者成为生命的一部分。\n\n永远循环。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "ending_final_cycle"
+    },
+    {
+      "id": "scene_169_world5_wonder",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "生命的奇迹...\n\n让创造者改变了想法。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_170_world5_new"
+    },
+    {
+      "id": "scene_169_world5_truth",
+      "worldId": "world5",
+      "type": "dialogue",
+      "speaker": "创造者",
+      "dialogue": "「真理很简单。」\n\n「存在...就是意义。」",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_170_world5_exist"
+    },
+    {
+      "id": "scene_169_world5_bound",
+      "worldId": "world5",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "誓言生效。\n\n创造者被约束...\n\n永远守护所有世界。",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": "scene_170_world5_eternal"
+    },
+    {
+      "id": "scene_170_world5_protect",
+      "worldId": "world5",
+      "type": "ending",
+      "speaker": "",
+      "dialogue": "守护...\n\n这是新的开始。\n\n【最终章 完】",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "title": "最终结局：守护者",
+      "nextSceneId": null
+    },
+    {
+      "id": "scene_170_world5_love",
+      "worldId": "world5",
+      "type": "ending",
+      "speaker": "",
+      "dialogue": "爱...\n\n这是最终的真理。\n\n【最终章 完】",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "title": "最终结局：爱",
+      "nextSceneId": null
+    },
+    {
+      "id": "scene_170_world5_future",
+      "worldId": "world5",
+      "type": "ending",
+      "speaker": "",
+      "dialogue": "未来...\n\n等待着你。\n\n【最终章 完】",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "title": "最终结局：未来",
+      "nextSceneId": null
+    },
+    {
+      "id": "scene_170_world5_impact",
+      "worldId": "world5",
+      "type": "ending",
+      "speaker": "",
+      "dialogue": "影响...\n\n已经发生。\n\n【最终章 完】",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "title": "最终结局：改变",
+      "nextSceneId": null
+    },
+    {
+      "id": "scene_170_world5_new",
+      "worldId": "world5",
+      "type": "ending",
+      "speaker": "",
+      "dialogue": "新的想法...\n\n在创造者心中诞生。\n\n【最终章 完】",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "title": "最终结局：新生",
+      "nextSceneId": null
+    },
+    {
+      "id": "scene_170_world5_exist",
+      "worldId": "world5",
+      "type": "ending",
+      "speaker": "",
+      "dialogue": "存在即意义...\n\n这是最终的领悟。\n\n【最终章 完】",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "title": "最终结局：存在",
+      "nextSceneId": null
+    },
+    {
+      "id": "scene_170_world5_eternal",
+      "worldId": "world5",
+      "type": "ending",
+      "speaker": "",
+      "dialogue": "永恒的守护...\n\n这是创造者的誓言。\n\n【最终章 完】",
+      "background": "void",
+      "characters": [
+        "creator"
+      ],
+      "title": "最终结局：永恒",
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_destroy",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：毁灭",
+      "dialogue": "你选择了毁灭。\n\n一切归于虚无。\n\n【最终章 毁灭结局】",
+      "background": "ch05-void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_godkill",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：弑神",
+      "dialogue": "你击败了创造者。\n\n但代价是什么？\n\n【最终章 弑神结局】",
+      "background": "ch05-void",
+      "characters": [],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_sacrifice",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：牺牲",
+      "dialogue": "你选择了牺牲。\n\n用自己的存在，换取所有生命的未来。\n\n谢谢你。\n\n【最终章 牺牲结局】",
+      "background": "ch05-memory",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_sleep",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：长眠",
+      "dialogue": "你选择了长眠。\n\n在纯白的空间中，永远安息。\n\n【最终章 长眠结局】",
+      "background": "ch05-void",
+      "characters": [],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_letgo",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：放手",
+      "dialogue": "你选择了放手。\n\n让一切自然发展，不再干涉。\n\n【最终章 放手结局】",
+      "background": "ch05-memory",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_merge",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：融合",
+      "dialogue": "你选择了融合。\n\n与创造者合为一体，成为新的存在。\n\n【最终章 融合结局】",
+      "background": "ch05-void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_guardian",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：守护者",
+      "dialogue": "你成为了守护者。\n\n守护所有世界，所有生命。\n\n这是你的选择，你的道路。\n\n【最终章 守护者结局】",
+      "background": "ch05-void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_free",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：自由",
+      "dialogue": "你选择了自由。\n\n不再被任何事物束缚。\n\n走向未知的远方。\n\n【最终章 自由结局】",
+      "background": "ch05-memory",
+      "characters": [],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_reincarnate",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：轮回",
+      "dialogue": "你选择了轮回。\n\n一切重新开始，但这一次...\n\n会有不同的结局吗？\n\n【最终章 轮回结局】",
+      "background": "ch05-void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_newguardian",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：新守护者",
+      "dialogue": "你成为了新的守护者。\n\n创造者休息了，现在由你来守护。\n\n【最终章 新守护者结局】",
+      "background": "ch05-void",
+      "characters": [],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_future",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：未来",
+      "dialogue": "未来在前方等待。\n\n充满希望，充满可能。\n\n去吧，创造属于你的未来。\n\n【最终章 未来结局】",
+      "background": "ch05-memory",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_blessing",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：祝福",
+      "dialogue": "创造者给予你最后的祝福。\n\n愿你在未来的道路上...\n\n永远光明。\n\n【最终章 祝福结局】",
+      "background": "ch05-void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_cycle",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：轮回",
+      "dialogue": "轮回开始。\n\n创造者成为生命的一部分，永远循环。\n\n而你，也将成为传说。\n\n【最终章 轮回结局】",
+      "background": "ch05-void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": null
+    }
   ]
 }

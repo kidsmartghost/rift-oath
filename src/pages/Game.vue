@@ -402,12 +402,26 @@ function loadScene(sceneId) {
   if (!scene) {
     console.error('场景不存在:', sceneId)
     console.log('可用场景:', getLoadedScript()?.scenes?.map(s => s.id))
-    // 回退到第一个场景
-    const firstScene = getLoadedScript()?.scenes?.[0]
-    if (firstScene) {
-      console.log('使用第一个场景:', firstScene.id)
-      loadScene(firstScene.id)
+    
+    // 如果是结局场景不存在，显示提示并返回标题
+    if (sceneId?.includes('ending')) {
+      console.warn('结局场景不存在，返回标题页')
+      setTimeout(() => {
+        window.router?.navigateTo('title')
+      }, 1000)
+      return
     }
+    
+    // 其他场景不存在时，尝试保持在当前场景或返回标题
+    if (currentScene.value) {
+      console.warn('保持当前场景:', currentScene.value.id)
+      return
+    }
+    
+    // 如果当前没有场景，返回标题页
+    setTimeout(() => {
+      window.router?.navigateTo('title')
+    }, 1000)
     return
   }
   
