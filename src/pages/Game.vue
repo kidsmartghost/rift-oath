@@ -241,7 +241,6 @@ import { achievements, memoryFragments } from '@/data/achievements'
 import { assets, getBackgroundForScene, getCharactersForScene, getBGMForWorld } from '@/data/assets'
 
 const gameStore = useGameStore()
-const playerState = gameStore.playerState
 
 const currentScene = ref(null)
 const showAchievementNotify = ref(false)
@@ -376,7 +375,7 @@ function loadScene(sceneId) {
   }
   
   // 获取动态对话（使用 ScriptLoader 的函数）
-  const dialogueText = getDynamicDialogue(scene, playerState.value)
+  const dialogueText = getDynamicDialogue(scene, gameStore.playerState)
   console.log('对话内容:', dialogueText?.substring(0, 50))
   startDialogue(dialogueText)
 }
@@ -426,10 +425,10 @@ function onDialogueClick() {
 function onChoiceClick(choice) {
   console.log('点击选项:', choice.id, choice.text)
   console.log('选项条件:', choice.conditions)
-  console.log('玩家属性:', playerState.value)
+  console.log('玩家属性:', gameStore.playerState)
   
   // 检查选择是否可用（使用 ScriptLoader 的函数）
-  const available = isChoiceAvailable(choice, playerState.value)
+  const available = isChoiceAvailable(choice, gameStore.playerState)
   console.log('选项可用:', available)
   
   if (!available) {
@@ -442,12 +441,12 @@ function onChoiceClick(choice) {
   if (audioManager) audioManager.playSelect()
   
   // 应用效果（使用 ScriptLoader 的函数）
-  const changes = applyChoiceEffects(choice, playerState.value)
+  const changes = applyChoiceEffects(choice, gameStore.playerState)
   console.log('属性变化:', changes)
   
   // 更新场景 ID
-  playerState.value.choiceHistory.push(choice.id)
-  playerState.value.currentSceneId = choice.nextSceneId
+  gameStore.playerState.choiceHistory.push(choice.id)
+  gameStore.playerState.currentSceneId = choice.nextSceneId
   
   console.log('下一场景 ID:', choice.nextSceneId)
   
@@ -488,7 +487,7 @@ function showStatChangesNotification(changes) {
 
 // 检查选择是否可用（使用 ScriptLoader 的函数）
 function isChoiceAvailableLocal(choice) {
-  const result = isChoiceAvailable(choice, playerState.value)
+  const result = isChoiceAvailable(choice, gameStore.playerState)
   console.log('检查选项可用:', choice.id, result)
   return result
 }
@@ -496,7 +495,7 @@ function isChoiceAvailableLocal(choice) {
 // 获取失败原因（使用 ScriptLoader 的函数）
 function getFailedReasonLocal(choice) {
   const reason = window.ScriptLoaderUtils?.getChoiceFailedReason 
-    ? window.ScriptLoaderUtils.getChoiceFailedReason(choice, playerState.value)
+    ? window.ScriptLoaderUtils.getChoiceFailedReason(choice, gameStore.playerState)
     : '条件不足'
   console.log('失败原因:', reason)
   return reason
