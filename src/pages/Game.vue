@@ -752,6 +752,46 @@ onMounted(async () => {
   height: 100%;
 }
 
+/* 背景图片层 */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* 角色立绘层 */
+.character-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* 角色立绘 */
+.character-portrait {
+  position: absolute;
+  bottom: 0;
+  width: 25%;
+  max-width: 400px;
+  height: 70%;
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  transition: left 0.3s ease;
+}
+
 /* 主内容区 - 包含对话和选择支 */
 .main-content {
   position: absolute;
