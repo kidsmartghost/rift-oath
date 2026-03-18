@@ -162,10 +162,17 @@
         </div>
         
         <!-- 继续按钮 -->
-        <div v-if="!isTyping && !hasChoices" class="continue-btn-wrapper" @click="onDialogueClick">
+        <div v-if="!isTyping && !hasChoices && !isEndingScene" class="continue-btn-wrapper" @click="onDialogueClick">
           <div class="continue-btn">
             <span>继续</span>
             <span class="continue-arrow">⌄</span>
+          </div>
+        </div>
+        
+        <!-- 结局按钮（再玩一次） -->
+        <div v-if="!isTyping && !hasChoices && isEndingScene" class="continue-btn-wrapper" @click="restartGame">
+          <div class="continue-btn restart-btn">
+            <span>🔄 再玩一次</span>
           </div>
         </div>
         
@@ -366,6 +373,11 @@ const currentCharacters = ref([])
 
 // 是否显示角色名字标签
 const showCharacterNames = ref(false)
+
+// 判断是否是结局场景
+const isEndingScene = computed(() => {
+  return currentScene.value?.type === 'ending'
+})
 
 // 计算角色位置（居中分布）
 function getCharacterPosition(index, total) {
@@ -673,6 +685,20 @@ function goToTitle() {
   showMenu.value = false
   // 直接使用 router 导航，不使用 confirm 弹窗
   window.router?.navigateTo('title')
+}
+
+// 重新开始游戏（用于结局后）
+function restartGame() {
+  if (audioManager) audioManager.playClick()
+  
+  // 重置游戏状态
+  gameStore.startNewGame()
+  
+  // 加载标题页或第一章第一个场景
+  setTimeout(() => {
+    window.router?.navigateTo('title')
+    // 或者直接开始游戏：loadScene('scene_001')
+  }, 300)
 }
 
 function dismissAchievement() {
@@ -994,6 +1020,19 @@ onMounted(async () => {
 
 .continue-btn:active {
   transform: translateY(0) scale(0.98);
+}
+
+/* 结局再玩一次按钮 */
+.restart-btn {
+  background: linear-gradient(135deg, rgba(139, 0, 0, 0.8) 0%, rgba(100, 0, 0, 0.9) 100%);
+  border-color: rgba(255, 100, 100, 0.8) !important;
+  font-weight: bold;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.restart-btn:hover {
+  background: linear-gradient(135deg, rgba(160, 0, 0, 0.9) 0%, rgba(120, 0, 0, 1) 100%);
+  transform: translateY(-3px) scale(1.02);
 }
 
 .continue-arrow {
