@@ -1297,7 +1297,13 @@ onMounted(async () => {
   font-size: 24px;
   color: #ffffff;
   cursor: pointer;
-  z-index: 50;
+  z-index: 200;
+  transition: all 0.2s;
+}
+
+.menu-btn:hover {
+  background: rgba(0,0,0,0.8);
+  transform: scale(1.1);
 }
 
 .modal-overlay {
