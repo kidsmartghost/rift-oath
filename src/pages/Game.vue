@@ -505,8 +505,24 @@ function onDialogueClick() {
     // 立即显示完整文本
     displayedText.value = currentScene.value.dialogue
     isTyping.value = false
-  } else if (!hasChoices.value && currentScene.value?.nextSceneId) {
-    loadScene(currentScene.value.nextSceneId)
+  } else if (!hasChoices.value) {
+    // 没有选项时
+    if (currentScene.value?.nextSceneId) {
+      // 有下一场景，继续
+      loadScene(currentScene.value.nextSceneId)
+    } else if (currentScene.value?.type === 'ending' || currentScene.value?.title?.includes('结局')) {
+      // 是结局，返回标题
+      setTimeout(() => {
+        window.router?.navigateTo('title')
+      }, 500)
+    } else {
+      // 普通场景但没有下一场景，显示提示
+      console.warn('场景没有下一跳：', currentScene.value?.id)
+      // 自动返回标题
+      setTimeout(() => {
+        window.router?.navigateTo('title')
+      }, 1000)
+    }
   }
 }
 
