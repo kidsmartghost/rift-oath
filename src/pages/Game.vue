@@ -8,36 +8,36 @@
       <div v-for="i in 15" :key="i" class="particle" :style="getParticleStyle(i)"></div>
     </div>
     
-    <!-- 属性面板（左上角） -->
+    <!-- 属性面板（顶部居中 2×2 网格） -->
     <div class="stats-panel" @click="showStatsDetail = !showStatsDetail">
-      <div class="stats-header">
-        <span class="stats-icon">📊</span>
-        <span class="stats-title">属性</span>
-      </div>
-      <div class="stats-bars">
-        <div class="stat-row">
-          <span class="stat-label">勇</span>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-icon">🗡️</div>
           <div class="stat-bar-bg">
             <div class="stat-bar-fill" :style="{ width: playerState.stats.courage + '%' }"></div>
           </div>
+          <div class="stat-value">{{ playerState.stats.courage }}</div>
         </div>
-        <div class="stat-row">
-          <span class="stat-label">智</span>
+        <div class="stat-item">
+          <div class="stat-icon">📚</div>
           <div class="stat-bar-bg">
             <div class="stat-bar-fill" :style="{ width: playerState.stats.wisdom + '%' }"></div>
           </div>
+          <div class="stat-value">{{ playerState.stats.wisdom }}</div>
         </div>
-        <div class="stat-row">
-          <span class="stat-label">仁</span>
+        <div class="stat-item">
+          <div class="stat-icon">💝</div>
           <div class="stat-bar-bg">
             <div class="stat-bar-fill" :style="{ width: playerState.stats.compassion + '%' }"></div>
           </div>
+          <div class="stat-value">{{ playerState.stats.compassion }}</div>
         </div>
-        <div class="stat-row">
-          <span class="stat-label">毅</span>
+        <div class="stat-item">
+          <div class="stat-icon">🔥</div>
           <div class="stat-bar-bg">
             <div class="stat-bar-fill" :style="{ width: playerState.stats.determination + '%' }"></div>
           </div>
+          <div class="stat-value">{{ playerState.stats.determination }}</div>
         </div>
       </div>
     </div>
@@ -109,14 +109,16 @@
       </div>
     </div>
     
-    <!-- 属性变化通知 -->
-    <div v-if="showStatChanges && statChanges.length > 0" class="stat-changes-notify">
-      <div v-for="change in statChanges" :key="change.stat" class="stat-change-item" :class="{ hidden: change.hidden }">
-        <span class="stat-change-icon">{{ getStatIcon(change.stat) }}</span>
-        <span class="stat-change-text">{{ getStatName(change.stat) }}</span>
-        <span class="stat-change-delta" :class="{ positive: change.delta > 0, negative: change.delta < 0 }">
-          {{ change.delta > 0 ? '+' : '' }}{{ change.delta }}
-        </span>
+    <!-- 属性变化通知（屏幕中央） -->
+    <div v-if="showStatChanges && statChanges.length > 0" class="stat-changes-overlay">
+      <div class="stat-changes-popup">
+        <div v-for="change in statChanges" :key="change.stat" class="stat-change-item" :class="{ hidden: change.hidden }">
+          <span class="stat-change-icon">{{ getStatIcon(change.stat) }}</span>
+          <span class="stat-change-text">{{ getStatName(change.stat) }}</span>
+          <span class="stat-change-delta" :class="{ positive: change.delta > 0, negative: change.delta < 0 }">
+            {{ change.delta > 0 ? '+' : '' }}{{ change.delta }}
+          </span>
+        </div>
       </div>
     </div>
     
@@ -799,66 +801,59 @@ onMounted(() => {
 /* ========== 属性面板 ========== */
 .stats-panel {
   position: absolute;
-  top: 15px;
-  left: 15px;
-  background: rgba(0,0,0,0.7);
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.75);
   border: 1px solid rgba(139,0,0,0.5);
   border-radius: 12px;
-  padding: 12px 15px;
+  padding: 10px 15px;
   cursor: pointer;
   z-index: 60;
   transition: all 0.3s ease;
-  min-width: 120px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 .stats-panel:hover {
   background: rgba(0,0,0,0.85);
   border-color: rgba(139,0,0,0.8);
-  transform: translateY(-2px);
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 6px 25px rgba(139,0,0,0.4);
 }
 
-.stats-header {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 10px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+/* 2×2 网格布局 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  min-width: 140px;
 }
 
-.stats-icon {
-  font-size: 16px;
-}
-
-.stats-title {
-  font-size: 13px;
-  color: rgba(255,255,255,0.9);
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.stats-bars {
+.stat-item {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-}
-
-.stat-row {
-  display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+  padding: 6px 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
-.stat-label {
-  font-size: 11px;
-  color: rgba(255,255,255,0.6);
-  width: 16px;
-  text-align: center;
+.stat-item:hover {
+  background: rgba(255,255,255,0.1);
+  transform: scale(1.05);
+}
+
+.stat-icon {
+  font-size: 14px;
+  line-height: 1;
 }
 
 .stat-bar-bg {
-  flex: 1;
-  height: 6px;
+  width: 100%;
+  height: 5px;
   background: rgba(255,255,255,0.1);
   border-radius: 3px;
   overflow: hidden;
@@ -869,6 +864,13 @@ onMounted(() => {
   background: linear-gradient(90deg, #8b0000, #c41e3a);
   border-radius: 3px;
   transition: width 0.5s ease;
+}
+
+.stat-value {
+  font-size: 12px;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1;
 }
 
 /* 属性详情弹窗 */
@@ -962,19 +964,68 @@ onMounted(() => {
   font-size: 14px;
 }
 
-/* 属性变化通知 */
-.stat-changes-notify {
+/* 属性变化通知（屏幕中央弹窗） */
+.stat-changes-overlay {
   position: absolute;
-  top: 80px;
-  left: 15px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 6px;
-  z-index: 100;
-  animation: slideInLeft 0.4s ease-out;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  pointer-events: none;
+  animation: fadeInOverlay 0.3s ease;
 }
 
-@keyframes slideInLeft {
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.stat-changes-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 30px;
+  background: rgba(0,0,0,0.9);
+  border: 2px solid rgba(139,0,0,0.6);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(139,0,0,0.4);
+  animation: popupIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  pointer-events: none;
+}
+
+@keyframes popupIn {
+  from {
+    transform: scale(0.5) translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.stat-change-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  font-size: 15px;
+  animation: slideInStat 0.3s ease backwards;
+  min-width: 180px;
+}
+
+.stat-change-item:nth-child(1) { animation-delay: 0s; }
+.stat-change-item:nth-child(2) { animation-delay: 0.1s; }
+.stat-change-item:nth-child(3) { animation-delay: 0.15s; }
+.stat-change-item:nth-child(4) { animation-delay: 0.2s; }
+
+@keyframes slideInStat {
   from {
     transform: translateX(-20px);
     opacity: 0;
@@ -985,52 +1036,42 @@ onMounted(() => {
   }
 }
 
-.stat-change-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  background: rgba(0,0,0,0.85);
-  border: 1px solid rgba(139,0,0,0.5);
-  border-radius: 8px;
-  font-size: 13px;
-  animation: pulse-stat 0.5s ease;
-}
-
 .stat-change-item.hidden {
-  opacity: 0.6;
-  border-color: rgba(100,100,100,0.3);
-}
-
-@keyframes pulse-stat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  opacity: 0.5;
+  background: rgba(100,100,100,0.1);
 }
 
 .stat-change-icon {
-  font-size: 16px;
+  font-size: 20px;
+  flex-shrink: 0;
 }
 
 .stat-change-text {
   color: #e0d0e8;
   flex: 1;
+  font-weight: 500;
 }
 
 .stat-change-delta {
-  font-weight: 700;
-  font-size: 15px;
-  padding: 2px 8px;
-  border-radius: 4px;
+  font-weight: 800;
+  font-size: 18px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  min-width: 50px;
+  text-align: center;
 }
 
 .stat-change-delta.positive {
   color: #4ade80;
-  background: rgba(74,222,128,0.15);
+  background: rgba(74,222,128,0.2);
+  text-shadow: 0 0 10px rgba(74,222,128,0.5);
 }
 
 .stat-change-delta.negative {
   color: #f87171;
-  background: rgba(248,113,113,0.15);
+  background: rgba(248,113,113,0.2);
+  text-shadow: 0 0 10px rgba(248,113,113,0.5);
 }
 
 /* ========== 菜单按钮 ========== */
@@ -1239,6 +1280,52 @@ onMounted(() => {
   .continue-btn {
     padding: 12px 32px;
     font-size: 15px;
+  }
+  
+  /* 桌面端属性面板更大 */
+  .stats-panel {
+    top: 15px;
+    padding: 12px 20px;
+  }
+  
+  .stats-grid {
+    gap: 12px;
+    min-width: 200px;
+  }
+  
+  .stat-icon {
+    font-size: 18px;
+  }
+  
+  .stat-bar-bg {
+    height: 6px;
+  }
+  
+  .stat-value {
+    font-size: 14px;
+  }
+  
+  .stat-item {
+    padding: 8px 12px;
+  }
+  
+  /* 桌面端属性变化通知 */
+  .stat-changes-popup {
+    padding: 25px 40px;
+  }
+  
+  .stat-change-item {
+    font-size: 17px;
+    min-width: 220px;
+  }
+  
+  .stat-change-icon {
+    font-size: 24px;
+  }
+  
+  .stat-change-delta {
+    font-size: 20px;
+    padding: 6px 16px;
   }
 }
 
