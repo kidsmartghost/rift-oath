@@ -1039,11 +1039,6 @@ onMounted(async () => {
   grid-template-columns: 1fr;
 }
 
-/* 如果有 3 个选项，最后一个占满第二行 */
-.choices-layer:has(.choice-btn:nth-child(3)) .choice-btn:nth-child(3) {
-  grid-column: 1 / -1;
-}
-
 .choice-btn {
   background: rgba(0, 0, 0, 0.75);
   border: 2px solid rgba(139, 0, 0, 0.6);
