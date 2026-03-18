@@ -868,7 +868,7 @@ onMounted(async () => {
 
 .dialogue-layer {
   width: 100%;
-  padding: 15px 20px 10px 20px;
+  padding: 12px 15px 8px 15px;
   background: rgba(10, 10, 15, 0.98);
   border-top: 3px solid rgba(139, 0, 0, 0.8);
   box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.9);
@@ -876,14 +876,14 @@ onMounted(async () => {
   flex-direction: column;
   position: relative;
   z-index: 20;
-  height: 30vh;
-  min-height: 150px;
+  height: 35vh;
+  min-height: 180px;
 }
 
 /* 有选择支时，对话区域固定高度 */
 .main-content:has(.choices-layer) .dialogue-layer {
-  height: 30vh;
-  min-height: 160px;
+  height: 35vh;
+  min-height: 190px;
 }
 
 .scene-title {
@@ -911,11 +911,11 @@ onMounted(async () => {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   padding-right: 5px;
   flex: 1;
-  min-height: 60px;
-  max-height: 18vh;
+  min-height: 50px;
+  max-height: 15vh;
   cursor: text;
 }
 
@@ -1024,17 +1024,14 @@ onMounted(async () => {
 .choices-layer {
   flex-shrink: 0;
   width: 100%;
-  padding: 12px 15px 15px 15px;
+  padding: 10px 12px 12px 12px;
   background: rgba(8, 8, 12, 0.98);
   border-top: 2px solid rgba(139, 0, 0, 0.5);
   box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.8);
-}
-
-/* 2x2 网格布局 */
-.choices-layer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 8px;
+  align-content: start;
 }
 
 /* 如果只有 1 个选项，占满整行 */
@@ -1051,9 +1048,9 @@ onMounted(async () => {
   background: rgba(0, 0, 0, 0.75);
   border: 2px solid rgba(139, 0, 0, 0.6);
   border-radius: 8px;
-  padding: 12px 14px;
+  padding: 10px 12px;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
   transition: all 0.2s;
   text-align: center;
@@ -1061,12 +1058,14 @@ onMounted(async () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 70px;
+  min-height: 55px;
+  max-height: 80px;
+  overflow: hidden;
   /* 防止文字溢出 */
   word-wrap: break-word;
   word-break: break-word;
   white-space: normal;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 .choice-btn.disabled {
@@ -1084,6 +1083,18 @@ onMounted(async () => {
 
 .choice-btn:active {
   transform: scale(0.98);
+}
+
+/* 选项文字优化 */
+.choice-text {
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+
+.choice-locked {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
 }
 
 .choice-text {
