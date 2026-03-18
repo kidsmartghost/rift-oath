@@ -8,8 +8,11 @@
       <div v-for="i in 15" :key="i" class="particle" :style="getParticleStyle(i)"></div>
     </div>
     
+    <!-- 点击继续的热区（无选择支时覆盖整个屏幕） -->
+    <div v-if="!hasChoices || isTyping" class="click-overlay" @click="onDialogueClick"></div>
+    
     <!-- 主内容区 -->
-    <div class="main-content" :class="{ 'has-choices': hasChoices && !isTyping }">
+    <div class="main-content">
       <!-- 对话层 -->
       <div class="dialogue-layer">
         <!-- 场景标题 -->
@@ -24,7 +27,7 @@
         
         <!-- 对话内容（可滚动） -->
         <div class="dialogue-scroll-wrapper">
-          <div class="dialogue-text" @click="onDialogueClick">
+          <div class="dialogue-text">
             {{ displayedText }}
             <span v-if="isTyping" class="cursor">▋</span>
           </div>
@@ -32,7 +35,7 @@
         
         <!-- 提示 -->
         <div v-if="!isTyping && !hasChoices" class="continue-hint">
-          点击继续
+          点击屏幕继续
         </div>
       </div>
       
@@ -315,19 +318,23 @@ onMounted(() => {
 /* 主内容区 - 包含对话和选择支 */
 .main-content {
   position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* 点击热区 - 无选择支时覆盖整个屏幕 */
+.click-overlay {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  transition: all 0.3s ease;
-}
-
-/* 有选择支时，对话区域上移留出空间 */
-.main-content.has-choices {
-  padding-bottom: 0;
+  z-index: 10;
+  cursor: pointer;
 }
 
 /* 世界主题粒子效果 */
@@ -392,20 +399,17 @@ onMounted(() => {
 }
 
 .dialogue-layer {
-  flex: 1;
+  width: 100%;
+  padding: 20px 20px 10px 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.6) 60%, transparent 100%);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 20px 20px 10px 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 40%, transparent 100%);
-  min-height: 0;
-  overflow: hidden;
 }
 
-/* 有选择支时，对话区域自动收缩 */
-.main-content.has-choices .dialogue-layer {
-  flex: 0 0 auto;
-  max-height: 45vh;
+/* 有选择支时，对话区域收缩留出空间 */
+.main-content:has(.choices-layer) .dialogue-layer {
+  max-height: 35vh;
+  padding-bottom: 5px;
 }
 
 .scene-title {
@@ -428,11 +432,11 @@ onMounted(() => {
 
 /* 对话滚动区域 */
 .dialogue-scroll-wrapper {
-  flex: 1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   margin-bottom: 10px;
   padding-right: 5px;
+  max-height: 25vh;
   min-height: 0;
 }
 
@@ -490,14 +494,15 @@ onMounted(() => {
   flex-shrink: 0;
   width: 100%;
   padding: 15px 20px 20px 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.85) 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.9) 100%);
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: 50vh;
+  max-height: 45vh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 2px solid rgba(139,0,0,0.3);
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
 }
 
 .choice-btn {
@@ -721,8 +726,8 @@ onMounted(() => {
     gap: 15px;
   }
   
-  .main-content.has-choices .dialogue-layer {
-    max-height: 50vh;
+  .main-content:has(.choices-layer) .dialogue-layer {
+    max-height: 45vh;
   }
 }
 
@@ -768,8 +773,8 @@ onMounted(() => {
     gap: 10px;
   }
   
-  .main-content.has-choices .dialogue-layer {
-    max-height: 40vh;
+  .main-content:has(.choices-layer) .dialogue-layer {
+    max-height: 30vh;
   }
 }
 
