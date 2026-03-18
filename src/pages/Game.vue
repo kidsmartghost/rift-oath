@@ -33,30 +33,30 @@
         <div class="stat-item">
           <div class="stat-icon">🗡️</div>
           <div class="stat-bar-bg">
-            <div class="stat-bar-fill" :style="{ width: playerState.stats.courage + '%' }"></div>
+            <div class="stat-bar-fill" :style="{ width: gameStore.playerState.stats.courage + '%' }"></div>
           </div>
-          <div class="stat-value">{{ playerState.stats.courage }}</div>
+          <div class="stat-value">{{ gameStore.playerState.stats.courage }}</div>
         </div>
         <div class="stat-item">
           <div class="stat-icon">📚</div>
           <div class="stat-bar-bg">
-            <div class="stat-bar-fill" :style="{ width: playerState.stats.wisdom + '%' }"></div>
+            <div class="stat-bar-fill" :style="{ width: gameStore.playerState.stats.wisdom + '%' }"></div>
           </div>
-          <div class="stat-value">{{ playerState.stats.wisdom }}</div>
+          <div class="stat-value">{{ gameStore.playerState.stats.wisdom }}</div>
         </div>
         <div class="stat-item">
           <div class="stat-icon">💝</div>
           <div class="stat-bar-bg">
-            <div class="stat-bar-fill" :style="{ width: playerState.stats.compassion + '%' }"></div>
+            <div class="stat-bar-fill" :style="{ width: gameStore.playerState.stats.compassion + '%' }"></div>
           </div>
-          <div class="stat-value">{{ playerState.stats.compassion }}</div>
+          <div class="stat-value">{{ gameStore.playerState.stats.compassion }}</div>
         </div>
         <div class="stat-item">
           <div class="stat-icon">🔥</div>
           <div class="stat-bar-bg">
-            <div class="stat-bar-fill" :style="{ width: playerState.stats.determination + '%' }"></div>
+            <div class="stat-bar-fill" :style="{ width: gameStore.playerState.stats.determination + '%' }"></div>
           </div>
-          <div class="stat-value">{{ playerState.stats.determination }}</div>
+          <div class="stat-value">{{ gameStore.playerState.stats.determination }}</div>
         </div>
       </div>
     </div>
@@ -71,19 +71,19 @@
           <div class="stats-detail-list">
             <div class="stats-detail-item">
               <span class="stats-detail-label">🗡️ 勇气</span>
-              <span class="stats-detail-value">{{ playerState.stats.courage }}/100</span>
+              <span class="stats-detail-value">{{ gameStore.playerState.stats.courage }}/100</span>
             </div>
             <div class="stats-detail-item">
               <span class="stats-detail-label">📚 智慧</span>
-              <span class="stats-detail-value">{{ playerState.stats.wisdom }}/100</span>
+              <span class="stats-detail-value">{{ gameStore.playerState.stats.wisdom }}/100</span>
             </div>
             <div class="stats-detail-item">
               <span class="stats-detail-label">💝 同情</span>
-              <span class="stats-detail-value">{{ playerState.stats.compassion }}/100</span>
+              <span class="stats-detail-value">{{ gameStore.playerState.stats.compassion }}/100</span>
             </div>
             <div class="stats-detail-item">
               <span class="stats-detail-label">🔥 决心</span>
-              <span class="stats-detail-value">{{ playerState.stats.determination }}/100</span>
+              <span class="stats-detail-value">{{ gameStore.playerState.stats.determination }}/100</span>
             </div>
           </div>
         </div>
@@ -93,11 +93,11 @@
           <div class="stats-detail-list">
             <div class="stats-detail-item">
               <span class="stats-detail-label">🌑 腐化度</span>
-              <span class="stats-detail-value" :class="{ danger: playerState.hiddenStats.corruption > 50 }">{{ playerState.hiddenStats.corruption }}/100</span>
+              <span class="stats-detail-value" :class="{ danger: gameStore.playerState.hiddenStats.corruption > 50 }">{{ gameStore.playerState.hiddenStats.corruption }}/100</span>
             </div>
             <div class="stats-detail-item">
               <span class="stats-detail-label">⚡ 混乱度</span>
-              <span class="stats-detail-value">{{ playerState.hiddenStats.chaos }}/100</span>
+              <span class="stats-detail-value">{{ gameStore.playerState.hiddenStats.chaos }}/100</span>
             </div>
           </div>
         </div>
@@ -107,19 +107,19 @@
           <div class="stats-detail-list">
             <div class="stats-detail-item">
               <span class="stats-detail-label">🏰 永夜王国</span>
-              <span class="stats-detail-value">{{ playerState.bonds.world1 }}/100</span>
+              <span class="stats-detail-value">{{ gameStore.playerState.bonds.world1 }}/100</span>
             </div>
             <div class="stats-detail-item">
               <span class="stats-detail-label">🤖 机械废土</span>
-              <span class="stats-detail-value">{{ playerState.bonds.world2 }}/100</span>
+              <span class="stats-detail-value">{{ gameStore.playerState.bonds.world2 }}/100</span>
             </div>
             <div class="stats-detail-item">
               <span class="stats-detail-label">⚡ 神弃之地</span>
-              <span class="stats-detail-value">{{ playerState.bonds.world3 }}/100</span>
+              <span class="stats-detail-value">{{ gameStore.playerState.bonds.world3 }}/100</span>
             </div>
             <div class="stats-detail-item">
               <span class="stats-detail-label">🏫 学园都市</span>
-              <span class="stats-detail-value">{{ playerState.bonds.world4 }}/100</span>
+              <span class="stats-detail-value">{{ gameStore.playerState.bonds.world4 }}/100</span>
             </div>
           </div>
         </div>
