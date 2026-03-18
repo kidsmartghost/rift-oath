@@ -3,6 +3,16 @@
  * 所有 AI 生成的图片和音乐素材路径
  */
 
+// 基础路径 - 使用相对路径确保在 GitHub Pages 子目录下正常工作
+const BASE_PATH = import.meta.env.BASE_URL || '/rift-oath/'
+
+// 辅助函数：构建图片路径
+function imagePath(path) {
+  // 去掉开头的 ./ 或 /，然后加上 BASE_PATH
+  const cleanPath = path.replace(/^[/\.]+/, '')
+  return BASE_PATH + cleanPath
+}
+
 export const assets = {
   // ========== 角色立绘 ==========
   characters: {
@@ -11,25 +21,25 @@ export const assets = {
       id: 'aria',
       name: '艾莉娅',
       world: 'world1',
-      portrait: '/images/characters/aria.png'
+      portrait: imagePath('images/characters/aria.png')
     },
     k7: {
       id: 'k7',
       name: 'K-7',
       world: 'world2',
-      portrait: '/images/characters/k7.png'
+      portrait: imagePath('images/characters/k7.png')
     },
     lorne: {
       id: 'lorne',
       name: '洛恩',
       world: 'world3',
-      portrait: '/images/characters/lorne.png'
+      portrait: imagePath('images/characters/lorne.png')
     },
     lin: {
       id: 'lin',
       name: '林小满',
       world: 'world4',
-      portrait: '/images/characters/lin-xiaoman.png'
+      portrait: imagePath('images/characters/lin-xiaoman.png')
     },
     
     // NPC
@@ -37,37 +47,37 @@ export const assets = {
       id: 'elder',
       name: '神秘老人',
       world: 'world1',
-      portrait: '/images/characters/elder.png'
+      portrait: imagePath('images/characters/elder.png')
     },
     cedric: {
       id: 'cedric',
       name: '塞德里克',
       world: 'world1',
-      portrait: '/images/characters/cedric.png'
+      portrait: imagePath('images/characters/cedric.png')
     },
     eve9: {
       id: 'eve9',
       name: 'Eve-9',
       world: 'world2',
-      portrait: '/images/characters/eve9.png'
+      portrait: imagePath('images/characters/eve9.png')
     },
     michael: {
       id: 'michael',
       name: '米迦勒',
       world: 'world3',
-      portrait: '/images/characters/michael.png'
+      portrait: imagePath('images/characters/michael.png')
     },
     observer: {
       id: 'observer',
       name: '观察者',
       world: 'world4',
-      portrait: '/images/characters/observer.png'
+      portrait: imagePath('images/characters/observer.png')
     },
     creator: {
       id: 'creator',
       name: '创造者',
       world: 'world5',
-      portrait: '/images/characters/creator.png'
+      portrait: imagePath('images/characters/creator.png')
     }
   },
 
@@ -77,19 +87,19 @@ export const assets = {
     'ch01-church': {
       id: 'ch01-church',
       world: 'world1',
-      image: '/images/backgrounds/ch01-church.png',
+      image: imagePath('images/backgrounds/ch01-church.png'),
       name: '圣罗兰教堂'
     },
     'ch01-ruins': {
       id: 'ch01-ruins',
       world: 'world1',
-      image: '/images/backgrounds/ch01-ruins.png',
+      image: imagePath('images/backgrounds/ch01-ruins.png'),
       name: '王都废墟'
     },
     'ch01-crypt': {
       id: 'ch01-crypt',
       world: 'world1',
-      image: '/images/backgrounds/ch01-crypt.png',
+      image: imagePath('images/backgrounds/ch01-crypt.png'),
       name: '地下密室'
     },
     
@@ -97,19 +107,19 @@ export const assets = {
     'ch02-cyber-street': {
       id: 'ch02-cyber-street',
       world: 'world2',
-      image: '/images/backgrounds/ch02-cyber-street.png',
+      image: imagePath('images/backgrounds/ch02-cyber-street.png'),
       name: '废墟街道'
     },
     'ch02-bunker': {
       id: 'ch02-bunker',
       world: 'world2',
-      image: '/images/backgrounds/ch02-bunker.png',
+      image: imagePath('images/backgrounds/ch02-bunker.png'),
       name: '地下避难所'
     },
     'ch02-battlefield': {
       id: 'ch02-battlefield',
       world: 'world2',
-      image: '/images/backgrounds/ch02-battlefield.png',
+      image: imagePath('images/backgrounds/ch02-battlefield.png'),
       name: '猎杀者战场'
     },
     
@@ -117,19 +127,19 @@ export const assets = {
     'ch03-temple': {
       id: 'ch03-temple',
       world: 'world3',
-      image: '/images/backgrounds/ch03-temple.png',
+      image: imagePath('images/backgrounds/ch03-temple.png'),
       name: '破碎神殿'
     },
     'ch03-rift': {
       id: 'ch03-rift',
       world: 'world3',
-      image: '/images/backgrounds/ch03-rift.png',
+      image: imagePath('images/backgrounds/ch03-rift.png'),
       name: '天空裂隙'
     },
     'ch03-godfall': {
       id: 'ch03-godfall',
       world: 'world3',
-      image: '/images/backgrounds/ch03-godfall.png',
+      image: imagePath('images/backgrounds/ch03-godfall.png'),
       name: '神陨战场'
     },
     
@@ -137,19 +147,19 @@ export const assets = {
     'ch04-classroom': {
       id: 'ch04-classroom',
       world: 'world4',
-      image: '/images/backgrounds/ch04-classroom.png',
+      image: imagePath('images/backgrounds/ch04-classroom.png'),
       name: '普通教室'
     },
     'ch04-library': {
       id: 'ch04-library',
       world: 'world4',
-      image: '/images/backgrounds/ch04-library.png',
+      image: imagePath('images/backgrounds/ch04-library.png'),
       name: '废弃图书馆'
     },
     'ch04-campus': {
       id: 'ch04-campus',
       world: 'world4',
-      image: '/images/backgrounds/ch04-campus.png',
+      image: imagePath('images/backgrounds/ch04-campus.png'),
       name: '校园黄昏'
     },
     
@@ -157,19 +167,19 @@ export const assets = {
     'ch05-void': {
       id: 'ch05-void',
       world: 'world5',
-      image: '/images/backgrounds/ch05-void.png',
+      image: imagePath('images/backgrounds/ch05-void.png'),
       name: '纯白空间'
     },
     'ch05-memory': {
       id: 'ch05-memory',
       world: 'world5',
-      image: '/images/backgrounds/ch05-memory.png',
+      image: imagePath('images/backgrounds/ch05-memory.png'),
       name: '记忆之海'
     },
     'title': {
       id: 'title',
       world: 'all',
-      image: '/images/backgrounds/title.png',
+      image: imagePath('images/backgrounds/title.png'),
       name: '标题封面'
     }
   },
