@@ -8,13 +8,13 @@
       <div v-for="i in 15" :key="i" class="particle" :style="getParticleStyle(i)"></div>
     </div>
     
-    <!-- 点击继续的热区（无选择支时覆盖整个屏幕） -->
-    <div v-if="!hasChoices || isTyping" class="click-overlay" @click="onDialogueClick"></div>
-    
     <!-- 主内容区 -->
     <div class="main-content">
+      <!-- 点击继续的热区（无选择支时覆盖屏幕上半部分，留出对话区可滚动） -->
+      <div v-if="!hasChoices && !isTyping" class="click-overlay" @click="onDialogueClick"></div>
+      
       <!-- 对话层 -->
-      <div class="dialogue-layer">
+      <div class="dialogue-layer" @click="onDialogueClick">
         <!-- 场景标题 -->
         <div v-if="currentScene?.title" class="scene-title">
           {{ currentScene.title }}
@@ -26,7 +26,7 @@
         </div>
         
         <!-- 对话内容（可滚动） -->
-        <div class="dialogue-scroll-wrapper">
+        <div class="dialogue-scroll-wrapper" @click.stop>
           <div class="dialogue-text">
             {{ displayedText }}
             <span v-if="isTyping" class="cursor">▋</span>
@@ -326,13 +326,13 @@ onMounted(() => {
   justify-content: flex-end;
 }
 
-/* 点击热区 - 无选择支时覆盖整个屏幕 */
+/* 点击热区 - 无选择支时覆盖屏幕上半部分（留出对话区可滚动） */
 .click-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 50vh;
   z-index: 10;
   cursor: pointer;
 }
@@ -404,6 +404,9 @@ onMounted(() => {
   background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.6) 60%, transparent 100%);
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 20;
+  max-height: 45vh;
 }
 
 /* 有选择支时，对话区域收缩留出空间 */
@@ -434,10 +437,12 @@ onMounted(() => {
 .dialogue-scroll-wrapper {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
   margin-bottom: 10px;
   padding-right: 5px;
-  max-height: 25vh;
-  min-height: 0;
+  max-height: 30vh;
+  min-height: 80px;
+  cursor: text;
 }
 
 /* 自定义滚动条 */
@@ -461,8 +466,9 @@ onMounted(() => {
   color: #ffffff;
   white-space: pre-wrap;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-  cursor: pointer;
   padding: 5px;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .cursor {
@@ -724,6 +730,10 @@ onMounted(() => {
   .choices-layer {
     padding: 20px 20px 25px 20px;
     gap: 15px;
+  }
+  
+  .dialogue-scroll-wrapper {
+    max-height: 35vh;
   }
   
   .main-content:has(.choices-layer) .dialogue-layer {
