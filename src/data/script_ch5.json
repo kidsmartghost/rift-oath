@@ -1547,6 +1547,45 @@
         "creator"
       ],
       "nextSceneId": null
+    },
+    {
+      "id": "ending_final_destroy_detailed",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：毁灭",
+      "speaker": "创造者",
+      "dialogue": "「毁灭...是最好的选择。」\n\n你举起了武器，对准了创造者。\n\n创造者没有反抗，只是静静地看着你。\n\n「你知道吗？」\n\n「我也曾想过这个结局。」\n\n光芒闪过，一切归于虚无。\n\n王国、废土、神殿、都市...\n\n所有世界，所有生命，所有存在...\n\n都消失了。\n\n在最后的瞬间，你听到了一个声音：\n\n「这就是...你选择的答案吗...」\n\n【最终章 毁灭结局】",
+      "background": "ch05-void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_guardian_detailed",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终结局：守护者",
+      "speaker": "创造者",
+      "dialogue": "「你选择...成为守护者？」\n\n创造者问。\n\n「守护所有世界，所有生命。」\n\n你坚定地说。\n\n创造者笑了。\n\n「这是...最艰难的道路。」\n\n「你会孤独，会痛苦，会质疑...」\n\n「但你也可能会...找到意义。」\n\n光芒笼罩了你，你感觉到力量在体内涌动。\n\n「那么...就交给你了。」\n\n「守护的责任，现在...是你的了。」\n\n你点点头，看向远方的世界。\n\n「我会守护。」\n\n「直到最后一刻。」\n\n【最终章 守护者结局】",
+      "background": "ch05-void",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_final_rebirth_detailed",
+      "worldId": "world5",
+      "type": "ending",
+      "title": "最终真结局：新生",
+      "speaker": "",
+      "dialogue": "新生的时刻到了。\n\n创造者看着你，眼中满是期待。\n\n「你确定吗？」\n\n「这是...无法回头的选择。」\n\n「我确定。」\n\n你说。\n\n光芒中，旧的世界开始消散。\n\n新的世界...正在诞生。\n\n「谢谢你。」\n\n创造者说。\n\n「是你...让一切重新开始。」\n\n你笑了。\n\n「不。」\n\n「是我们。」\n\n新的纪元，开始了。\n\n【最终真结局：新生】",
+      "background": "ch05-memory",
+      "characters": [
+        "creator"
+      ],
+      "nextSceneId": null
     }
   ]
 }

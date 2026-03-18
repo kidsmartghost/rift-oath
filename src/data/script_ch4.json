@@ -1475,6 +1475,43 @@
       "background": "ch05-memory",
       "characters": [],
       "nextSceneId": null
+    },
+    {
+      "id": "ending_ch4_destroyer",
+      "worldId": "world4",
+      "type": "ending",
+      "title": "第四章结局：毁灭",
+      "speaker": "",
+      "dialogue": "学园都市在燃烧。\n\n你选择了毁灭。\n\n「为什么...」\n\n林小满难以置信地看着你。\n\n「因为...」\n\n「...这是唯一的选择。」\n\n她摇摇头，消失在火光中。\n\n你独自站在废墟中，感受着无尽的空虚。\n\n「这就是...你想要的吗？」\n\n一个声音在脑海中响起。\n\n你没有回答。\n\n因为答案...已经不重要了。\n\n【第四章 毁灭结局】",
+      "background": "ch04-classroom",
+      "characters": [],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_ch4_guardian",
+      "worldId": "world4",
+      "type": "ending",
+      "title": "第四章结局：守护",
+      "speaker": "林小满",
+      "dialogue": "「你选择...守护这里？」\n\n林小满问。\n\n「是的。」\n\n「即使这里...」\n\n「...充满了痛苦和背叛？」\n\n「即使如此。」\n\n你看着学园都市，眼中满是坚定。\n\n「因为这里...」\n\n「...是我们的家。」\n\n林小满笑了，眼中含着泪水。\n\n「那就...一起守护吧。」\n\n「直到最后。」\n\n【第四章 守护结局】",
+      "background": "ch04-campus",
+      "characters": [
+        "lin"
+      ],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_ch4_truth",
+      "worldId": "world4",
+      "type": "ending",
+      "title": "第四章真结局：真相",
+      "speaker": "",
+      "dialogue": "真相...终于揭晓。\n\n「原来...我们一直都在...」\n\n林小满喃喃自语。\n\n「是的。」\n\n「这一切...都是实验。」\n\n「我们...都是实验品。」\n\n你握紧拳头。\n\n「但实验...结束了。」\n\n「从现在开始...」\n\n「...我们为自己而活。」\n\n林小满看着你，笑了。\n\n「嗯。」\n\n「一起。」\n\n【第四章 真结局：真相】",
+      "background": "ch04-library",
+      "characters": [
+        "lin"
+      ],
+      "nextSceneId": null
     }
   ]
 }

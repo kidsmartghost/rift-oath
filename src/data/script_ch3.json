@@ -1666,6 +1666,45 @@
         "michael"
       ],
       "nextSceneId": null
+    },
+    {
+      "id": "ending_destroyer_detailed",
+      "worldId": "world3",
+      "type": "ending",
+      "title": "第三章结局：毁灭者",
+      "speaker": "",
+      "dialogue": "「你...做了什么...」\n\n米迦勒难以置信地看着你。\n\n毁灭的力量在你手中涌动，整个神殿都在颤抖。\n\n「我...结束了这一切。」\n\n你平静地说。\n\n「愚蠢！」\n\n米迦勒怒吼。\n\n「你毁灭的不是敌人...」\n\n「...是希望！」\n\n光芒吞没了一切。\n\n从此，你背负着毁灭者的名字。\n\n永远。\n\n【第三章 毁灭者结局】",
+      "background": "ch03-godfall",
+      "characters": [
+        "michael"
+      ],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_guardian_detailed",
+      "worldId": "world3",
+      "type": "ending",
+      "title": "第三章结局：守护者",
+      "speaker": "米迦勒",
+      "dialogue": "「你选择...留下？」\n\n米迦勒问。\n\n「这片土地...需要守护。」\n\n你看着神弃之地，眼中满是坚定。\n\n「即使这里...」\n\n「...已经被神遗弃？」\n\n「即使如此。」\n\n米迦勒沉默了很久。\n\n然后，他向你单膝跪地。\n\n「那么...向你致敬。」\n\n「守护者。」\n\n【第三章 守护者结局】",
+      "background": "ch03-temple",
+      "characters": [
+        "michael"
+      ],
+      "nextSceneId": null
+    },
+    {
+      "id": "ending_true_rebirth_detailed",
+      "worldId": "world3",
+      "type": "ending",
+      "title": "第三章真结局：重生",
+      "speaker": "",
+      "dialogue": "重生的时刻到了。\n\n神弃之地焕然一新，枯萎的大地重新焕发生机。\n\n「这是...」\n\n米迦勒惊讶地看着四周。\n\n「新的开始。」\n\n你说。\n\n「神已死，但希望...永存。」\n\n米迦勒点点头，眼中含着泪水。\n\n「谢谢你...」\n\n「是你...让我们看到了未来。」\n\n黎明的阳光洒在大地上。\n\n新的纪元，开始了。\n\n【第三章 真结局：重生】",
+      "background": "ch03-temple",
+      "characters": [
+        "michael"
+      ],
+      "nextSceneId": null
     }
   ]
 }
