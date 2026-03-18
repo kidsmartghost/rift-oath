@@ -1,0 +1,197 @@
+{
+  "meta": {
+    "title": "裂隙之誓",
+    "version": "2.0",
+    "author": "OpenClaw",
+    "description": "黑暗奇幻多世界文字冒险游戏 - 完整版"
+  },
+  
+  "worlds": [
+    {
+      "id": "world1",
+      "name": "永夜王国",
+      "description": "被永恒黑暗笼罩的中世纪王国，三个月前太阳不再升起",
+      "theme": "gothic",
+      "heroName": "艾莉娅",
+      "heroClass": "圣骑士",
+      "backgroundColor": "#1a0a1f",
+      "accentColor": "#8b0000",
+      "gradient": "linear-gradient(135deg, #1a0a1f 0%, #2d1b3d 50%, #1a0a1f 100%)",
+      "chapterTitle": "第一章：觉醒",
+      "sceneCount": 25
+    },
+    {
+      "id": "world2",
+      "name": "机械废土",
+      "description": "核战后的赛博朋克废墟，人类灭绝，机器觉醒",
+      "theme": "cyberpunk",
+      "heroName": "K-7",
+      "heroClass": "战斗机器人",
+      "backgroundColor": "#0a0f1a",
+      "accentColor": "#00ffff",
+      "gradient": "linear-gradient(135deg, #0a0f1a 0%, #1a2f3d 50%, #0a0f1a 100%)",
+      "chapterTitle": "第二章：废墟",
+      "sceneCount": 30
+    },
+    {
+      "id": "world3",
+      "name": "神弃之地",
+      "description": "诸神黄昏后的神话世界，天使陨落，神血流淌",
+      "theme": "mythology",
+      "heroName": "洛恩",
+      "heroClass": "半神",
+      "backgroundColor": "#1a1500",
+      "accentColor": "#ffd700",
+      "gradient": "linear-gradient(135deg, #1a1500 0%, #3d3500 50%, #1a1500 100%)",
+      "chapterTitle": "第三章：神陨",
+      "sceneCount": 20
+    },
+    {
+      "id": "world4",
+      "name": "学园都市",
+      "description": "2024 年，表面普通的现代都市，隐藏着魔法秘密",
+      "theme": "modern",
+      "heroName": "林小满",
+      "heroClass": "高中生",
+      "backgroundColor": "#0f0f1a",
+      "accentColor": "#ff69b4",
+      "gradient": "linear-gradient(135deg, #0f0f1a 0%, #2a2a3d 50%, #0f0f1a 100%)",
+      "chapterTitle": "第四章：日常",
+      "sceneCount": 25
+    },
+    {
+      "id": "world5",
+      "name": "初始之境",
+      "description": "时间之外，所有世界的源头，纯白的虚无",
+      "theme": "void",
+      "heroName": "？？？",
+      "heroClass": "创造者",
+      "backgroundColor": "#ffffff",
+      "accentColor": "#000000",
+      "gradient": "linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #ffffff 100%)",
+      "chapterTitle": "第五章：真相",
+      "sceneCount": 20
+    }
+  ],
+  
+  "scenes": [
+    {
+      "id": "scene_001",
+      "worldId": "world1",
+      "title": "破碎的黎明",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "黑暗。\n无尽的黑暗。\n\n我睁开双眼，却什么也看不见。\n只有冰冷的石地板贴着脸颊，还有...血腥味。",
+      "background": "church",
+      "characters": [],
+      "bgm": "world1",
+      "nextSceneId": "scene_002",
+      "effects": {
+        "hiddenStats": { "chaos": 5 }
+      }
+    },
+    {
+      "id": "scene_002",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "神秘老人",
+      "dialogue": "「你醒了。」\n\n一个苍老的声音在黑暗中响起。",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_003"
+    },
+    {
+      "id": "scene_003",
+      "worldId": "world1",
+      "type": "narration",
+      "speaker": "",
+      "dialogue": "这是一座破败的教堂。\n彩色玻璃早已破碎，月光从空洞的窗框中洒入。\n\n在我面前，站着一位佝偻的老人，手中握着一盏摇曳的油灯。",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_004",
+      "dialogueVariants": [
+        {
+          "conditions": { "stats": { "wisdom": { "min": 60 } } },
+          "text": "这是一座破败的教堂。\n但...不对劲。\n\n我仔细观察周围的环境——破损的彩窗图案、祭坛的摆放位置、甚至空气中残留的魔法波动。\n\n这不是普通的教堂。这是一个...封印之地？\n\n在我面前，站着一位佝偻的老人，手中握着一盏摇曳的油灯。"
+        }
+      ],
+      "extraLines": {
+        "wisdom": "你的直觉告诉你，这座教堂隐藏着秘密。",
+        "courage": "你握紧拳头，准备应对任何危险。"
+      }
+    },
+    {
+      "id": "scene_004",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "艾莉娅",
+      "dialogue": "「这里是...哪里？我是谁？」\n\n我抚摸着疼痛的太阳穴，脑海中一片空白。",
+      "background": "church",
+      "characters": ["oldman"],
+      "nextSceneId": "scene_005"
+    },
+    {
+      "id": "scene_005",
+      "worldId": "world1",
+      "type": "dialogue",
+      "speaker": "神秘老人",
+      "dialogue": "老人叹了口气。\n\n「这里是圣罗兰教堂，王都最后的避难所。而你，艾莉娅，是王国最后的圣骑士。」",
+      "background": "church",
+      "characters": ["oldman"],
+      "choices": [
+        {
+          "id": "choice_001_a",
+          "text": "「圣骑士...我不明白。」",
+          "nextSceneId": "scene_006_a",
+          "effects": {
+            "stats": { "wisdom": 5 },
+            "bonds": { "world1": 3 }
+          }
+        },
+        {
+          "id": "choice_001_b",
+          "text": "「王国发生了什么？」",
+          "nextSceneId": "scene_006_b",
+          "effects": {
+            "stats": { "wisdom": 3, "courage": 3 },
+            "bonds": { "world1": 5 }
+          }
+        },
+        {
+          "id": "choice_001_c",
+          "text": "「你认识我？」",
+          "nextSceneId": "scene_006_c",
+          "effects": {
+            "stats": { "compassion": 5 },
+            "bonds": { "world1": 4 }
+          }
+        },
+        {
+          "id": "choice_001_d",
+          "text": "「证明给我看。」",
+          "nextSceneId": "scene_006_d",
+          "conditions": {
+            "stats": { "wisdom": { "min": 40 } }
+          },
+          "fallbackSceneId": null,
+          "effects": {
+            "stats": { "wisdom": 8, "determination": 5 }
+          }
+        }
+      ]
+    }
+  ],
+  
+  "endings": [
+    {
+      "id": "ending_destroyer",
+      "name": "毁灭者",
+      "type": "bad",
+      "title": "结局：毁灭者",
+      "dialogue": "你选择了毁灭。\n\n所有世界在你的力量下崩塌，生命化为虚无。\n\n你成为了唯一的存在，在永恒的寂静中。\n\n这是胜利吗？还是最深沉的失败？\n\n也许，只有你自己知道。\n\n【坏结局 1/3】",
+      "unlockConditions": {
+        "hiddenStats": { "corruption": { "min": 70 } }
+      }
+    }
+  ]
+}

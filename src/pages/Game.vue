@@ -273,7 +273,7 @@ const hasChoices = ref(false)
 const showMenu = ref(false)
 const showSaveLoad = ref(false)
 const isSaving = ref(false)
-const typingSpeed = ref(50)
+const typingSpeed = ref(25)  // 从 50ms 加快到 25ms
 
 const currentWorldBg = computed(() => {
   if (!currentScene.value) return '#1a0a1f'
