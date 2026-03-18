@@ -8,40 +8,45 @@
       <div v-for="i in 15" :key="i" class="particle" :style="getParticleStyle(i)"></div>
     </div>
     
-    <!-- 对话层 -->
-    <div class="dialogue-layer">
-      <!-- 场景标题 -->
-      <div v-if="currentScene?.title" class="scene-title">
-        {{ currentScene.title }}
+    <!-- 主内容区 -->
+    <div class="main-content" :class="{ 'has-choices': hasChoices && !isTyping }">
+      <!-- 对话层 -->
+      <div class="dialogue-layer">
+        <!-- 场景标题 -->
+        <div v-if="currentScene?.title" class="scene-title">
+          {{ currentScene.title }}
+        </div>
+        
+        <!-- 说话者名称 -->
+        <div v-if="currentScene?.speaker" class="speaker-name">
+          {{ currentScene.speaker }}
+        </div>
+        
+        <!-- 对话内容（可滚动） -->
+        <div class="dialogue-scroll-wrapper">
+          <div class="dialogue-text" @click="onDialogueClick">
+            {{ displayedText }}
+            <span v-if="isTyping" class="cursor">▋</span>
+          </div>
+        </div>
+        
+        <!-- 提示 -->
+        <div v-if="!isTyping && !hasChoices" class="continue-hint">
+          点击继续
+        </div>
       </div>
       
-      <!-- 说话者名称 -->
-      <div v-if="currentScene?.speaker" class="speaker-name">
-        {{ currentScene.speaker }}
-      </div>
-      
-      <!-- 对话内容 -->
-      <div class="dialogue-text" @click="onDialogueClick">
-        {{ displayedText }}
-        <span v-if="isTyping" class="cursor">▋</span>
-      </div>
-      
-      <!-- 提示 -->
-      <div v-if="!isTyping && !hasChoices" class="continue-hint">
-        点击继续
-      </div>
-    </div>
-    
-    <!-- 选择支 -->
-    <div v-if="hasChoices && !isTyping" class="choices-layer">
-      <div 
-        v-for="choice in currentScene?.choices" 
-        :key="choice.id"
-        class="choice-btn"
-        :style="{ borderColor: currentWorldAccent }"
-        @click="onChoiceClick(choice)"
-      >
-        {{ choice.text }}
+      <!-- 选择支 -->
+      <div v-if="hasChoices && !isTyping" class="choices-layer">
+        <div 
+          v-for="choice in currentScene?.choices" 
+          :key="choice.id"
+          class="choice-btn"
+          :style="{ borderColor: currentWorldAccent }"
+          @click="onChoiceClick(choice)"
+        >
+          {{ choice.text }}
+        </div>
       </div>
     </div>
     
@@ -307,6 +312,24 @@ onMounted(() => {
   height: 100%;
 }
 
+/* 主内容区 - 包含对话和选择支 */
+.main-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: all 0.3s ease;
+}
+
+/* 有选择支时，对话区域上移留出空间 */
+.main-content.has-choices {
+  padding-bottom: 0;
+}
+
 /* 世界主题粒子效果 */
 .world-particles {
   position: absolute;
@@ -369,39 +392,73 @@ onMounted(() => {
 }
 
 .dialogue-layer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 30px;
-  box-sizing: border-box;
-  background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.7), transparent);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 20px 10px 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 40%, transparent 100%);
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* 有选择支时，对话区域自动收缩 */
+.main-content.has-choices .dialogue-layer {
+  flex: 0 0 auto;
+  max-height: 45vh;
 }
 
 .scene-title {
   font-size: 14px;
   color: rgba(255,255,255,0.5);
   letter-spacing: 3px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .speaker-name {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   color: #e0d0e8;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  flex-shrink: 0;
+}
+
+/* 对话滚动区域 */
+.dialogue-scroll-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 10px;
+  padding-right: 5px;
+  min-height: 0;
+}
+
+/* 自定义滚动条 */
+.dialogue-scroll-wrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dialogue-scroll-wrapper::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+}
+
+.dialogue-scroll-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(139,0,0,0.6);
+  border-radius: 2px;
 }
 
 .dialogue-text {
-  font-size: 17px;
-  line-height: 2;
+  font-size: 16px;
+  line-height: 1.8;
   color: #ffffff;
   white-space: pre-wrap;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-  min-height: 100px;
   cursor: pointer;
+  padding: 5px;
 }
 
 .cursor {
@@ -416,10 +473,11 @@ onMounted(() => {
 
 .continue-hint {
   text-align: center;
-  margin-top: 20px;
-  font-size: 14px;
+  margin-top: 10px;
+  font-size: 13px;
   color: rgba(255,255,255,0.5);
   animation: fade-in-out 2s infinite;
+  flex-shrink: 0;
 }
 
 @keyframes fade-in-out {
@@ -427,29 +485,42 @@ onMounted(() => {
   50% { opacity: 0.8; }
 }
 
+/* 选择支层 - 固定在底部 */
 .choices-layer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 500px;
+  flex-shrink: 0;
+  width: 100%;
+  padding: 15px 20px 20px 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.85) 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 50vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .choice-btn {
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.7);
   border: 2px solid;
-  border-radius: 8px;
-  padding: 18px 20px;
-  margin-bottom: 15px;
+  border-radius: 10px;
+  padding: 16px 18px;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.2s;
+  text-align: center;
+  flex-shrink: 0;
+  /* 防止文字溢出 */
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  line-height: 1.5;
 }
 
 .choice-btn:hover {
   background: rgba(139,0,0,0.5);
+  transform: translateY(-2px);
 }
 
 .choice-btn:active {
@@ -622,5 +693,100 @@ onMounted(() => {
 .achievement-desc {
   font-size: 12px;
   color: rgba(255,255,255,0.7);
+}
+
+/* ========== 响应式设计 ========== */
+
+/* 平板和桌面端优化 */
+@media (min-width: 768px) {
+  .dialogue-text {
+    font-size: 17px;
+    line-height: 2;
+  }
+  
+  .speaker-name {
+    font-size: 18px;
+  }
+  
+  .choice-btn {
+    font-size: 16px;
+    padding: 18px 24px;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .choices-layer {
+    padding: 20px 20px 25px 20px;
+    gap: 15px;
+  }
+  
+  .main-content.has-choices .dialogue-layer {
+    max-height: 50vh;
+  }
+}
+
+/* 大屏桌面优化 */
+@media (min-width: 1024px) {
+  .dialogue-text {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .choices-layer {
+    align-items: center;
+  }
+  
+  .choice-btn {
+    max-width: 700px;
+  }
+}
+
+/* 小屏手机优化 */
+@media (max-height: 600px) {
+  .dialogue-layer {
+    padding: 15px 15px 5px 15px;
+  }
+  
+  .dialogue-text {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .speaker-name {
+    font-size: 14px;
+  }
+  
+  .choice-btn {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+  
+  .choices-layer {
+    padding: 10px 15px 15px 15px;
+    gap: 10px;
+  }
+  
+  .main-content.has-choices .dialogue-layer {
+    max-height: 40vh;
+  }
+}
+
+/* 横屏模式优化 */
+@media (orientation: landscape) and (max-height: 500px) {
+  .scene-title {
+    display: none;
+  }
+  
+  .dialogue-text {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .choice-btn {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
 }
 </style>
