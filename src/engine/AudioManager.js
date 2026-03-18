@@ -1,6 +1,6 @@
 /**
- * 简易音频管理器
- * 使用 Web Audio API 生成音效，无需外部文件
+ * 音频管理器
+ * 支持 Web Audio API 生成音效 + 外部 BGM/音效文件
  */
 
 class AudioManager {
@@ -9,6 +9,14 @@ class AudioManager {
     this.enabled = true
     this.volume = 0.5
     this.initialized = false
+    
+    // BGM 管理
+    this.currentBGM = null
+    this.bgmElement = null
+    this.bgmVolume = 0.5
+    
+    // 音效缓存
+    this.sfxCache = {}
   }
 
   // 初始化音频上下文
@@ -140,6 +148,160 @@ class AudioManager {
     })
   }
 
+  // ========== BGM 管理 ==========
+  
+  // 播放 BGM
+  playBGM(bgmConfig) {
+    if (!this.enabled || !bgmConfig) return
+    
+    // 如果已经在播放同一首，跳过
+    if (this.currentBGM === bgmConfig.id) return
+    
+    // 停止当前 BGM
+    this.stopBGM()
+    
+    try {
+      // 创建新的 audio 元素
+      this.bgmElement = new Audio(bgmConfig.path)
+      this.bgmElement.loop = bgmConfig.loop !== false
+      this.bgmElement.volume = bgmConfig.volume || this.bgmVolume
+      
+      // 预加载
+      this.bgmElement.load()
+      
+      // 播放
+      const playPromise = this.bgmElement.play()
+      if (playPromise) {
+        playPromise.catch(e => {
+          console.warn('BGM 播放失败:', e)
+        })
+      }
+      
+      this.currentBGM = bgmConfig.id
+    } catch (e) {
+      console.warn('BGM 加载失败:', e)
+    }
+  }
+  
+  // 停止 BGM
+  stopBGM() {
+    if (this.bgmElement) {
+      this.bgmElement.pause()
+      this.bgmElement.currentTime = 0
+      this.bgmElement = null
+    }
+    this.currentBGM = null
+  }
+  
+  // 暂停 BGM
+  pauseBGM() {
+    if (this.bgmElement) {
+      this.bgmElement.pause()
+    }
+  }
+  
+  // 恢复 BGM
+  resumeBGM() {
+    if (this.bgmElement) {
+      this.bgmElement.play().catch(e => console.warn(e))
+    }
+  }
+  
+  // 设置 BGM 音量
+  setBGMVolume(vol) {
+    this.bgmVolume = Math.max(0, Math.min(1, vol))
+    if (this.bgmElement) {
+      this.bgmElement.volume = this.bgmVolume
+    }
+  }
+  
+  // 淡入 BGM
+  fadeInBGM(bgmConfig, duration = 2000) {
+    if (!this.enabled || !bgmConfig) return
+    
+    this.stopBGM()
+    
+    try {
+      this.bgmElement = new Audio(bgmConfig.path)
+      this.bgmElement.loop = bgmConfig.loop !== false
+      this.bgmElement.volume = 0
+      
+      const playPromise = this.bgmElement.play()
+      if (playPromise) {
+        playPromise.then(() => {
+          // 淡入
+          const startTime = Date.now()
+          const fadeInterval = setInterval(() => {
+            const elapsed = Date.now() - startTime
+            const progress = Math.min(elapsed / duration, 1)
+            this.bgmElement.volume = this.bgmVolume * progress
+            
+            if (progress >= 1) {
+              clearInterval(fadeInterval)
+            }
+          }, 50)
+        }).catch(e => console.warn(e))
+      }
+      
+      this.currentBGM = bgmConfig.id
+    } catch (e) {
+      console.warn(e)
+    }
+  }
+  
+  // 淡出 BGM
+  fadeOutBGM(duration = 1000) {
+    if (!this.bgmElement) return
+    
+    const startTime = Date.now()
+    const startVolume = this.bgmElement.volume
+    const fadeInterval = setInterval(() => {
+      const elapsed = Date.now() - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      this.bgmElement.volume = startVolume * (1 - progress)
+      
+      if (progress >= 1) {
+        clearInterval(fadeInterval)
+        this.stopBGM()
+      }
+    }, 50)
+  }
+  
+  // ========== 外部音效 ==========
+  
+  // 预加载音效
+  preloadSFX(sfxConfig) {
+    if (!sfxConfig || !sfxConfig.path) return
+    
+    if (!this.sfxCache[sfxConfig.id]) {
+      const audio = new Audio(sfxConfig.path)
+      audio.load()
+      this.sfxCache[sfxConfig.id] = audio
+    }
+  }
+  
+  // 播放外部音效
+  playSFX(sfxConfig) {
+    if (!this.enabled || !sfxConfig) return
+    
+    try {
+      // 从缓存获取或创建新实例
+      let audio = this.sfxCache[sfxConfig.id]
+      if (!audio) {
+        audio = new Audio(sfxConfig.path)
+        audio.load()
+        this.sfxCache[sfxConfig.id] = audio
+      }
+      
+      // 克隆以支持重叠播放
+      const clone = audio.cloneNode()
+      clone.volume = sfxConfig.volume || this.volume
+      clone.play().catch(e => console.warn(e))
+    } catch (e) {
+      console.warn('音效播放失败:', e)
+    }
+  }
+  
   // 设置音量
   setVolume(vol) {
     this.volume = Math.max(0, Math.min(1, vol))
@@ -148,6 +310,9 @@ class AudioManager {
   // 启用/禁用音频
   setEnabled(enabled) {
     this.enabled = enabled
+    if (!enabled) {
+      this.stopBGM()
+    }
   }
 }
 

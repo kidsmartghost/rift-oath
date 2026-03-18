@@ -1,7 +1,26 @@
 <template>
   <div class="game-container" :style="{ background: currentWorldBg }">
-    <!-- 背景层 -->
-    <div class="background-layer" :style="{ background: currentWorldBg }"></div>
+    <!-- 场景背景图 -->
+    <div v-if="currentBackground" class="background-image" :style="{ backgroundImage: 'url(' + currentBackground + ')' }"></div>
+    
+    <!-- 背景层（渐变 fallback） -->
+    <div class="background-layer" :style="{ background: currentWorldBg, opacity: currentBackground ? 0.3 : 1 }"></div>
+    
+    <!-- 角色立绘层 -->
+    <div class="character-layer">
+      <div 
+        v-for="(char, index) in currentCharacters" 
+        :key="char.id"
+        class="character-portrait"
+        :style="{ 
+          backgroundImage: char.portrait ? 'url(' + char.portrait + ')' : 'none',
+          left: getCharacterPosition(index, currentCharacters.length)
+        }"
+      >
+        <!-- 角色名字（可选） -->
+        <div v-if="showCharacterNames" class="character-name-tag">{{ char.name }}</div>
+      </div>
+    </div>
     
     <!-- 世界主题粒子效果 -->
     <div class="world-particles" :class="currentWorldTheme">
@@ -218,6 +237,7 @@ import { useGameStore } from '@/stores/game'
 import { gameScript } from '@/engine/script'
 import { audioManager } from '@/engine/AudioManager'
 import { achievements, memoryFragments } from '@/data/achievements'
+import { assets, getBackgroundForScene, getCharactersForScene, getBGMForWorld } from '@/data/assets'
 
 const gameStore = useGameStore()
 const playerState = gameStore.playerState
@@ -272,6 +292,23 @@ const currentWorldTheme = computed(() => {
   const world = gameScript.worlds.find(w => w.id === currentScene.value.worldId)
   return world?.theme || 'gothic'
 })
+
+// 当前背景图
+const currentBackground = ref(null)
+
+// 当前角色列表
+const currentCharacters = ref([])
+
+// 是否显示角色名字标签
+const showCharacterNames = ref(false)
+
+// 计算角色位置（居中分布）
+function getCharacterPosition(index, total) {
+  if (total === 1) return '50%'
+  if (total === 2) return index === 0 ? '35%' : '65%'
+  if (total === 3) return ['25%', '50%', '75%'][index]
+  return `${30 + (index * 40 / (total - 1))}%`
+}
 
 function loadScene(sceneId) {
   const scene = gameScript.scenes.find(s => s.id === sceneId)
