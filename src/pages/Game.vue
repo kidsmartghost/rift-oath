@@ -807,6 +807,7 @@ onMounted(async () => {
   width: 100%;
   height: 100%;
   background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.9) 100%);
+  z-index: 0;
 }
 
 /* 背景图片层 - 上半部分显示 (70%) */
@@ -819,7 +820,7 @@ onMounted(async () => {
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-  z-index: 1;
+  z-index: 10;
 }
 
 /* 角色立绘层 - 在背景区域内 */
