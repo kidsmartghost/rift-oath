@@ -3,9 +3,9 @@
  * 所有 AI 生成的图片和音乐素材路径
  */
 
-// 基础路径 - 硬编码为 /rift-oath/ 确保在 GitHub Pages 子目录下正常工作
-// 不依赖 import.meta.env.BASE_URL，因为它可能返回空字符串
-const BASE_PATH = '/rift-oath/'
+// 基础路径 - 使用 Vite 的 BASE_URL，开发环境和生产环境自动适配
+// 开发环境：/  |  生产环境（GitHub Pages）：/rift-oath/
+const BASE_PATH = import.meta.env.BASE_URL || '/'
 
 // 辅助函数：构建图片路径
 function imagePath(path) {
@@ -191,7 +191,7 @@ export const assets = {
     title: {
       id: 'title',
       name: 'Title Theme',
-      path: '/audio/bgm/title.mp3',
+      path: BASE_PATH + 'audio/bgm/title.mp3',
       loop: true,
       volume: 0.6
     },
@@ -200,35 +200,35 @@ export const assets = {
     world1: {
       id: 'world1',
       name: 'Eternal Night',
-      path: '/audio/bgm/world1.mp3',
+      path: BASE_PATH + 'audio/bgm/world1.mp3',
       loop: true,
       volume: 0.5
     },
     world2: {
       id: 'world2',
       name: 'Cyber Ruins',
-      path: '/audio/bgm/world2.mp3',
+      path: BASE_PATH + 'audio/bgm/world2.mp3',
       loop: true,
       volume: 0.5
     },
     world3: {
       id: 'world3',
       name: 'Godfall',
-      path: '/audio/bgm/world3.mp3',
+      path: BASE_PATH + 'audio/bgm/world3.mp3',
       loop: true,
       volume: 0.5
     },
     world4: {
       id: 'world4',
       name: 'Daily Life',
-      path: '/audio/bgm/world4.mp3',
+      path: BASE_PATH + 'audio/bgm/world4.mp3',
       loop: true,
       volume: 0.5
     },
     world5: {
       id: 'world5',
       name: 'Origin',
-      path: '/audio/bgm/world5.mp3',
+      path: BASE_PATH + 'audio/bgm/world5.mp3',
       loop: true,
       volume: 0.4
     },
@@ -237,28 +237,28 @@ export const assets = {
     battle: {
       id: 'battle',
       name: 'Battle Theme',
-      path: '/audio/bgm/battle.mp3',
+      path: BASE_PATH + 'audio/bgm/battle.mp3',
       loop: true,
       volume: 0.6
     },
     emotional: {
       id: 'emotional',
       name: 'Emotional',
-      path: '/audio/bgm/emotional.mp3',
+      path: BASE_PATH + 'audio/bgm/emotional.mp3',
       loop: true,
       volume: 0.5
     },
     climax: {
       id: 'climax',
       name: 'Climax',
-      path: '/audio/bgm/climax.mp3',
+      path: BASE_PATH + 'audio/bgm/climax.mp3',
       loop: true,
       volume: 0.7
     },
     ending: {
       id: 'ending',
       name: 'Ending',
-      path: '/audio/bgm/ending.mp3',
+      path: BASE_PATH + 'audio/bgm/ending.mp3',
       loop: false,
       volume: 0.6
     }
@@ -268,52 +268,52 @@ export const assets = {
   sfx: {
     click: {
       id: 'click',
-      path: '/audio/sfx/click.wav',
+      path: BASE_PATH + 'audio/sfx/click.wav',
       volume: 0.8
     },
     select: {
       id: 'select',
-      path: '/audio/sfx/select.wav',
+      path: BASE_PATH + 'audio/sfx/select.wav',
       volume: 0.8
     },
     typing: {
       id: 'typing',
-      path: '/audio/sfx/typing.wav',
+      path: BASE_PATH + 'audio/sfx/typing.wav',
       volume: 0.3
     },
     transition: {
       id: 'transition',
-      path: '/audio/sfx/transition.wav',
+      path: BASE_PATH + 'audio/sfx/transition.wav',
       volume: 0.7
     },
     unlock: {
       id: 'unlock',
-      path: '/audio/sfx/unlock.wav',
+      path: BASE_PATH + 'audio/sfx/unlock.wav',
       volume: 0.8
     },
     achievement: {
       id: 'achievement',
-      path: '/audio/sfx/achievement.wav',
+      path: BASE_PATH + 'audio/sfx/achievement.wav',
       volume: 0.8
     },
     sword: {
       id: 'sword',
-      path: '/audio/sfx/sword.wav',
+      path: BASE_PATH + 'audio/sfx/sword.wav',
       volume: 0.7
     },
     magic: {
       id: 'magic',
-      path: '/audio/sfx/magic.wav',
+      path: BASE_PATH + 'audio/sfx/magic.wav',
       volume: 0.7
     },
     machine: {
       id: 'machine',
-      path: '/audio/sfx/machine.wav',
+      path: BASE_PATH + 'audio/sfx/machine.wav',
       volume: 0.6
     },
     wing: {
       id: 'wing',
-      path: '/audio/sfx/wing.wav',
+      path: BASE_PATH + 'audio/sfx/wing.wav',
       volume: 0.5
     }
   },

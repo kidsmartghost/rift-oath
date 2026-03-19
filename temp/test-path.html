@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>路径测试</title>
+  <style>
+    body {
+      background: #1a1a2e;
+      color: #eee;
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    .test-item {
+      margin: 20px 0;
+      padding: 15px;
+      background: #2a2a3e;
+      border-radius: 8px;
+    }
+    .test-label {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .test-url {
+      font-family: monospace;
+      background: #1a1a2e;
+      padding: 5px 10px;
+      border-radius: 4px;
+      display: block;
+      margin: 10px 0;
+    }
+    .test-image {
+      max-width: 300px;
+      border: 2px solid #4a4a5e;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+    .success { color: #4ade80; }
+    .error { color: #f87171; }
+  </style>
+</head>
+<body>
+  <h1>🧪 图片路径测试</h1>
+  
+  <div class="test-item">
+    <div class="test-label">测试 1: 直接访问背景图片</div>
+    <code class="test-url" id="url1"></code>
+    <img id="img1" class="test-image" alt="测试背景" />
+    <div id="result1"></div>
+  </div>
+  
+  <div class="test-item">
+    <div class="test-label">测试 2: 直接访问角色立绘</div>
+    <code class="test-url" id="url2"></code>
+    <img id="img2" class="test-image" alt="测试角色" />
+    <div id="result2"></div>
+  </div>
+  
+  <div class="test-item">
+    <div class="test-label">测试 3: 使用完整路径函数</div>
+    <code class="test-url" id="url3"></code>
+    <img id="img3" class="test-image" alt="测试路径函数" />
+    <div id="result3"></div>
+  </div>
+
+  <script>
+    const BASE_PATH = '/rift-oath/'
+    
+    function imagePath(path) {
+      const cleanPath = path.replace(/^[/\.]+/, '')
+      return BASE_PATH + cleanPath
+    }
+    
+    // 测试 1: 背景图片
+    const url1 = BASE_PATH + 'images/backgrounds/ch01-church.png'
+    document.getElementById('url1').textContent = 'https://kidsmartghost.github.io' + url1
+    const img1 = document.getElementById('img1')
+    img1.src = url1
+    img1.onload = () => {
+      document.getElementById('result1').innerHTML = '<span class="success">✅ 加载成功!</span>'
+    }
+    img1.onerror = () => {
+      document.getElementById('result1').innerHTML = '<span class="error">❌ 加载失败</span>'
+    }
+    
+    // 测试 2: 角色立绘
+    const url2 = BASE_PATH + 'images/characters/aria.png'
+    document.getElementById('url2').textContent = 'https://kidsmartghost.github.io' + url2
+    const img2 = document.getElementById('img2')
+    img2.src = url2
+    img2.onload = () => {
+      document.getElementById('result2').innerHTML = '<span class="success">✅ 加载成功!</span>'
+    }
+    img2.onerror = () => {
+      document.getElementById('result2').innerHTML = '<span class="error">❌ 加载失败</span>'
+    }
+    
+    // 测试 3: 使用路径函数
+    const url3 = imagePath('images/backgrounds/ch01-church.png')
+    document.getElementById('url3').textContent = 'https://kidsmartghost.github.io' + url3 + ' (使用 imagePath 函数)'
+    const img3 = document.getElementById('img3')
+    img3.src = url3
+    img3.onload = () => {
+      document.getElementById('result3').innerHTML = '<span class="success">✅ 加载成功!</span>'
+    }
+    img3.onerror = () => {
+      document.getElementById('result3').innerHTML = '<span class="error">❌ 加载失败</span>'
+    }
+    
+    console.log('BASE_PATH:', BASE_PATH)
+    console.log('imagePath 测试结果:', imagePath('images/backgrounds/ch01-church.png'))
+  </script>
+</body>
+</html>
